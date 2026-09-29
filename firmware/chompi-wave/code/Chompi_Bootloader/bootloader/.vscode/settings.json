@@ -1,0 +1,5 @@
+{
+    "files.associations": {
+        "usbd_dfu.h": "c"
+    }
+}

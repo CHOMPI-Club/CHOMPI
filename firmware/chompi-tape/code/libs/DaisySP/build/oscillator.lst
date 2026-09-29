@@ -1,0 +1,375 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"oscillator.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp10Oscillator7ProcessEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp10Oscillator7ProcessEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp10Oscillator7ProcessEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+  28 0002 10B5     		push	{r4, lr}
+  29 0004 0446     		mov	r4, r0
+  30 0006 2DED048B 		vpush.64	{d8, d9}
+  31 000a 072B     		cmp	r3, #7
+  32 000c 00F2C981 		bhi	.L2
+  33 0010 DFE813F0 		tbh	[pc, r3, lsl #1]
+  34              	.L4:
+  35 0014 5F00     		.2byte	(.L11-.L4)/2
+  36 0016 AF00     		.2byte	(.L10-.L4)/2
+  37 0018 C400     		.2byte	(.L9-.L4)/2
+  38 001a 9000     		.2byte	(.L8-.L4)/2
+  39 001c 9F00     		.2byte	(.L7-.L4)/2
+  40 001e D500     		.2byte	(.L6-.L4)/2
+  41 0020 2F01     		.2byte	(.L5-.L4)/2
+  42 0022 0800     		.2byte	(.L3-.L4)/2
+  43              		.p2align 1
+  44              	.L3:
+  45 0024 D0ED077A 		vldr.32	s15, [r0, #28]
+  46 0028 BFEE000A 		vmov.f32	s0, #-1.0e+0
+  47 002c 90ED047A 		vldr.32	s14, [r0, #16]
+  48 0030 DFEDDF6A 		vldr.32	s13, .L72
+  49 0034 90ED088A 		vldr.32	s16, [r0, #32]
+  50 0038 F4EEC77A 		vcmpe.f32	s15, s14
+  51 003c 67EEA67A 		vmul.f32	s15, s15, s13
+  52 0040 28EE268A 		vmul.f32	s16, s16, s13
+  53 0044 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  54 0048 B7EE007A 		vmov.f32	s14, #1.0e+0
+  55 004c F4EEC87A 		vcmpe.f32	s15, s16
+  56 0050 54BF     		ite	pl
+  57 0052 F0EE408A 		vmovpl.f32	s17, s0
+  58 0056 F0EE478A 		vmovmi.f32	s17, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 2
+
+
+  59 005a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  60 005e 00F19381 		bmi	.L65
+  61 0062 77EE486A 		vsub.f32	s13, s14, s16
+  62 0066 F4EEE67A 		vcmpe.f32	s15, s13
+  63 006a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  64 006e 00F34681 		bgt	.L66
+  65              	.L31:
+  66 0072 B7EE009A 		vmov.f32	s18, #1.0e+0
+  67 0076 94ED030A 		vldr.32	s0, [r4, #12]
+  68 007a 39EE400A 		vsub.f32	s0, s18, s0
+  69 007e F0EE490A 		vmov.f32	s1, s18
+  70 0082 30EE270A 		vadd.f32	s0, s0, s15
+  71 0086 FFF7FEFF 		bl	fmodf
+  72 008a B4EEC80A 		vcmpe.f32	s0, s16
+  73 008e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  74 0092 00F14381 		bmi	.L67
+  75 0096 79EE487A 		vsub.f32	s15, s18, s16
+  76 009a B4EEE70A 		vcmpe.f32	s0, s15
+  77 009e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  78 00a2 0DDD     		ble	.L35
+  79 00a4 30EE490A 		vsub.f32	s0, s0, s18
+  80 00a8 C0EE087A 		vdiv.f32	s15, s0, s16
+  81 00ac B0EE677A 		vmov.f32	s14, s15
+  82 00b0 A7EEA77A 		vfma.f32	s14, s15, s15
+  83 00b4 77EE877A 		vadd.f32	s15, s15, s14
+  84 00b8 77EE897A 		vadd.f32	s15, s15, s18
+  85 00bc 78EEE78A 		vsub.f32	s17, s17, s15
+  86              	.L35:
+  87 00c0 9FEDBC0A 		vldr.32	s0, .L72+4
+  88 00c4 94ED078A 		vldr.32	s16, [r4, #28]
+  89 00c8 28EE800A 		vmul.f32	s0, s17, s0
+  90 00cc 94ED087A 		vldr.32	s14, [r4, #32]
+  91 00d0 07E0     		b	.L12
+  92              	.L11:
+  93 00d2 90ED078A 		vldr.32	s16, [r0, #28]
+  94 00d6 B0EE480A 		vmov.f32	s0, s16
+  95 00da FFF7FEFF 		bl	sinf
+  96 00de 94ED087A 		vldr.32	s14, [r4, #32]
+  97              	.L12:
+  98 00e2 78EE077A 		vadd.f32	s15, s16, s14
+  99 00e6 DFEDB46A 		vldr.32	s13, .L72+8
+ 100 00ea F4EEE67A 		vcmpe.f32	s15, s13
+ 101 00ee F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 102 00f2 00F3EF80 		bgt	.L37
+ 103 00f6 0023     		movs	r3, #0
+ 104 00f8 C4ED077A 		vstr.32	s15, [r4, #28]
+ 105              	.L38:
+ 106 00fc 37EEC77A 		vsub.f32	s14, s15, s14
+ 107 0100 DFEDAE6A 		vldr.32	s13, .L72+12
+ 108 0104 84F82D30 		strb	r3, [r4, #45]
+ 109 0108 B4EEE67A 		vcmpe.f32	s14, s13
+ 110 010c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 111 0110 40F1DE80 		bpl	.L62
+ 112 0114 F4EEE67A 		vcmpe.f32	s15, s13
+ 113 0118 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 114 011c ACBF     		ite	ge
+ 115 011e 0123     		movge	r3, #1
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 3
+
+
+ 116 0120 0023     		movlt	r3, #0
+ 117              	.L39:
+ 118 0122 D4ED017A 		vldr.32	s15, [r4, #4]
+ 119 0126 84F82C30 		strb	r3, [r4, #44]
+ 120 012a 20EE270A 		vmul.f32	s0, s0, s15
+ 121 012e BDEC048B 		vldm	sp!, {d8-d9}
+ 122 0132 10BD     		pop	{r4, pc}
+ 123              	.L8:
+ 124 0134 90ED078A 		vldr.32	s16, [r0, #28]
+ 125 0138 F0EE006A 		vmov.f32	s13, #2.0e+0
+ 126 013c DFED9C7A 		vldr.32	s15, .L72
+ 127 0140 BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 128 0144 90ED087A 		vldr.32	s14, [r0, #32]
+ 129 0148 68EE277A 		vmul.f32	s15, s16, s15
+ 130 014c A7EEA60A 		vfma.f32	s0, s15, s13
+ 131 0150 C7E7     		b	.L12
+ 132              	.L7:
+ 133 0152 90ED078A 		vldr.32	s16, [r0, #28]
+ 134 0156 D0ED047A 		vldr.32	s15, [r0, #16]
+ 135 015a 90ED087A 		vldr.32	s14, [r0, #32]
+ 136 015e B4EEE78A 		vcmpe.f32	s16, s15
+ 137 0162 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 138 0166 4CBF     		ite	mi
+ 139 0168 B7EE000A 		vmovmi.f32	s0, #1.0e+0
+ 140 016c BFEE000A 		vmovpl.f32	s0, #-1.0e+0
+ 141 0170 B7E7     		b	.L12
+ 142              	.L10:
+ 143 0172 90ED078A 		vldr.32	s16, [r0, #28]
+ 144 0176 BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 145 017a DFED8D6A 		vldr.32	s13, .L72
+ 146 017e F6EE007A 		vmov.f32	s15, #5.0e-1
+ 147 0182 38EE086A 		vadd.f32	s12, s16, s16
+ 148 0186 90ED087A 		vldr.32	s14, [r0, #32]
+ 149 018a A6EE260A 		vfma.f32	s0, s12, s13
+ 150 018e B0EEC00A 		vabs.f32	s0, s0
+ 151 0192 30EE670A 		vsub.f32	s0, s0, s15
+ 152 0196 30EE000A 		vadd.f32	s0, s0, s0
+ 153 019a A2E7     		b	.L12
+ 154              	.L9:
+ 155 019c 90ED078A 		vldr.32	s16, [r0, #28]
+ 156 01a0 F0EE006A 		vmov.f32	s13, #2.0e+0
+ 157 01a4 DFED827A 		vldr.32	s15, .L72
+ 158 01a8 BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 159 01ac 90ED087A 		vldr.32	s14, [r0, #32]
+ 160 01b0 68EE277A 		vmul.f32	s15, s16, s15
+ 161 01b4 A7EEA60A 		vfma.f32	s0, s15, s13
+ 162 01b8 B1EE400A 		vneg.f32	s0, s0
+ 163 01bc 91E7     		b	.L12
+ 164              	.L6:
+ 165 01be D0ED077A 		vldr.32	s15, [r0, #28]
+ 166 01c2 FFEE008A 		vmov.f32	s17, #-1.0e+0
+ 167 01c6 9FED7D7A 		vldr.32	s14, .L72+12
+ 168 01ca DFED796A 		vldr.32	s13, .L72
+ 169 01ce 90ED088A 		vldr.32	s16, [r0, #32]
+ 170 01d2 F4EEC77A 		vcmpe.f32	s15, s14
+ 171 01d6 67EEA67A 		vmul.f32	s15, s15, s13
+ 172 01da 28EE268A 		vmul.f32	s16, s16, s13
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 4
+
+
+ 173 01de F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 174 01e2 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 175 01e6 F4EEC87A 		vcmpe.f32	s15, s16
+ 176 01ea 48BF     		it	mi
+ 177 01ec F0EE478A 		vmovmi.f32	s17, s14
+ 178 01f0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 179 01f4 00F1BB80 		bmi	.L68
+ 180 01f8 77EE486A 		vsub.f32	s13, s14, s16
+ 181 01fc F4EEE67A 		vcmpe.f32	s15, s13
+ 182 0200 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 183 0204 6CDC     		bgt	.L69
+ 184              	.L18:
+ 185 0206 B6EE000A 		vmov.f32	s0, #5.0e-1
+ 186 020a F7EE000A 		vmov.f32	s1, #1.0e+0
+ 187 020e 37EE800A 		vadd.f32	s0, s15, s0
+ 188 0212 FFF7FEFF 		bl	fmodf
+ 189 0216 B4EEC80A 		vcmpe.f32	s0, s16
+ 190 021a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 191 021e 00F18A80 		bmi	.L70
+ 192 0222 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 193 0226 77EE487A 		vsub.f32	s15, s14, s16
+ 194 022a B4EEE70A 		vcmpe.f32	s0, s15
+ 195 022e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 196 0232 0DDD     		ble	.L22
+ 197 0234 30EE470A 		vsub.f32	s0, s0, s14
+ 198 0238 C0EE087A 		vdiv.f32	s15, s0, s16
+ 199 023c F0EE676A 		vmov.f32	s13, s15
+ 200 0240 E7EEA76A 		vfma.f32	s13, s15, s15
+ 201 0244 77EEA67A 		vadd.f32	s15, s15, s13
+ 202 0248 77EE877A 		vadd.f32	s15, s15, s14
+ 203 024c 78EEE78A 		vsub.f32	s17, s17, s15
+ 204              	.L22:
+ 205 0250 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 206 0254 94ED087A 		vldr.32	s14, [r4, #32]
+ 207 0258 D4ED097A 		vldr.32	s15, [r4, #36]
+ 208 025c 94ED078A 		vldr.32	s16, [r4, #28]
+ 209 0260 30EE470A 		vsub.f32	s0, s0, s14
+ 210 0264 20EE270A 		vmul.f32	s0, s0, s15
+ 211 0268 A7EE280A 		vfma.f32	s0, s14, s17
+ 212 026c 84ED090A 		vstr.32	s0, [r4, #36]
+ 213 0270 37E7     		b	.L12
+ 214              	.L5:
+ 215 0272 DFED4F7A 		vldr.32	s15, .L72
+ 216 0276 B0EE006A 		vmov.f32	s12, #2.0e+0
+ 217 027a 90ED078A 		vldr.32	s16, [r0, #28]
+ 218 027e BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 219 0282 90ED087A 		vldr.32	s14, [r0, #32]
+ 220 0286 68EE276A 		vmul.f32	s13, s16, s15
+ 221 028a 67EE277A 		vmul.f32	s15, s14, s15
+ 222 028e A6EE860A 		vfma.f32	s0, s13, s12
+ 223 0292 F4EEE76A 		vcmpe.f32	s13, s15
+ 224 0296 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 225 029a 5BD4     		bmi	.L71
+ 226 029c F7EE005A 		vmov.f32	s11, #1.0e+0
+ 227 02a0 35EEE76A 		vsub.f32	s12, s11, s15
+ 228 02a4 F4EEC66A 		vcmpe.f32	s13, s12
+ 229 02a8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 5
+
+
+ 230 02ac 0DDD     		ble	.L26
+ 231 02ae 76EEE56A 		vsub.f32	s13, s13, s11
+ 232 02b2 86EEA76A 		vdiv.f32	s12, s13, s15
+ 233 02b6 F0EE467A 		vmov.f32	s15, s12
+ 234 02ba E6EE067A 		vfma.f32	s15, s12, s12
+ 235 02be 36EE276A 		vadd.f32	s12, s12, s15
+ 236 02c2 36EE256A 		vadd.f32	s12, s12, s11
+ 237 02c6 30EE460A 		vsub.f32	s0, s0, s12
+ 238              	.L26:
+ 239 02ca B1EE400A 		vneg.f32	s0, s0
+ 240 02ce 08E7     		b	.L12
+ 241              	.L62:
+ 242 02d0 0023     		movs	r3, #0
+ 243 02d2 26E7     		b	.L39
+ 244              	.L37:
+ 245 02d4 77EEE67A 		vsub.f32	s15, s15, s13
+ 246 02d8 0123     		movs	r3, #1
+ 247 02da C4ED077A 		vstr.32	s15, [r4, #28]
+ 248 02de 0DE7     		b	.L38
+ 249              	.L69:
+ 250 02e0 37EEC76A 		vsub.f32	s12, s15, s14
+ 251 02e4 C6EE086A 		vdiv.f32	s13, s12, s16
+ 252 02e8 B0EE666A 		vmov.f32	s12, s13
+ 253 02ec A6EEA66A 		vfma.f32	s12, s13, s13
+ 254 02f0 76EE866A 		vadd.f32	s13, s13, s12
+ 255 02f4 36EE877A 		vadd.f32	s14, s13, s14
+ 256 02f8 78EE878A 		vadd.f32	s17, s17, s14
+ 257 02fc 83E7     		b	.L18
+ 258              	.L66:
+ 259 02fe 37EEC76A 		vsub.f32	s12, s15, s14
+ 260 0302 C6EE086A 		vdiv.f32	s13, s12, s16
+ 261 0306 B0EE666A 		vmov.f32	s12, s13
+ 262 030a A6EEA66A 		vfma.f32	s12, s13, s13
+ 263 030e 76EE866A 		vadd.f32	s13, s13, s12
+ 264 0312 36EE877A 		vadd.f32	s14, s13, s14
+ 265 0316 78EE878A 		vadd.f32	s17, s17, s14
+ 266 031a AAE6     		b	.L31
+ 267              	.L67:
+ 268 031c 80EE087A 		vdiv.f32	s14, s0, s16
+ 269 0320 F0EE006A 		vmov.f32	s13, #2.0e+0
+ 270 0324 67EE477A 		vnmul.f32	s15, s14, s14
+ 271 0328 E7EE267A 		vfma.f32	s15, s14, s13
+ 272 032c 77EEC97A 		vsub.f32	s15, s15, s18
+ 273 0330 78EEE78A 		vsub.f32	s17, s17, s15
+ 274 0334 C4E6     		b	.L35
+ 275              	.L70:
+ 276 0336 80EE087A 		vdiv.f32	s14, s0, s16
+ 277 033a B0EE006A 		vmov.f32	s12, #2.0e+0
+ 278 033e F7EE006A 		vmov.f32	s13, #1.0e+0
+ 279 0342 67EE477A 		vnmul.f32	s15, s14, s14
+ 280 0346 E7EE067A 		vfma.f32	s15, s14, s12
+ 281 034a 77EEE67A 		vsub.f32	s15, s15, s13
+ 282 034e 78EEE78A 		vsub.f32	s17, s17, s15
+ 283 0352 7DE7     		b	.L22
+ 284              	.L71:
+ 285 0354 C6EEA75A 		vdiv.f32	s11, s13, s15
+ 286 0358 F7EE006A 		vmov.f32	s13, #1.0e+0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 6
+
+
+ 287 035c 65EEE57A 		vnmul.f32	s15, s11, s11
+ 288 0360 E5EE867A 		vfma.f32	s15, s11, s12
+ 289 0364 77EEE67A 		vsub.f32	s15, s15, s13
+ 290 0368 30EE670A 		vsub.f32	s0, s0, s15
+ 291 036c ADE7     		b	.L26
+ 292              	.L68:
+ 293 036e 87EE886A 		vdiv.f32	s12, s15, s16
+ 294 0372 F0EE005A 		vmov.f32	s11, #2.0e+0
+ 295 0376 66EE466A 		vnmul.f32	s13, s12, s12
+ 296 037a E6EE256A 		vfma.f32	s13, s12, s11
+ 297 037e 36EEC77A 		vsub.f32	s14, s13, s14
+ 298 0382 78EE878A 		vadd.f32	s17, s17, s14
+ 299 0386 3EE7     		b	.L18
+ 300              	.L65:
+ 301 0388 87EE886A 		vdiv.f32	s12, s15, s16
+ 302 038c F0EE005A 		vmov.f32	s11, #2.0e+0
+ 303 0390 66EE466A 		vnmul.f32	s13, s12, s12
+ 304 0394 E6EE256A 		vfma.f32	s13, s12, s11
+ 305 0398 36EEC77A 		vsub.f32	s14, s13, s14
+ 306 039c 78EE878A 		vadd.f32	s17, s17, s14
+ 307 03a0 67E6     		b	.L31
+ 308              	.L2:
+ 309 03a2 90ED078A 		vldr.32	s16, [r0, #28]
+ 310 03a6 90ED087A 		vldr.32	s14, [r0, #32]
+ 311 03aa 9FED050A 		vldr.32	s0, .L72+16
+ 312 03ae 98E6     		b	.L12
+ 313              	.L73:
+ 314              		.align	2
+ 315              	.L72:
+ 316 03b0 83F9223E 		.word	1042479491
+ 317 03b4 F4FD343F 		.word	1060437492
+ 318 03b8 DB0FC940 		.word	1086918619
+ 319 03bc DB0F4940 		.word	1078530011
+ 320 03c0 00000000 		.word	0
+ 322              		.section	.text._ZN7daisysp10Oscillator12CalcPhaseIncEf,"ax",%progbits
+ 323              		.align	1
+ 324              		.p2align 2,,3
+ 325              		.global	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+ 326              		.syntax unified
+ 327              		.thumb
+ 328              		.thumb_func
+ 330              	_ZN7daisysp10Oscillator12CalcPhaseIncEf:
+ 331              		@ args = 0, pretend = 0, frame = 0
+ 332              		@ frame_needed = 0, uses_anonymous_args = 0
+ 333              		@ link register save eliminated.
+ 334 0000 DFED047A 		vldr.32	s15, .L75
+ 335 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 336 0008 D0ED067A 		vldr.32	s15, [r0, #24]
+ 337 000c 20EE270A 		vmul.f32	s0, s0, s15
+ 338 0010 7047     		bx	lr
+ 339              	.L76:
+ 340 0012 00BF     		.align	2
+ 341              	.L75:
+ 342 0014 DB0FC940 		.word	1086918619
+ 344              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 oscillator.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:17     .text._ZN7daisysp10Oscillator7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:24     .text._ZN7daisysp10Oscillator7ProcessEv:0000000000000000 _ZN7daisysp10Oscillator7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:35     .text._ZN7daisysp10Oscillator7ProcessEv:0000000000000014 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:43     .text._ZN7daisysp10Oscillator7ProcessEv:0000000000000024 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:316    .text._ZN7daisysp10Oscillator7ProcessEv:00000000000003b0 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:323    .text._ZN7daisysp10Oscillator12CalcPhaseIncEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:330    .text._ZN7daisysp10Oscillator12CalcPhaseIncEf:0000000000000000 _ZN7daisysp10Oscillator12CalcPhaseIncEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccD9FK4m.s:342    .text._ZN7daisysp10Oscillator12CalcPhaseIncEf:0000000000000014 $d
+
+UNDEFINED SYMBOLS
+fmodf
+sinf

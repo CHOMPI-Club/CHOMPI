@@ -1,0 +1,197 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tremolo.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp7Tremolo4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp7Tremolo4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp7Tremolo4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 38B5     		push	{r3, r4, r5, lr}
+  28 0002 F0EE407A 		vmov.f32	s15, s0
+  29 0006 0546     		mov	r5, r0
+  30 0008 0446     		mov	r4, r0
+  31 000a 204B     		ldr	r3, .L4
+  32 000c 9FED200A 		vldr.32	s0, .L4+4
+  33 0010 0835     		adds	r5, r5, #8
+  34 0012 2DED048B 		vpush.64	{d8, d9}
+  35 0016 F7EE008A 		vmov.f32	s17, #1.0e+0
+  36 001a 9FED1E8A 		vldr.32	s16, .L4+8
+  37 001e B6EE009A 		vmov.f32	s18, #5.0e-1
+  38 0022 C0ED007A 		vstr.32	s15, [r0]
+  39 0026 C0ED077A 		vstr.32	s15, [r0, #28]
+  40 002a 2846     		mov	r0, r5
+  41 002c 88EEA77A 		vdiv.f32	s14, s17, s15
+  42 0030 A361     		str	r3, [r4, #24]	@ float
+  43 0032 84ED039A 		vstr.32	s18, [r4, #12]
+  44 0036 84ED059A 		vstr.32	s18, [r4, #20]
+  45 003a 84ED098A 		vstr.32	s16, [r4, #36]
+  46 003e 84ED040A 		vstr.32	s0, [r4, #16]
+  47              		.syntax unified
+  48              	@ 36 "Source/Utility/dsp.h" 1
+  49 0042 88FE888A 		vmaxnm.f32 s16, s17, s16
+  50              	@ 0 "" 2
+  51              	@ 47 "Source/Utility/dsp.h" 1
+  52 0046 88FE688A 		vminnm.f32 s16, s16, s17
+  53              	@ 0 "" 2
+  54              		.thumb
+  55              		.syntax unified
+  56 004a 84ED087A 		vstr.32	s14, [r4, #32]
+  57 004e FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+  58 0052 28EE098A 		vmul.f32	s16, s16, s18
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s 			page 2
+
+
+  59 0056 F0EE407A 		vmov.f32	s15, s0
+  60 005a 0022     		movs	r2, #0
+  61 005c 40F20113 		movw	r3, #257
+  62 0060 B0EE680A 		vmov.f32	s0, s17
+  63 0064 84ED038A 		vstr.32	s16, [r4, #12]
+  64 0068 2846     		mov	r0, r5
+  65 006a C4ED0A7A 		vstr.32	s15, [r4, #40]
+  66 006e 78EEC87A 		vsub.f32	s15, s17, s16
+  67 0072 C4ED048A 		vstr.32	s17, [r4, #16]
+  68 0076 2272     		strb	r2, [r4, #8]
+  69 0078 A386     		strh	r3, [r4, #52]	@ movhi
+  70 007a C4ED017A 		vstr.32	s15, [r4, #4]
+  71 007e FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+  72 0082 84ED0A0A 		vstr.32	s0, [r4, #40]
+  73 0086 BDEC048B 		vldm	sp!, {d8-d9}
+  74 008a 38BD     		pop	{r3, r4, r5, pc}
+  75              	.L5:
+  76              		.align	2
+  77              	.L4:
+  78 008c DB0F4940 		.word	1078530011
+  79 0090 0000C842 		.word	1120403456
+  80 0094 00000000 		.word	0
+  82              		.section	.text._ZN7daisysp7Tremolo7ProcessEf,"ax",%progbits
+  83              		.align	1
+  84              		.p2align 2,,3
+  85              		.global	_ZN7daisysp7Tremolo7ProcessEf
+  86              		.syntax unified
+  87              		.thumb
+  88              		.thumb_func
+  90              	_ZN7daisysp7Tremolo7ProcessEf:
+  91              		@ args = 0, pretend = 0, frame = 0
+  92              		@ frame_needed = 0, uses_anonymous_args = 0
+  93 0000 08B5     		push	{r3, lr}
+  94 0002 0346     		mov	r3, r0
+  95 0004 0830     		adds	r0, r0, #8
+  96 0006 2DED028B 		vpush.64	{d8}
+  97 000a D3ED018A 		vldr.32	s17, [r3, #4]
+  98 000e B0EE408A 		vmov.f32	s16, s0
+  99 0012 FFF7FEFF 		bl	_ZN7daisysp10Oscillator7ProcessEv
+ 100 0016 38EE800A 		vadd.f32	s0, s17, s0
+ 101 001a 20EE080A 		vmul.f32	s0, s0, s16
+ 102 001e BDEC028B 		vldm	sp!, {d8}
+ 103 0022 08BD     		pop	{r3, pc}
+ 105              		.section	.text._ZN7daisysp7Tremolo7SetFreqEf,"ax",%progbits
+ 106              		.align	1
+ 107              		.p2align 2,,3
+ 108              		.global	_ZN7daisysp7Tremolo7SetFreqEf
+ 109              		.syntax unified
+ 110              		.thumb
+ 111              		.thumb_func
+ 113              	_ZN7daisysp7Tremolo7SetFreqEf:
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116 0000 10B5     		push	{r4, lr}
+ 117 0002 0446     		mov	r4, r0
+ 118 0004 0830     		adds	r0, r0, #8
+ 119 0006 84ED040A 		vstr.32	s0, [r4, #16]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s 			page 3
+
+
+ 120 000a FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+ 121 000e 84ED0A0A 		vstr.32	s0, [r4, #40]
+ 122 0012 10BD     		pop	{r4, pc}
+ 124              		.section	.text._ZN7daisysp7Tremolo11SetWaveformEi,"ax",%progbits
+ 125              		.align	1
+ 126              		.p2align 2,,3
+ 127              		.global	_ZN7daisysp7Tremolo11SetWaveformEi
+ 128              		.syntax unified
+ 129              		.thumb
+ 130              		.thumb_func
+ 132              	_ZN7daisysp7Tremolo11SetWaveformEi:
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136 0000 C9B2     		uxtb	r1, r1
+ 137 0002 0829     		cmp	r1, #8
+ 138 0004 28BF     		it	cs
+ 139 0006 0021     		movcs	r1, #0
+ 140 0008 0172     		strb	r1, [r0, #8]
+ 141 000a 7047     		bx	lr
+ 143              		.section	.text._ZN7daisysp7Tremolo8SetDepthEf,"ax",%progbits
+ 144              		.align	1
+ 145              		.p2align 2,,3
+ 146              		.global	_ZN7daisysp7Tremolo8SetDepthEf
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	_ZN7daisysp7Tremolo8SetDepthEf:
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0000 B6EE007A 		vmov.f32	s14, #5.0e-1
+ 156 0004 DFED086A 		vldr.32	s13, .L13
+ 157 0008 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 158              		.syntax unified
+ 159              	@ 36 "Source/Utility/dsp.h" 1
+ 160 000c 80FE260A 		vmaxnm.f32 s0, s0, s13
+ 161              	@ 0 "" 2
+ 162              	@ 47 "Source/Utility/dsp.h" 1
+ 163 0010 80FE670A 		vminnm.f32 s0, s0, s15
+ 164              	@ 0 "" 2
+ 165              		.thumb
+ 166              		.syntax unified
+ 167 0014 20EE070A 		vmul.f32	s0, s0, s14
+ 168 0018 77EEC07A 		vsub.f32	s15, s15, s0
+ 169 001c 80ED030A 		vstr.32	s0, [r0, #12]
+ 170 0020 C0ED017A 		vstr.32	s15, [r0, #4]
+ 171 0024 7047     		bx	lr
+ 172              	.L14:
+ 173 0026 00BF     		.align	2
+ 174              	.L13:
+ 175 0028 00000000 		.word	0
+ 177              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 tremolo.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:17     .text._ZN7daisysp7Tremolo4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:24     .text._ZN7daisysp7Tremolo4InitEf:0000000000000000 _ZN7daisysp7Tremolo4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:78     .text._ZN7daisysp7Tremolo4InitEf:000000000000008c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:83     .text._ZN7daisysp7Tremolo7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:90     .text._ZN7daisysp7Tremolo7ProcessEf:0000000000000000 _ZN7daisysp7Tremolo7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:106    .text._ZN7daisysp7Tremolo7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:113    .text._ZN7daisysp7Tremolo7SetFreqEf:0000000000000000 _ZN7daisysp7Tremolo7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:125    .text._ZN7daisysp7Tremolo11SetWaveformEi:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:132    .text._ZN7daisysp7Tremolo11SetWaveformEi:0000000000000000 _ZN7daisysp7Tremolo11SetWaveformEi
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:144    .text._ZN7daisysp7Tremolo8SetDepthEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:151    .text._ZN7daisysp7Tremolo8SetDepthEf:0000000000000000 _ZN7daisysp7Tremolo8SetDepthEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cck5j7Ay.s:175    .text._ZN7daisysp7Tremolo8SetDepthEf:0000000000000028 $d
+
+UNDEFINED SYMBOLS
+_ZN7daisysp10Oscillator12CalcPhaseIncEf
+_ZN7daisysp10Oscillator7ProcessEv

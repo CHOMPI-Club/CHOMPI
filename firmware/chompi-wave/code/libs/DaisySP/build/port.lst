@@ -1,0 +1,103 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"port.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp4Port4InitEff,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp4Port4InitEff
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp4Port4InitEff:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 B7EE007A 		vmov.f32	s14, #1.0e+0
+  29 0004 0022     		movs	r2, #0
+  30 0006 064B     		ldr	r3, .L3
+  31 0008 C260     		str	r2, [r0, #12]	@ float
+  32 000a C7EE007A 		vdiv.f32	s15, s14, s0
+  33 000e 0361     		str	r3, [r0, #16]	@ float
+  34 0010 C0ED000A 		vstr.32	s1, [r0]
+  35 0014 80ED050A 		vstr.32	s0, [r0, #20]
+  36 0018 C0ED067A 		vstr.32	s15, [r0, #24]
+  37 001c 7047     		bx	lr
+  38              	.L4:
+  39 001e 00BF     		.align	2
+  40              	.L3:
+  41 0020 0000C8C2 		.word	-1027080192
+  43              		.section	.text._ZN7daisysp4Port7ProcessEf,"ax",%progbits
+  44              		.align	1
+  45              		.p2align 2,,3
+  46              		.global	_ZN7daisysp4Port7ProcessEf
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	_ZN7daisysp4Port7ProcessEf:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 D0ED007A 		vldr.32	s15, [r0]
+  55 0004 90ED047A 		vldr.32	s14, [r0, #16]
+  56 0008 B4EE677A 		vcmp.f32	s14, s15
+  57 000c 10B5     		push	{r4, lr}
+  58 000e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  59 0012 0446     		mov	r4, r0
+  60 0014 2DED028B 		vpush.64	{d8}
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s 			page 2
+
+
+  61 0018 B0EE408A 		vmov.f32	s16, s0
+  62 001c 10D1     		bne	.L6
+  63 001e 90ED017A 		vldr.32	s14, [r0, #4]
+  64 0022 D0ED027A 		vldr.32	s15, [r0, #8]
+  65              	.L7:
+  66 0026 94ED030A 		vldr.32	s0, [r4, #12]
+  67 002a 67EE807A 		vmul.f32	s15, s15, s0
+  68 002e E8EE077A 		vfma.f32	s15, s16, s14
+  69 0032 BDEC028B 		vldm	sp!, {d8}
+  70 0036 B0EE670A 		vmov.f32	s0, s15
+  71 003a C4ED037A 		vstr.32	s15, [r4, #12]
+  72 003e 10BD     		pop	{r4, pc}
+  73              	.L6:
+  74 0040 90ED067A 		vldr.32	s14, [r0, #24]
+  75 0044 B6EE000B 		vmov.f64	d0, #5.0e-1
+  76 0048 87EE271A 		vdiv.f32	s2, s14, s15
+  77 004c B7EEC11A 		vcvt.f64.f32	d1, s2
+  78 0050 FFF7FEFF 		bl	pow
+  79 0054 B7EE007A 		vmov.f32	s14, #1.0e+0
+  80 0058 F7EEC07B 		vcvt.f32.f64	s15, d0
+  81 005c 2368     		ldr	r3, [r4]	@ float
+  82 005e 2361     		str	r3, [r4, #16]	@ float
+  83 0060 37EE677A 		vsub.f32	s14, s14, s15
+  84 0064 C4ED027A 		vstr.32	s15, [r4, #8]
+  85 0068 84ED017A 		vstr.32	s14, [r4, #4]
+  86 006c DBE7     		b	.L7
+  88 006e 00BF     		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 port.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s:17     .text._ZN7daisysp4Port4InitEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s:24     .text._ZN7daisysp4Port4InitEff:0000000000000000 _ZN7daisysp4Port4InitEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s:41     .text._ZN7daisysp4Port4InitEff:0000000000000020 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s:44     .text._ZN7daisysp4Port7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccH9rGTs.s:51     .text._ZN7daisysp4Port7ProcessEf:0000000000000000 _ZN7daisysp4Port7ProcessEf
+
+UNDEFINED SYMBOLS
+pow

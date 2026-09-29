@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+._*
+__MACOSX/
+Icon?
+
+# Editor state
+.cortex-debug.*.state.json
+.vs/

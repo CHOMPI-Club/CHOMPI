@@ -1,0 +1,55 @@
+build/Middlewares/Third_Party/FatFs/src/ff.o: \
+ Middlewares/Third_Party/FatFs/src/ff.c \
+ Middlewares/Third_Party/FatFs/src/ff.h \
+ Middlewares/Third_Party/FatFs/src/integer.h src/sys/ffconf.h \
+ src/util/bsp_sd_diskio.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/features.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/newlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/config.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/alloca.h \
+ Middlewares/Third_Party/FatFs/src/diskio.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h
+Middlewares/Third_Party/FatFs/src/ff.h:
+Middlewares/Third_Party/FatFs/src/integer.h:
+src/sys/ffconf.h:
+src/util/bsp_sd_diskio.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_default_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/features.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_newlib_version.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_intsup.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/newlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/config.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/reent.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/lock.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/cdefs.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/stdlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/alloca.h:
+Middlewares/Third_Party/FatFs/src/diskio.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h:

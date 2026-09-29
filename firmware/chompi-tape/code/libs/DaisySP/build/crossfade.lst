@@ -1,0 +1,119 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"crossfade.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp9CrossFade7ProcessERfS1_,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp9CrossFade7ProcessERfS1_
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp9CrossFade7ProcessERfS1_:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 38B5     		push	{r3, r4, r5, lr}
+  28 0002 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2
+  29 0004 0C46     		mov	r4, r1
+  30 0006 1546     		mov	r5, r2
+  31 0008 2DED048B 		vpush.64	{d8, d9}
+  32 000c 032B     		cmp	r3, #3
+  33 000e 55D8     		bhi	.L8
+  34 0010 DFE803F0 		tbb	[pc, r3]
+  35              	.L4:
+  36 0014 4F       		.byte	(.L7-.L4)/2
+  37 0015 2E       		.byte	(.L6-.L4)/2
+  38 0016 15       		.byte	(.L5-.L4)/2
+  39 0017 02       		.byte	(.L3-.L4)/2
+  40              		.p2align 1
+  41              	.L3:
+  42 0018 90ED000A 		vldr.32	s0, [r0]
+  43 001c F7EE007A 		vmov.f32	s15, #1.0e+0
+  44 0020 D5ED006A 		vldr.32	s13, [r5]
+  45 0024 20EE000A 		vmul.f32	s0, s0, s0
+  46 0028 91ED007A 		vldr.32	s14, [r1]
+  47 002c 77EEC07A 		vsub.f32	s15, s15, s0
+  48 0030 20EE260A 		vmul.f32	s0, s0, s13
+  49 0034 A7EE270A 		vfma.f32	s0, s14, s15
+  50              	.L1:
+  51 0038 BDEC048B 		vldm	sp!, {d8-d9}
+  52 003c 38BD     		pop	{r3, r4, r5, pc}
+  53              	.L5:
+  54 003e DFED217A 		vldr.32	s15, .L12
+  55 0042 90ED007A 		vldr.32	s14, [r0]
+  56 0046 9FED200A 		vldr.32	s0, .L12+4
+  57 004a A7EE270A 		vfma.f32	s0, s14, s15
+  58 004e FFF7FEFF 		bl	expf
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s 			page 2
+
+
+  59 0052 F7EE007A 		vmov.f32	s15, #1.0e+0
+  60              	.L10:
+  61 0056 D5ED006A 		vldr.32	s13, [r5]
+  62 005a 77EEC07A 		vsub.f32	s15, s15, s0
+  63 005e 94ED007A 		vldr.32	s14, [r4]
+  64 0062 20EE260A 		vmul.f32	s0, s0, s13
+  65 0066 BDEC048B 		vldm	sp!, {d8-d9}
+  66 006a A7EE270A 		vfma.f32	s0, s14, s15
+  67 006e 38BD     		pop	{r3, r4, r5, pc}
+  68              	.L6:
+  69 0070 90ED009A 		vldr.32	s18, [r0]
+  70 0074 DFED158A 		vldr.32	s17, .L12+8
+  71 0078 29EE280A 		vmul.f32	s0, s18, s17
+  72 007c FFF7FEFF 		bl	sinf
+  73 0080 F7EE007A 		vmov.f32	s15, #1.0e+0
+  74 0084 B0EE408A 		vmov.f32	s16, s0
+  75 0088 37EEC90A 		vsub.f32	s0, s15, s18
+  76 008c 20EE280A 		vmul.f32	s0, s0, s17
+  77 0090 FFF7FEFF 		bl	sinf
+  78 0094 F0EE407A 		vmov.f32	s15, s0
+  79 0098 95ED000A 		vldr.32	s0, [r5]
+  80 009c 94ED007A 		vldr.32	s14, [r4]
+  81 00a0 28EE008A 		vmul.f32	s16, s16, s0
+  82 00a4 B0EE480A 		vmov.f32	s0, s16
+  83 00a8 BDEC048B 		vldm	sp!, {d8-d9}
+  84 00ac A7EE270A 		vfma.f32	s0, s14, s15
+  85 00b0 38BD     		pop	{r3, r4, r5, pc}
+  86              	.L7:
+  87 00b2 F7EE007A 		vmov.f32	s15, #1.0e+0
+  88 00b6 90ED000A 		vldr.32	s0, [r0]
+  89 00ba CCE7     		b	.L10
+  90              	.L8:
+  91 00bc 9FED040A 		vldr.32	s0, .L12+12
+  92 00c0 BAE7     		b	.L1
+  93              	.L13:
+  94 00c2 00BF     		.align	2
+  95              	.L12:
+  96 00c4 550C5D41 		.word	1096617045
+  97 00c8 550C5DC1 		.word	-1050866603
+  98 00cc DB0FC93F 		.word	1070141403
+  99 00d0 00000000 		.word	0
+ 101              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 crossfade.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s:17     .text._ZN7daisysp9CrossFade7ProcessERfS1_:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s:24     .text._ZN7daisysp9CrossFade7ProcessERfS1_:0000000000000000 _ZN7daisysp9CrossFade7ProcessERfS1_
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s:36     .text._ZN7daisysp9CrossFade7ProcessERfS1_:0000000000000014 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s:40     .text._ZN7daisysp9CrossFade7ProcessERfS1_:0000000000000018 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccEN6ci3.s:96     .text._ZN7daisysp9CrossFade7ProcessERfS1_:00000000000000c4 $d
+
+UNDEFINED SYMBOLS
+expf
+sinf

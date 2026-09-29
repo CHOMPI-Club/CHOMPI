@@ -1,0 +1,254 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fm2.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp3Fm24InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp3Fm24InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp3Fm24InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  28 0002 2DED048B 		vpush.64	{d8, d9}
+  29 0006 F7EE008A 		vmov.f32	s17, #1.0e+0
+  30 000a 0446     		mov	r4, r0
+  31 000c B0EE408A 		vmov.f32	s16, s0
+  32 0010 9FED239A 		vldr.32	s18, .L4
+  33 0014 4FF07C55 		mov	r5, #1056964608
+  34 0018 224F     		ldr	r7, .L4+4
+  35 001a C8EE809A 		vdiv.f32	s19, s17, s0
+  36 001e 0026     		movs	r6, #0
+  37 0020 3030     		adds	r0, r0, #48
+  38 0022 84ED118A 		vstr.32	s16, [r4, #68]
+  39 0026 84ED0E9A 		vstr.32	s18, [r4, #56]
+  40 002a 2764     		str	r7, [r4, #64]	@ float
+  41 002c E664     		str	r6, [r4, #76]	@ float
+  42 002e B0EE490A 		vmov.f32	s0, s18
+  43 0032 6563     		str	r5, [r4, #52]	@ float
+  44 0034 E563     		str	r5, [r4, #60]	@ float
+  45 0036 C4ED129A 		vstr.32	s19, [r4, #72]
+  46 003a FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+  47 003e F0EE407A 		vmov.f32	s15, s0
+  48 0042 2761     		str	r7, [r4, #16]	@ float
+  49 0044 40F20117 		movw	r7, #257
+  50 0048 E661     		str	r6, [r4, #28]	@ float
+  51 004a 0026     		movs	r6, #0
+  52 004c B0EE490A 		vmov.f32	s0, s18
+  53 0050 84ED058A 		vstr.32	s16, [r4, #20]
+  54 0054 C4ED069A 		vstr.32	s19, [r4, #24]
+  55 0058 2046     		mov	r0, r4
+  56 005a 84ED029A 		vstr.32	s18, [r4, #8]
+  57 005e C4ED147A 		vstr.32	s15, [r4, #80]
+  58 0062 84F83060 		strb	r6, [r4, #48]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s 			page 2
+
+
+  59 0066 A4F85C70 		strh	r7, [r4, #92]	@ movhi
+  60 006a 6560     		str	r5, [r4, #4]	@ float
+  61 006c E560     		str	r5, [r4, #12]	@ float
+  62 006e FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+  63 0072 4FF08043 		mov	r3, #1073741824
+  64 0076 0C4A     		ldr	r2, .L4+8
+  65 0078 2670     		strb	r6, [r4]
+  66 007a C4ED0D8A 		vstr.32	s17, [r4, #52]
+  67 007e C4ED018A 		vstr.32	s17, [r4, #4]
+  68 0082 84F83060 		strb	r6, [r4, #48]
+  69 0086 C4ED188A 		vstr.32	s17, [r4, #96]
+  70 008a 84ED080A 		vstr.32	s0, [r4, #32]
+  71 008e A785     		strh	r7, [r4, #44]	@ movhi
+  72 0090 A266     		str	r2, [r4, #104]	@ float
+  73 0092 2367     		str	r3, [r4, #112]	@ float
+  74 0094 6266     		str	r2, [r4, #100]	@ float
+  75 0096 E366     		str	r3, [r4, #108]	@ float
+  76 0098 BDEC048B 		vldm	sp!, {d8-d9}
+  77 009c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+  78              	.L5:
+  79 009e 00BF     		.align	2
+  80              	.L4:
+  81 00a0 0000C842 		.word	1120403456
+  82 00a4 DB0F4940 		.word	1078530011
+  83 00a8 0000DC43 		.word	1138491392
+  85              		.section	.text._ZN7daisysp3Fm27ProcessEv,"ax",%progbits
+  86              		.align	1
+  87              		.p2align 2,,3
+  88              		.global	_ZN7daisysp3Fm27ProcessEv
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	_ZN7daisysp3Fm27ProcessEv:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 D0ED1B7A 		vldr.32	s15, [r0, #108]
+  97 0004 90ED1C7A 		vldr.32	s14, [r0, #112]
+  98 0008 90ED190A 		vldr.32	s0, [r0, #100]
+  99 000c B4EE677A 		vcmp.f32	s14, s15
+ 100 0010 38B5     		push	{r3, r4, r5, lr}
+ 101 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 102 0016 0446     		mov	r4, r0
+ 103 0018 06D1     		bne	.L8
+ 104 001a 90ED1A7A 		vldr.32	s14, [r0, #104]
+ 105 001e B4EE407A 		vcmp.f32	s14, s0
+ 106 0022 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 107 0026 2DD0     		beq	.L11
+ 108              	.L8:
+ 109 0028 04F13005 		add	r5, r4, #48
+ 110 002c C4ED1C7A 		vstr.32	s15, [r4, #112]
+ 111 0030 84ED1A0A 		vstr.32	s0, [r4, #104]
+ 112 0034 2846     		mov	r0, r5
+ 113 0036 84ED0E0A 		vstr.32	s0, [r4, #56]
+ 114 003a FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+ 115 003e D4ED1A7A 		vldr.32	s15, [r4, #104]
+ 116 0042 94ED1C7A 		vldr.32	s14, [r4, #112]
+ 117 0046 2046     		mov	r0, r4
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s 			page 3
+
+
+ 118 0048 84ED140A 		vstr.32	s0, [r4, #80]
+ 119 004c 27EE870A 		vmul.f32	s0, s15, s14
+ 120 0050 84ED020A 		vstr.32	s0, [r4, #8]
+ 121 0054 FFF7FEFF 		bl	_ZN7daisysp10Oscillator12CalcPhaseIncEf
+ 122 0058 84ED080A 		vstr.32	s0, [r4, #32]
+ 123              	.L9:
+ 124 005c 2046     		mov	r0, r4
+ 125 005e FFF7FEFF 		bl	_ZN7daisysp10Oscillator7ProcessEv
+ 126 0062 D4ED186A 		vldr.32	s13, [r4, #96]
+ 127 0066 D4ED137A 		vldr.32	s15, [r4, #76]
+ 128 006a 2846     		mov	r0, r5
+ 129 006c 20EE260A 		vmul.f32	s0, s0, s13
+ 130 0070 9FED067A 		vldr.32	s14, .L12
+ 131 0074 E0EE077A 		vfma.f32	s15, s0, s14
+ 132 0078 C4ED137A 		vstr.32	s15, [r4, #76]
+ 133 007c BDE83840 		pop	{r3, r4, r5, lr}
+ 134 0080 FFF7FEBF 		b	_ZN7daisysp10Oscillator7ProcessEv
+ 135              	.L11:
+ 136 0084 00F13005 		add	r5, r0, #48
+ 137 0088 E8E7     		b	.L9
+ 138              	.L13:
+ 139 008a 00BF     		.align	2
+ 140              	.L12:
+ 141 008c DB0FC940 		.word	1086918619
+ 143              		.section	.text._ZN7daisysp3Fm212SetFrequencyEf,"ax",%progbits
+ 144              		.align	1
+ 145              		.p2align 2,,3
+ 146              		.global	_ZN7daisysp3Fm212SetFrequencyEf
+ 147              		.syntax unified
+ 148              		.thumb
+ 149              		.thumb_func
+ 151              	_ZN7daisysp3Fm212SetFrequencyEf:
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 0, uses_anonymous_args = 0
+ 154              		@ link register save eliminated.
+ 155 0000 B0EEC00A 		vabs.f32	s0, s0
+ 156 0004 80ED190A 		vstr.32	s0, [r0, #100]
+ 157 0008 7047     		bx	lr
+ 159 000a 00BF     		.section	.text._ZN7daisysp3Fm28SetRatioEf,"ax",%progbits
+ 160              		.align	1
+ 161              		.p2align 2,,3
+ 162              		.global	_ZN7daisysp3Fm28SetRatioEf
+ 163              		.syntax unified
+ 164              		.thumb
+ 165              		.thumb_func
+ 167              	_ZN7daisysp3Fm28SetRatioEf:
+ 168              		@ args = 0, pretend = 0, frame = 0
+ 169              		@ frame_needed = 0, uses_anonymous_args = 0
+ 170              		@ link register save eliminated.
+ 171 0000 B0EEC00A 		vabs.f32	s0, s0
+ 172 0004 80ED1B0A 		vstr.32	s0, [r0, #108]
+ 173 0008 7047     		bx	lr
+ 175 000a 00BF     		.section	.text._ZN7daisysp3Fm28SetIndexEf,"ax",%progbits
+ 176              		.align	1
+ 177              		.p2align 2,,3
+ 178              		.global	_ZN7daisysp3Fm28SetIndexEf
+ 179              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s 			page 4
+
+
+ 180              		.thumb
+ 181              		.thumb_func
+ 183              	_ZN7daisysp3Fm28SetIndexEf:
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186              		@ link register save eliminated.
+ 187 0000 DFED037A 		vldr.32	s15, .L17
+ 188 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 189 0008 80ED180A 		vstr.32	s0, [r0, #96]
+ 190 000c 7047     		bx	lr
+ 191              	.L18:
+ 192 000e 00BF     		.align	2
+ 193              	.L17:
+ 194 0010 CDCC4C3E 		.word	1045220557
+ 196              		.section	.text._ZN7daisysp3Fm28GetIndexEv,"ax",%progbits
+ 197              		.align	1
+ 198              		.p2align 2,,3
+ 199              		.global	_ZN7daisysp3Fm28GetIndexEv
+ 200              		.syntax unified
+ 201              		.thumb
+ 202              		.thumb_func
+ 204              	_ZN7daisysp3Fm28GetIndexEv:
+ 205              		@ args = 0, pretend = 0, frame = 0
+ 206              		@ frame_needed = 0, uses_anonymous_args = 0
+ 207              		@ link register save eliminated.
+ 208 0000 F1EE047A 		vmov.f32	s15, #5.0e+0
+ 209 0004 90ED180A 		vldr.32	s0, [r0, #96]
+ 210 0008 20EE270A 		vmul.f32	s0, s0, s15
+ 211 000c 7047     		bx	lr
+ 213 000e 00BF     		.section	.text._ZN7daisysp3Fm25ResetEv,"ax",%progbits
+ 214              		.align	1
+ 215              		.p2align 2,,3
+ 216              		.global	_ZN7daisysp3Fm25ResetEv
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 221              	_ZN7daisysp3Fm25ResetEv:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225 0000 0023     		movs	r3, #0
+ 226 0002 C364     		str	r3, [r0, #76]	@ float
+ 227 0004 C361     		str	r3, [r0, #28]	@ float
+ 228 0006 7047     		bx	lr
+ 230              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 fm2.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:17     .text._ZN7daisysp3Fm24InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:24     .text._ZN7daisysp3Fm24InitEf:0000000000000000 _ZN7daisysp3Fm24InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:81     .text._ZN7daisysp3Fm24InitEf:00000000000000a0 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:86     .text._ZN7daisysp3Fm27ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:93     .text._ZN7daisysp3Fm27ProcessEv:0000000000000000 _ZN7daisysp3Fm27ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:141    .text._ZN7daisysp3Fm27ProcessEv:000000000000008c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:144    .text._ZN7daisysp3Fm212SetFrequencyEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:151    .text._ZN7daisysp3Fm212SetFrequencyEf:0000000000000000 _ZN7daisysp3Fm212SetFrequencyEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:160    .text._ZN7daisysp3Fm28SetRatioEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:167    .text._ZN7daisysp3Fm28SetRatioEf:0000000000000000 _ZN7daisysp3Fm28SetRatioEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:176    .text._ZN7daisysp3Fm28SetIndexEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:183    .text._ZN7daisysp3Fm28SetIndexEf:0000000000000000 _ZN7daisysp3Fm28SetIndexEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:194    .text._ZN7daisysp3Fm28SetIndexEf:0000000000000010 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:197    .text._ZN7daisysp3Fm28GetIndexEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:204    .text._ZN7daisysp3Fm28GetIndexEv:0000000000000000 _ZN7daisysp3Fm28GetIndexEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:214    .text._ZN7daisysp3Fm25ResetEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccFuoTRZ.s:221    .text._ZN7daisysp3Fm25ResetEv:0000000000000000 _ZN7daisysp3Fm25ResetEv
+
+UNDEFINED SYMBOLS
+_ZN7daisysp10Oscillator12CalcPhaseIncEf
+_ZN7daisysp10Oscillator7ProcessEv

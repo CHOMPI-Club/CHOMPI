@@ -1,0 +1,32 @@
+{
+	"chompi": [
+		{
+			"name": "Record Latch",
+			"value": false
+		},
+		{
+			"name": "Midi In Channel",
+			"value": 1
+		},
+		{
+			"name": "Midi Out Channel",
+			"value": 1
+		},
+		{
+			"name": "Tape Slew On",
+			"value": true
+		},
+		{
+			"name": "Monitor Position",
+			"value": 1
+		},
+		{
+			"name": "Pitch Quantize In Shift Menu",
+			"value": true
+		},
+		{
+			"name": "Split Delay",
+			"value": false
+		}
+	]
+}

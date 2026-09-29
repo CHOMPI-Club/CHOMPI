@@ -1,0 +1,531 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"grainlet.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp18GrainletOscillator4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp18GrainletOscillator4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp18GrainletOscillator4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 9FED137A 		vldr.32	s14, .L7
+  29 0004 F6EE007A 		vmov.f32	s15, #5.0e-1
+  30 0008 9FED126A 		vldr.32	s12, .L7+4
+  31 000c 0023     		movs	r3, #0
+  32 000e C7EE006A 		vdiv.f32	s13, s14, s0
+  33 0012 80ED090A 		vstr.32	s0, [r0, #36]
+  34 0016 0360     		str	r3, [r0]	@ float
+  35 0018 4360     		str	r3, [r0, #4]	@ float
+  36 001a 8360     		str	r3, [r0, #8]	@ float
+  37 001c 4361     		str	r3, [r0, #20]	@ float
+  38 001e 86EE007A 		vdiv.f32	s14, s12, s0
+  39 0022 8361     		str	r3, [r0, #24]	@ float
+  40 0024 C0ED077A 		vstr.32	s15, [r0, #28]
+  41 0028 C0ED087A 		vstr.32	s15, [r0, #32]
+  42 002c F4EE676A 		vcmp.f32	s13, s15
+  43 0030 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  44 0034 B4EE677A 		vcmp.f32	s14, s15
+  45 0038 77FEA66A 		vselgt.f32	s13, s15, s13
+  46 003c C0ED036A 		vstr.32	s13, [r0, #12]
+  47 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  48 0044 37FE877A 		vselgt.f32	s14, s15, s14
+  49 0048 80ED047A 		vstr.32	s14, [r0, #16]
+  50 004c 7047     		bx	lr
+  51              	.L8:
+  52 004e 00BF     		.align	2
+  53              	.L7:
+  54 0050 0000DC43 		.word	1138491392
+  55 0054 00005C43 		.word	1130102784
+  57              		.section	.text._ZN7daisysp18GrainletOscillator7SetFreqEf,"ax",%progbits
+  58              		.align	1
+  59              		.p2align 2,,3
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 2
+
+
+  60              		.global	_ZN7daisysp18GrainletOscillator7SetFreqEf
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  65              	_ZN7daisysp18GrainletOscillator7SetFreqEf:
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+  69 0000 D0ED096A 		vldr.32	s13, [r0, #36]
+  70 0004 B6EE007A 		vmov.f32	s14, #5.0e-1
+  71 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+  72 000c F4EE477A 		vcmp.f32	s15, s14
+  73 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  74 0014 77FE277A 		vselgt.f32	s15, s14, s15
+  75 0018 C0ED037A 		vstr.32	s15, [r0, #12]
+  76 001c 7047     		bx	lr
+  78 001e 00BF     		.section	.text._ZN7daisysp18GrainletOscillator14SetFormantFreqEf,"ax",%progbits
+  79              		.align	1
+  80              		.p2align 2,,3
+  81              		.global	_ZN7daisysp18GrainletOscillator14SetFormantFreqEf
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  86              	_ZN7daisysp18GrainletOscillator14SetFormantFreqEf:
+  87              		@ args = 0, pretend = 0, frame = 0
+  88              		@ frame_needed = 0, uses_anonymous_args = 0
+  89              		@ link register save eliminated.
+  90 0000 D0ED096A 		vldr.32	s13, [r0, #36]
+  91 0004 B6EE007A 		vmov.f32	s14, #5.0e-1
+  92 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+  93 000c F4EE477A 		vcmp.f32	s15, s14
+  94 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  95 0014 77FE277A 		vselgt.f32	s15, s14, s15
+  96 0018 C0ED047A 		vstr.32	s15, [r0, #16]
+  97 001c 7047     		bx	lr
+  99 001e 00BF     		.section	.text._ZN7daisysp18GrainletOscillator8SetShapeEf,"ax",%progbits
+ 100              		.align	1
+ 101              		.p2align 2,,3
+ 102              		.global	_ZN7daisysp18GrainletOscillator8SetShapeEf
+ 103              		.syntax unified
+ 104              		.thumb
+ 105              		.thumb_func
+ 107              	_ZN7daisysp18GrainletOscillator8SetShapeEf:
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110              		@ link register save eliminated.
+ 111 0000 80ED070A 		vstr.32	s0, [r0, #28]
+ 112 0004 7047     		bx	lr
+ 114 0006 00BF     		.section	.text._ZN7daisysp18GrainletOscillator8SetBleedEf,"ax",%progbits
+ 115              		.align	1
+ 116              		.p2align 2,,3
+ 117              		.global	_ZN7daisysp18GrainletOscillator8SetBleedEf
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 122              	_ZN7daisysp18GrainletOscillator8SetBleedEf:
+ 123              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 3
+
+
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ 126 0000 80ED080A 		vstr.32	s0, [r0, #32]
+ 127 0004 7047     		bx	lr
+ 129 0006 00BF     		.section	.text._ZN7daisysp18GrainletOscillator4SineEf,"ax",%progbits
+ 130              		.align	1
+ 131              		.p2align 2,,3
+ 132              		.global	_ZN7daisysp18GrainletOscillator4SineEf
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 137              	_ZN7daisysp18GrainletOscillator4SineEf:
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140              		@ link register save eliminated.
+ 141 0000 DFED027A 		vldr.32	s15, .L18
+ 142 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 143 0008 FFF7FEBF 		b	sinf
+ 144              	.L19:
+ 145              		.align	2
+ 146              	.L18:
+ 147 000c DB0FC940 		.word	1086918619
+ 149              		.section	.text._ZN7daisysp18GrainletOscillator7CarrierEff,"ax",%progbits
+ 150              		.align	1
+ 151              		.p2align 2,,3
+ 152              		.global	_ZN7daisysp18GrainletOscillator7CarrierEff
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	_ZN7daisysp18GrainletOscillator7CarrierEff:
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160 0000 F0EE087A 		vmov.f32	s15, #3.0e+0
+ 161 0004 08B5     		push	{r3, lr}
+ 162 0006 60EEA70A 		vmul.f32	s1, s1, s15
+ 163 000a 2DED028B 		vpush.64	{d8}
+ 164 000e FDEEE07A 		vcvt.s32.f32	s15, s1
+ 165 0012 B7EE008A 		vmov.f32	s16, #1.0e+0
+ 166 0016 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 167 001a 17EE903A 		vmov	r3, s15	@ int
+ 168 001e 70EEC70A 		vsub.f32	s1, s1, s14
+ 169 0022 78EE600A 		vsub.f32	s1, s16, s1
+ 170 0026 ABB9     		cbnz	r3, .L21
+ 171 0028 60EEA07A 		vmul.f32	s15, s1, s1
+ 172 002c B2EE0E7A 		vmov.f32	s14, #1.5e+1
+ 173 0030 67EEA00A 		vmul.f32	s1, s15, s1
+ 174 0034 F0EE487A 		vmov.f32	s15, s16
+ 175 0038 E0EE877A 		vfma.f32	s15, s1, s14
+ 176 003c 27EE800A 		vmul.f32	s0, s15, s0
+ 177 0040 B4EEC80A 		vcmpe.f32	s0, s16
+ 178 0044 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 179 0048 2CDB     		blt	.L33
+ 180              	.L29:
+ 181 004a 9FED3B0A 		vldr.32	s0, .L35
+ 182 004e BDEC028B 		vldm	sp!, {d8}
+ 183 0052 08BD     		pop	{r3, pc}
+ 184              	.L21:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 4
+
+
+ 185 0054 012B     		cmp	r3, #1
+ 186 0056 38D0     		beq	.L34
+ 187 0058 78EE600A 		vsub.f32	s1, s16, s1
+ 188 005c B2EE0D6A 		vmov.f32	s12, #1.45e+1
+ 189 0060 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 190 0064 20EEA07A 		vmul.f32	s14, s1, s1
+ 191 0068 F5EE008A 		vmov.f32	s17, #2.5e-1
+ 192 006c F6EE086A 		vmov.f32	s13, #7.5e-1
+ 193 0070 67EE200A 		vmul.f32	s1, s14, s1
+ 194 0074 B0EE687A 		vmov.f32	s14, s17
+ 195 0078 E0EE867A 		vfma.f32	s15, s1, s12
+ 196 007c A7EE807A 		vfma.f32	s14, s15, s0
+ 197 0080 B4EEE67A 		vcmpe.f32	s14, s13
+ 198 0084 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 199 0088 DFDA     		bge	.L29
+ 200 008a 9FED2C0A 		vldr.32	s0, .L35+4
+ 201 008e 27EE000A 		vmul.f32	s0, s14, s0
+ 202 0092 FFF7FEFF 		bl	sinf
+ 203 0096 30EE080A 		vadd.f32	s0, s0, s16
+ 204 009a 20EE280A 		vmul.f32	s0, s0, s17
+ 205 009e BDEC028B 		vldm	sp!, {d8}
+ 206 00a2 08BD     		pop	{r3, pc}
+ 207              	.L33:
+ 208 00a4 B6EE087A 		vmov.f32	s14, #7.5e-1
+ 209 00a8 DFED247A 		vldr.32	s15, .L35+4
+ 210 00ac 30EE070A 		vadd.f32	s0, s0, s14
+ 211 00b0 20EE270A 		vmul.f32	s0, s0, s15
+ 212 00b4 FFF7FEFF 		bl	sinf
+ 213 00b8 F5EE007A 		vmov.f32	s15, #2.5e-1
+ 214 00bc 30EE080A 		vadd.f32	s0, s0, s16
+ 215 00c0 BDEC028B 		vldm	sp!, {d8}
+ 216 00c4 20EE270A 		vmul.f32	s0, s0, s15
+ 217 00c8 08BD     		pop	{r3, pc}
+ 218              	.L34:
+ 219 00ca 9FED1D7A 		vldr.32	s14, .L35+8
+ 220 00ce DFED1D7A 		vldr.32	s15, .L35+12
+ 221 00d2 20EE877A 		vmul.f32	s14, s1, s14
+ 222 00d6 27EE207A 		vmul.f32	s14, s14, s1
+ 223 00da E7EE207A 		vfma.f32	s15, s14, s1
+ 224 00de B4EEE70A 		vcmpe.f32	s0, s15
+ 225 00e2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 226 00e6 1AD5     		bpl	.L31
+ 227 00e8 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 228 00ec 86EEA77A 		vdiv.f32	s14, s13, s15
+ 229 00f0 27EE000A 		vmul.f32	s0, s14, s0
+ 230              	.L27:
+ 231 00f4 B6EE087A 		vmov.f32	s14, #7.5e-1
+ 232 00f8 DFED107A 		vldr.32	s15, .L35+4
+ 233 00fc 30EE070A 		vadd.f32	s0, s0, s14
+ 234 0100 20EE270A 		vmul.f32	s0, s0, s15
+ 235 0104 FFF7FEFF 		bl	sinf
+ 236 0108 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 237 010c F5EE007A 		vmov.f32	s15, #2.5e-1
+ 238 0110 30EE070A 		vadd.f32	s0, s0, s14
+ 239 0114 BDEC028B 		vldm	sp!, {d8}
+ 240 0118 20EE270A 		vmul.f32	s0, s0, s15
+ 241 011c 08BD     		pop	{r3, pc}
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 5
+
+
+ 242              	.L31:
+ 243 011e B6EE007A 		vmov.f32	s14, #5.0e-1
+ 244 0122 30EE670A 		vsub.f32	s0, s0, s15
+ 245 0126 38EE678A 		vsub.f32	s16, s16, s15
+ 246 012a 60EE077A 		vmul.f32	s15, s0, s14
+ 247 012e 87EE880A 		vdiv.f32	s0, s15, s16
+ 248 0132 30EE070A 		vadd.f32	s0, s0, s14
+ 249 0136 DDE7     		b	.L27
+ 250              	.L36:
+ 251              		.align	2
+ 252              	.L35:
+ 253 0138 00000000 		.word	0
+ 254 013c DB0FC940 		.word	1086918619
+ 255 0140 EE7CFF3E 		.word	1056931054
+ 256 0144 6F12833A 		.word	981668463
+ 258              		.section	.text._ZN7daisysp18GrainletOscillator7ProcessEv,"ax",%progbits
+ 259              		.align	1
+ 260              		.p2align 2,,3
+ 261              		.global	_ZN7daisysp18GrainletOscillator7ProcessEv
+ 262              		.syntax unified
+ 263              		.thumb
+ 264              		.thumb_func
+ 266              	_ZN7daisysp18GrainletOscillator7ProcessEv:
+ 267              		@ args = 0, pretend = 0, frame = 0
+ 268              		@ frame_needed = 0, uses_anonymous_args = 0
+ 269 0000 10B5     		push	{r4, lr}
+ 270 0002 D0ED037A 		vldr.32	s15, [r0, #12]
+ 271 0006 0446     		mov	r4, r0
+ 272 0008 2DED0E8B 		vpush.64	{d8, d9, d10, d11, d12, d13, d14}
+ 273 000c 90ED008A 		vldr.32	s16, [r0]
+ 274 0010 F7EE008A 		vmov.f32	s17, #1.0e+0
+ 275 0014 90ED02DA 		vldr.32	s26, [r0, #8]
+ 276 0018 37EE888A 		vadd.f32	s16, s15, s16
+ 277 001c B4EEE88A 		vcmpe.f32	s16, s17
+ 278 0020 80ED008A 		vstr.32	s16, [r0]
+ 279 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 280 0028 C0F28180 		blt	.L43
+ 281 002c 38EE688A 		vsub.f32	s16, s16, s17
+ 282 0030 90ED089A 		vldr.32	s18, [r0, #32]
+ 283 0034 90ED07AA 		vldr.32	s20, [r0, #28]
+ 284 0038 B0EE680A 		vmov.f32	s0, s17
+ 285 003c D0ED066A 		vldr.32	s13, [r0, #24]
+ 286 0040 F0EE49AA 		vmov.f32	s21, s18
+ 287 0044 88EE27CA 		vdiv.f32	s24, s16, s15
+ 288 0048 90ED057A 		vldr.32	s14, [r0, #20]
+ 289 004c 90ED046A 		vldr.32	s12, [r0, #16]
+ 290 0050 90ED01EA 		vldr.32	s28, [r0, #4]
+ 291 0054 80ED008A 		vstr.32	s16, [r0]
+ 292 0058 DFED45CA 		vldr.32	s25, .L46
+ 293 005c 7AEE477A 		vsub.f32	s15, s20, s14
+ 294 0060 39EE667A 		vsub.f32	s14, s18, s13
+ 295 0064 F0EE4A0A 		vmov.f32	s1, s20
+ 296 0068 39EE28BA 		vadd.f32	s22, s18, s17
+ 297 006c 78EECCBA 		vsub.f32	s23, s17, s24
+ 298 0070 66EE0C9A 		vmul.f32	s19, s12, s24
+ 299 0074 ABEE86EA 		vfma.f32	s28, s23, s12
+ 300 0078 EBEE87AA 		vfma.f32	s21, s23, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 6
+
+
+ 301 007c EBEEA70A 		vfma.f32	s1, s23, s15
+ 302 0080 FFF7FEFF 		bl	_ZN7daisysp18GrainletOscillator7CarrierEff
+ 303 0084 DFED3B7A 		vldr.32	s15, .L46+4
+ 304 0088 F0EE40DA 		vmov.f32	s27, s0
+ 305 008c 2EEE270A 		vmul.f32	s0, s28, s15
+ 306 0090 FFF7FEFF 		bl	sinf
+ 307 0094 7AEE807A 		vadd.f32	s15, s21, s0
+ 308 0098 F0EE4A0A 		vmov.f32	s1, s20
+ 309 009c 2046     		mov	r0, r4
+ 310 009e B0EE6C0A 		vmov.f32	s0, s25
+ 311 00a2 7AEEA88A 		vadd.f32	s17, s21, s17
+ 312 00a6 67EEADAA 		vmul.f32	s21, s15, s27
+ 313 00aa FFF7FEFF 		bl	_ZN7daisysp18GrainletOscillator7CarrierEff
+ 314 00ae 79EE2C7A 		vadd.f32	s15, s18, s25
+ 315 00b2 C4ED019A 		vstr.32	s19, [r4, #4]
+ 316 00b6 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 317 00ba CAEEA8DA 		vdiv.f32	s27, s21, s17
+ 318 00be 27EE800A 		vmul.f32	s0, s15, s0
+ 319 00c2 BEEE007A 		vmov.f32	s14, #-5.0e-1
+ 320 00c6 6CEE266A 		vmul.f32	s13, s24, s13
+ 321 00ca 80EE0B6A 		vdiv.f32	s12, s0, s22
+ 322 00ce 2BEE877A 		vmul.f32	s14, s23, s14
+ 323 00d2 66EE8C6A 		vmul.f32	s13, s13, s24
+ 324 00d6 27EE2B7A 		vmul.f32	s14, s14, s23
+ 325 00da 36EE6D6A 		vsub.f32	s12, s12, s27
+ 326 00de A6EE86DA 		vfma.f32	s26, s13, s12
+ 327 00e2 E6EE07CA 		vfma.f32	s25, s12, s14
+ 328              	.L40:
+ 329 00e6 F0EE4A0A 		vmov.f32	s1, s20
+ 330 00ea 2046     		mov	r0, r4
+ 331 00ec B0EE480A 		vmov.f32	s0, s16
+ 332 00f0 84ED069A 		vstr.32	s18, [r4, #24]
+ 333 00f4 84ED05AA 		vstr.32	s20, [r4, #20]
+ 334 00f8 FFF7FEFF 		bl	_ZN7daisysp18GrainletOscillator7CarrierEff
+ 335 00fc DFED1D7A 		vldr.32	s15, .L46+4
+ 336 0100 B0EE408A 		vmov.f32	s16, s0
+ 337 0104 29EEA70A 		vmul.f32	s0, s19, s15
+ 338 0108 FFF7FEFF 		bl	sinf
+ 339 010c B0EE407A 		vmov.f32	s14, s0
+ 340 0110 B0EE4D0A 		vmov.f32	s0, s26
+ 341 0114 37EE097A 		vadd.f32	s14, s14, s18
+ 342 0118 67EE087A 		vmul.f32	s15, s14, s16
+ 343 011c 87EE8B7A 		vdiv.f32	s14, s15, s22
+ 344 0120 77EE2C7A 		vadd.f32	s15, s14, s25
+ 345 0124 BDEC0E8B 		vldm	sp!, {d8-d14}
+ 346 0128 C4ED027A 		vstr.32	s15, [r4, #8]
+ 347 012c 10BD     		pop	{r4, pc}
+ 348              	.L43:
+ 349 012e D0ED019A 		vldr.32	s19, [r0, #4]
+ 350 0132 D0ED047A 		vldr.32	s15, [r0, #16]
+ 351 0136 90ED089A 		vldr.32	s18, [r0, #32]
+ 352 013a 79EEA79A 		vadd.f32	s19, s19, s15
+ 353 013e F4EEE89A 		vcmpe.f32	s19, s17
+ 354 0142 C0ED019A 		vstr.32	s19, [r0, #4]
+ 355 0146 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 356 014a 0ADB     		blt	.L45
+ 357 014c 79EEE89A 		vsub.f32	s19, s19, s17
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 7
+
+
+ 358 0150 90ED07AA 		vldr.32	s20, [r0, #28]
+ 359 0154 39EE28BA 		vadd.f32	s22, s18, s17
+ 360 0158 DFED05CA 		vldr.32	s25, .L46
+ 361 015c C0ED019A 		vstr.32	s19, [r0, #4]
+ 362 0160 C1E7     		b	.L40
+ 363              	.L45:
+ 364 0162 39EE28BA 		vadd.f32	s22, s18, s17
+ 365 0166 90ED07AA 		vldr.32	s20, [r0, #28]
+ 366 016a DFED01CA 		vldr.32	s25, .L46
+ 367 016e BAE7     		b	.L40
+ 368              	.L47:
+ 369              		.align	2
+ 370              	.L46:
+ 371 0170 00000000 		.word	0
+ 372 0174 DB0FC940 		.word	1086918619
+ 374              		.section	.text._ZN7daisysp18GrainletOscillator8GrainletEffff,"ax",%progbits
+ 375              		.align	1
+ 376              		.p2align 2,,3
+ 377              		.global	_ZN7daisysp18GrainletOscillator8GrainletEffff
+ 378              		.syntax unified
+ 379              		.thumb
+ 380              		.thumb_func
+ 382              	_ZN7daisysp18GrainletOscillator8GrainletEffff:
+ 383              		@ args = 0, pretend = 0, frame = 0
+ 384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 385 0000 F0EE087A 		vmov.f32	s15, #3.0e+0
+ 386 0004 08B5     		push	{r3, lr}
+ 387 0006 21EE271A 		vmul.f32	s2, s2, s15
+ 388 000a 2DED048B 		vpush.64	{d8, d9}
+ 389 000e FDEEC17A 		vcvt.s32.f32	s15, s2
+ 390 0012 F7EE008A 		vmov.f32	s17, #1.0e+0
+ 391 0016 B0EE609A 		vmov.f32	s18, s1
+ 392 001a B8EEE77A 		vcvt.f32.s32	s14, s15
+ 393 001e 17EE903A 		vmov	r3, s15	@ int
+ 394 0022 B0EE618A 		vmov.f32	s16, s3
+ 395 0026 31EE471A 		vsub.f32	s2, s2, s14
+ 396 002a 38EEC11A 		vsub.f32	s2, s17, s2
+ 397 002e 2BBB     		cbnz	r3, .L49
+ 398 0030 61EE017A 		vmul.f32	s15, s2, s2
+ 399 0034 B2EE0E7A 		vmov.f32	s14, #1.5e+1
+ 400 0038 27EE811A 		vmul.f32	s2, s15, s2
+ 401 003c F0EE687A 		vmov.f32	s15, s17
+ 402 0040 E1EE077A 		vfma.f32	s15, s2, s14
+ 403 0044 20EE270A 		vmul.f32	s0, s0, s15
+ 404 0048 B4EEE80A 		vcmpe.f32	s0, s17
+ 405 004c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 406 0050 3ADB     		blt	.L61
+ 407              	.L57:
+ 408 0052 DFED409A 		vldr.32	s19, .L63
+ 409              	.L51:
+ 410 0056 9FED400A 		vldr.32	s0, .L63+4
+ 411 005a 29EE000A 		vmul.f32	s0, s18, s0
+ 412 005e FFF7FEFF 		bl	sinf
+ 413 0062 F7EE001A 		vmov.f32	s3, #1.0e+0
+ 414 0066 30EE080A 		vadd.f32	s0, s0, s16
+ 415 006a 38EE218A 		vadd.f32	s16, s16, s3
+ 416 006e 20EE290A 		vmul.f32	s0, s0, s19
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 8
+
+
+ 417 0072 80EE080A 		vdiv.f32	s0, s0, s16
+ 418 0076 BDEC048B 		vldm	sp!, {d8-d9}
+ 419 007a 08BD     		pop	{r3, pc}
+ 420              	.L49:
+ 421 007c 012B     		cmp	r3, #1
+ 422 007e 34D0     		beq	.L62
+ 423 0080 38EEC11A 		vsub.f32	s2, s17, s2
+ 424 0084 F2EE0D7A 		vmov.f32	s15, #1.45e+1
+ 425 0088 B6EE007A 		vmov.f32	s14, #5.0e-1
+ 426 008c 61EE016A 		vmul.f32	s13, s2, s2
+ 427 0090 F5EE009A 		vmov.f32	s19, #2.5e-1
+ 428 0094 B6EE086A 		vmov.f32	s12, #7.5e-1
+ 429 0098 26EE811A 		vmul.f32	s2, s13, s2
+ 430 009c A1EE277A 		vfma.f32	s14, s2, s15
+ 431 00a0 F0EE697A 		vmov.f32	s15, s19
+ 432 00a4 E0EE077A 		vfma.f32	s15, s0, s14
+ 433 00a8 F4EEC67A 		vcmpe.f32	s15, s12
+ 434 00ac F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 435 00b0 CFDA     		bge	.L57
+ 436 00b2 9FED290A 		vldr.32	s0, .L63+4
+ 437 00b6 27EE800A 		vmul.f32	s0, s15, s0
+ 438 00ba FFF7FEFF 		bl	sinf
+ 439 00be 30EE280A 		vadd.f32	s0, s0, s17
+ 440 00c2 60EE299A 		vmul.f32	s19, s0, s19
+ 441 00c6 C6E7     		b	.L51
+ 442              	.L61:
+ 443 00c8 B6EE087A 		vmov.f32	s14, #7.5e-1
+ 444 00cc DFED227A 		vldr.32	s15, .L63+4
+ 445 00d0 30EE070A 		vadd.f32	s0, s0, s14
+ 446 00d4 20EE270A 		vmul.f32	s0, s0, s15
+ 447 00d8 FFF7FEFF 		bl	sinf
+ 448 00dc F5EE007A 		vmov.f32	s15, #2.5e-1
+ 449 00e0 30EE280A 		vadd.f32	s0, s0, s17
+ 450 00e4 60EE279A 		vmul.f32	s19, s0, s15
+ 451 00e8 B5E7     		b	.L51
+ 452              	.L62:
+ 453 00ea 9FED1C7A 		vldr.32	s14, .L63+8
+ 454 00ee DFED1C7A 		vldr.32	s15, .L63+12
+ 455 00f2 21EE077A 		vmul.f32	s14, s2, s14
+ 456 00f6 27EE017A 		vmul.f32	s14, s14, s2
+ 457 00fa E1EE077A 		vfma.f32	s15, s2, s14
+ 458 00fe B4EEE70A 		vcmpe.f32	s0, s15
+ 459 0102 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 460 0106 18D5     		bpl	.L59
+ 461 0108 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 462 010c 86EEA77A 		vdiv.f32	s14, s13, s15
+ 463 0110 27EE000A 		vmul.f32	s0, s14, s0
+ 464              	.L55:
+ 465 0114 B6EE087A 		vmov.f32	s14, #7.5e-1
+ 466 0118 DFED0F7A 		vldr.32	s15, .L63+4
+ 467 011c F7EE008A 		vmov.f32	s17, #1.0e+0
+ 468 0120 30EE070A 		vadd.f32	s0, s0, s14
+ 469 0124 20EE270A 		vmul.f32	s0, s0, s15
+ 470 0128 FFF7FEFF 		bl	sinf
+ 471 012c F5EE007A 		vmov.f32	s15, #2.5e-1
+ 472 0130 30EE280A 		vadd.f32	s0, s0, s17
+ 473 0134 60EE279A 		vmul.f32	s19, s0, s15
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 9
+
+
+ 474 0138 8DE7     		b	.L51
+ 475              	.L59:
+ 476 013a B6EE007A 		vmov.f32	s14, #5.0e-1
+ 477 013e 30EE670A 		vsub.f32	s0, s0, s15
+ 478 0142 78EEE78A 		vsub.f32	s17, s17, s15
+ 479 0146 60EE077A 		vmul.f32	s15, s0, s14
+ 480 014a 87EEA80A 		vdiv.f32	s0, s15, s17
+ 481 014e 30EE070A 		vadd.f32	s0, s0, s14
+ 482 0152 DFE7     		b	.L55
+ 483              	.L64:
+ 484              		.align	2
+ 485              	.L63:
+ 486 0154 00000000 		.word	0
+ 487 0158 DB0FC940 		.word	1086918619
+ 488 015c EE7CFF3E 		.word	1056931054
+ 489 0160 6F12833A 		.word	981668463
+ 491              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 grainlet.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:17     .text._ZN7daisysp18GrainletOscillator4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:24     .text._ZN7daisysp18GrainletOscillator4InitEf:0000000000000000 _ZN7daisysp18GrainletOscillator4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:54     .text._ZN7daisysp18GrainletOscillator4InitEf:0000000000000050 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:58     .text._ZN7daisysp18GrainletOscillator7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:65     .text._ZN7daisysp18GrainletOscillator7SetFreqEf:0000000000000000 _ZN7daisysp18GrainletOscillator7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:79     .text._ZN7daisysp18GrainletOscillator14SetFormantFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:86     .text._ZN7daisysp18GrainletOscillator14SetFormantFreqEf:0000000000000000 _ZN7daisysp18GrainletOscillator14SetFormantFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:100    .text._ZN7daisysp18GrainletOscillator8SetShapeEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:107    .text._ZN7daisysp18GrainletOscillator8SetShapeEf:0000000000000000 _ZN7daisysp18GrainletOscillator8SetShapeEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:115    .text._ZN7daisysp18GrainletOscillator8SetBleedEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:122    .text._ZN7daisysp18GrainletOscillator8SetBleedEf:0000000000000000 _ZN7daisysp18GrainletOscillator8SetBleedEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:130    .text._ZN7daisysp18GrainletOscillator4SineEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:137    .text._ZN7daisysp18GrainletOscillator4SineEf:0000000000000000 _ZN7daisysp18GrainletOscillator4SineEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:147    .text._ZN7daisysp18GrainletOscillator4SineEf:000000000000000c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:150    .text._ZN7daisysp18GrainletOscillator7CarrierEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:157    .text._ZN7daisysp18GrainletOscillator7CarrierEff:0000000000000000 _ZN7daisysp18GrainletOscillator7CarrierEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:253    .text._ZN7daisysp18GrainletOscillator7CarrierEff:0000000000000138 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:259    .text._ZN7daisysp18GrainletOscillator7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:266    .text._ZN7daisysp18GrainletOscillator7ProcessEv:0000000000000000 _ZN7daisysp18GrainletOscillator7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:371    .text._ZN7daisysp18GrainletOscillator7ProcessEv:0000000000000170 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:375    .text._ZN7daisysp18GrainletOscillator8GrainletEffff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:382    .text._ZN7daisysp18GrainletOscillator8GrainletEffff:0000000000000000 _ZN7daisysp18GrainletOscillator8GrainletEffff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccabTHFQ.s:486    .text._ZN7daisysp18GrainletOscillator8GrainletEffff:0000000000000154 $d
+
+UNDEFINED SYMBOLS
+sinf

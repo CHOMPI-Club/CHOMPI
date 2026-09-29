@@ -1,0 +1,516 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"variableshapeosc.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp23VariableShapeOscillator4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp23VariableShapeOscillator4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp23VariableShapeOscillator4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 9FED256A 		vldr.32	s12, .L10
+  29 0004 F5EE005A 		vmov.f32	s11, #2.5e-1
+  30 0008 B6EE007A 		vmov.f32	s14, #5.0e-1
+  31 000c DFED237A 		vldr.32	s15, .L10+4
+  32 0010 C6EE006A 		vdiv.f32	s13, s12, s0
+  33 0014 90ED086A 		vldr.32	s12, [r0, #32]
+  34 0018 0023     		movs	r3, #0
+  35 001a 80ED000A 		vstr.32	s0, [r0]
+  36 001e C0ED027A 		vstr.32	s15, [r0, #8]
+  37 0022 C0ED037A 		vstr.32	s15, [r0, #12]
+  38 0026 C0ED047A 		vstr.32	s15, [r0, #16]
+  39 002a 80ED057A 		vstr.32	s14, [r0, #20]
+  40 002e 0376     		strb	r3, [r0, #24]
+  41 0030 C0ED0A7A 		vstr.32	s15, [r0, #40]
+  42 0034 F4EE656A 		vcmp.f32	s13, s11
+  43 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  44 003c B4EEE56A 		vcmpe.f32	s12, s11
+  45 0040 65FEA66A 		vselge.f32	s13, s11, s13
+  46 0044 C0ED076A 		vstr.32	s13, [r0, #28]
+  47 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  48 004c 09DA     		bge	.L3
+  49 004e 36EE066A 		vadd.f32	s12, s12, s12
+  50 0052 B7EE007A 		vmov.f32	s14, #1.0e+0
+  51              		.syntax unified
+  52              	@ 36 "Source/Utility/dsp.h" 1
+  53 0056 C7FE867A 		vmaxnm.f32 s15, s15, s12
+  54              	@ 0 "" 2
+  55              		.thumb
+  56              		.syntax unified
+  57 005a 37EE467A 		vsub.f32	s14, s14, s12
+  58              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 2
+
+
+  59              	@ 47 "Source/Utility/dsp.h" 1
+  60 005e 87FEC77A 		vminnm.f32 s14, s15, s14
+  61              	@ 0 "" 2
+  62              		.thumb
+  63              		.syntax unified
+  64              	.L3:
+  65 0062 9FED0F6A 		vldr.32	s12, .L10+8
+  66 0066 F5EE006A 		vmov.f32	s13, #2.5e-1
+  67 006a 0023     		movs	r3, #0
+  68 006c C6EE007A 		vdiv.f32	s15, s12, s0
+  69 0070 0371     		strb	r3, [r0, #4]
+  70 0072 F4EEE67A 		vcmpe.f32	s15, s13
+  71 0076 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  72 007a 04DA     		bge	.L4
+  73 007c 80ED097A 		vstr.32	s14, [r0, #36]
+  74 0080 C0ED087A 		vstr.32	s15, [r0, #32]
+  75 0084 7047     		bx	lr
+  76              	.L4:
+  77 0086 F0EE667A 		vmov.f32	s15, s13
+  78 008a 4FF07C53 		mov	r3, #1056964608
+  79 008e 4362     		str	r3, [r0, #36]	@ float
+  80 0090 C0ED087A 		vstr.32	s15, [r0, #32]
+  81 0094 7047     		bx	lr
+  82              	.L11:
+  83 0096 00BF     		.align	2
+  84              	.L10:
+  85 0098 0000DC43 		.word	1138491392
+  86 009c 00000000 		.word	0
+  87 00a0 00005C43 		.word	1130102784
+  89              		.section	.text._ZN7daisysp23VariableShapeOscillator7ProcessEv,"ax",%progbits
+  90              		.align	1
+  91              		.p2align 2,,3
+  92              		.global	_ZN7daisysp23VariableShapeOscillator7ProcessEv
+  93              		.syntax unified
+  94              		.thumb
+  95              		.thumb_func
+  97              	_ZN7daisysp23VariableShapeOscillator7ProcessEv:
+  98              		@ args = 0, pretend = 0, frame = 0
+  99              		@ frame_needed = 0, uses_anonymous_args = 0
+ 100              		@ link register save eliminated.
+ 101 0000 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 102 0004 D0ED093A 		vldr.32	s7, [r0, #36]
+ 103 0008 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 104 000c 90ED0A3A 		vldr.32	s6, [r0, #40]
+ 105 0010 B0EE006A 		vmov.f32	s12, #2.0e+0
+ 106 0014 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+ 107 0016 37EEE37A 		vsub.f32	s14, s15, s7
+ 108 001a 90ED045A 		vldr.32	s10, [r0, #16]
+ 109 001e C7EEA30A 		vdiv.f32	s1, s15, s7
+ 110 0022 10B4     		push	{r4}
+ 111 0024 2DED088B 		vpush.64	{d8, d9, d10, d11}
+ 112 0028 B0EE678A 		vmov.f32	s16, s15
+ 113 002c DFEDA49A 		vldr.32	s19, .L59
+ 114 0030 C7EE878A 		vdiv.f32	s17, s15, s14
+ 115 0034 A3EE468A 		vfms.f32	s16, s6, s12
+ 116 0038 33EE663A 		vsub.f32	s6, s6, s13
+ 117              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 3
+
+
+ 118              	@ 36 "Source/Utility/dsp.h" 1
+ 119 003c 88FE298A 		vmaxnm.f32 s16, s16, s19
+ 120              	@ 0 "" 2
+ 121              	@ 36 "Source/Utility/dsp.h" 1
+ 122 0040 83FE293A 		vmaxnm.f32 s6, s6, s19
+ 123              	@ 0 "" 2
+ 124              		.thumb
+ 125              		.syntax unified
+ 126 0044 33EE033A 		vadd.f32	s6, s6, s6
+ 127 0048 0029     		cmp	r1, #0
+ 128 004a 40F0D380 		bne	.L13
+ 129 004e F0EE694A 		vmov.f32	s9, s19
+ 130 0052 90ED034A 		vldr.32	s8, [r0, #12]
+ 131 0056 D0ED082A 		vldr.32	s5, [r0, #32]
+ 132 005a 0B46     		mov	r3, r1
+ 133 005c 0C46     		mov	r4, r1
+ 134              	.L14:
+ 135 005e 34EE224A 		vadd.f32	s8, s8, s5
+ 136 0062 0122     		movs	r2, #1
+ 137 0064 B6EE001A 		vmov.f32	s2, #5.0e-1
+ 138 0068 4FF0000C 		mov	ip, #0
+ 139 006c B7EE000A 		vmov.f32	s0, #1.0e+0
+ 140 0070 BEEE009A 		vmov.f32	s18, #-5.0e-1
+ 141 0074 80ED034A 		vstr.32	s8, [r0, #12]
+ 142 0078 F4EE081A 		vmov.f32	s3, #1.875e-1
+ 143 007c B7EE082A 		vmov.f32	s4, #1.5e+0
+ 144 0080 002B     		cmp	r3, #0
+ 145 0082 79D1     		bne	.L23
+ 146 0084 037E     		ldrb	r3, [r0, #24]	@ zero_extendqisi2
+ 147 0086 E3B3     		cbz	r3, .L56
+ 148              	.L24:
+ 149 0088 B4EEC04A 		vcmpe.f32	s8, s0
+ 150 008c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 151 0090 00F1A080 		bmi	.L57
+ 152 0094 34EE404A 		vsub.f32	s8, s8, s0
+ 153 0098 80F818C0 		strb	ip, [r0, #24]
+ 154 009c 30EE486A 		vsub.f32	s12, s0, s16
+ 155 00a0 037E     		ldrb	r3, [r0, #24]	@ zero_extendqisi2
+ 156 00a2 70EEA86A 		vadd.f32	s13, s1, s17
+ 157 00a6 84EE227A 		vdiv.f32	s14, s8, s5
+ 158 00aa 80ED034A 		vstr.32	s8, [r0, #12]
+ 159 00ae 66EEA26A 		vmul.f32	s13, s13, s5
+ 160 00b2 66EE886A 		vmul.f32	s13, s13, s16
+ 161 00b6 67EE017A 		vmul.f32	s15, s14, s2
+ 162 00ba 70EE475A 		vsub.f32	s11, s0, s14
+ 163 00be 27EEA7AA 		vmul.f32	s20, s15, s15
+ 164 00c2 27EE277A 		vmul.f32	s14, s14, s15
+ 165 00c6 71EEE77A 		vsub.f32	s15, s3, s15
+ 166 00ca A6EE475A 		vfms.f32	s10, s12, s14
+ 167 00ce EAEE027A 		vfma.f32	s15, s20, s4
+ 168 00d2 25EE817A 		vmul.f32	s14, s11, s2
+ 169 00d6 EAEE4A7A 		vfms.f32	s15, s20, s20
+ 170 00da 27EE07AA 		vmul.f32	s20, s14, s14
+ 171 00de 31EEC77A 		vsub.f32	s14, s3, s14
+ 172 00e2 AAEE027A 		vfma.f32	s14, s20, s4
+ 173 00e6 AAEE4A7A 		vfms.f32	s14, s20, s20
+ 174 00ea A6EE875A 		vfma.f32	s10, s13, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 4
+
+
+ 175 00ee 25EE897A 		vmul.f32	s14, s11, s18
+ 176 00f2 27EE257A 		vmul.f32	s14, s14, s11
+ 177 00f6 E6EE474A 		vfms.f32	s9, s12, s14
+ 178 00fa E6EEA74A 		vfma.f32	s9, s13, s15
+ 179 00fe 002B     		cmp	r3, #0
+ 180 0100 C2D1     		bne	.L24
+ 181              	.L56:
+ 182 0102 F4EEC43A 		vcmpe.f32	s7, s8
+ 183 0106 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 184 010a 5CDC     		bgt	.L25
+ 185 010c D0ED057A 		vldr.32	s15, [r0, #20]
+ 186 0110 74EE636A 		vsub.f32	s13, s8, s7
+ 187 0114 30EEA87A 		vadd.f32	s14, s1, s17
+ 188 0118 0276     		strb	r2, [r0, #24]
+ 189 011a 77EEE37A 		vsub.f32	s15, s15, s7
+ 190 011e 27EE227A 		vmul.f32	s14, s14, s5
+ 191 0122 77EEA27A 		vadd.f32	s15, s15, s5
+ 192 0126 28EE477A 		vnmul.f32	s14, s16, s14
+ 193 012a 86EEA76A 		vdiv.f32	s12, s13, s15
+ 194 012e 30EE46BA 		vsub.f32	s22, s0, s12
+ 195 0132 66EE015A 		vmul.f32	s11, s12, s2
+ 196 0136 6BEE017A 		vmul.f32	s15, s22, s2
+ 197 013a 25EEA5AA 		vmul.f32	s20, s11, s11
+ 198 013e 71EEE56A 		vsub.f32	s13, s3, s11
+ 199 0142 26EE256A 		vmul.f32	s12, s12, s11
+ 200 0146 67EEA75A 		vmul.f32	s11, s15, s15
+ 201 014a 71EEE77A 		vsub.f32	s15, s3, s15
+ 202 014e EAEE026A 		vfma.f32	s13, s20, s4
+ 203 0152 6BEE09AA 		vmul.f32	s21, s22, s18
+ 204 0156 E5EE827A 		vfma.f32	s15, s11, s4
+ 205 015a A3EE065A 		vfma.f32	s10, s6, s12
+ 206 015e 6AEE8BAA 		vmul.f32	s21, s21, s22
+ 207 0162 EAEE4A6A 		vfms.f32	s13, s20, s20
+ 208 0166 E3EE2A4A 		vfma.f32	s9, s6, s21
+ 209 016a E5EEE57A 		vfms.f32	s15, s11, s11
+ 210 016e E7EE264A 		vfma.f32	s9, s14, s13
+ 211 0172 A7EE275A 		vfma.f32	s10, s14, s15
+ 212 0176 87E7     		b	.L24
+ 213              	.L23:
+ 214 0178 81BB     		cbnz	r1, .L31
+ 215              	.L27:
+ 216 017a F4EEC43A 		vcmpe.f32	s7, s8
+ 217 017e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 218 0182 22DC     		bgt	.L35
+ 219              	.L52:
+ 220 0184 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 221 0188 34EE637A 		vsub.f32	s14, s8, s7
+ 222 018c F0EE670A 		vmov.f32	s1, s15
+ 223 0190 E8EEC70A 		vfms.f32	s1, s17, s14
+ 224              	.L30:
+ 225 0194 77EEC47A 		vsub.f32	s15, s15, s8
+ 226 0198 C0ED053A 		vstr.32	s7, [r0, #20]
+ 227 019c B0EE007A 		vmov.f32	s14, #2.0e+0
+ 228 01a0 BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 229 01a4 A3EE274A 		vfma.f32	s8, s6, s15
+ 230 01a8 A5EE070A 		vfma.f32	s0, s10, s14
+ 231 01ac 70EEC40A 		vsub.f32	s1, s1, s8
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 5
+
+
+ 232 01b0 A8EE204A 		vfma.f32	s8, s16, s1
+ 233 01b4 BDEC088B 		vldm	sp!, {d8-d11}
+ 234 01b8 5DF8044B 		ldr	r4, [sp], #4
+ 235 01bc 74EE244A 		vadd.f32	s9, s8, s9
+ 236 01c0 C0ED044A 		vstr.32	s9, [r0, #16]
+ 237 01c4 7047     		bx	lr
+ 238              	.L25:
+ 239 01c6 01B1     		cbz	r1, .L35
+ 240 01c8 44B9     		cbnz	r4, .L31
+ 241              	.L35:
+ 242 01ca 60EE840A 		vmul.f32	s1, s1, s8
+ 243 01ce DFED3C7A 		vldr.32	s15, .L59
+ 244 01d2 DFE7     		b	.L30
+ 245              	.L57:
+ 246 01d4 0029     		cmp	r1, #0
+ 247 01d6 D0D0     		beq	.L27
+ 248 01d8 002C     		cmp	r4, #0
+ 249 01da CED0     		beq	.L27
+ 250              	.L31:
+ 251 01dc 29EEA24A 		vmul.f32	s8, s19, s5
+ 252 01e0 0023     		movs	r3, #0
+ 253 01e2 0376     		strb	r3, [r0, #24]
+ 254 01e4 F4EEC43A 		vcmpe.f32	s7, s8
+ 255 01e8 80ED034A 		vstr.32	s8, [r0, #12]
+ 256 01ec F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 257 01f0 C8DD     		ble	.L52
+ 258 01f2 EAE7     		b	.L35
+ 259              	.L13:
+ 260 01f4 90ED027A 		vldr.32	s14, [r0, #8]
+ 261 01f8 D0ED076A 		vldr.32	s13, [r0, #28]
+ 262 01fc 36EE877A 		vadd.f32	s14, s13, s14
+ 263 0200 B4EEE77A 		vcmpe.f32	s14, s15
+ 264 0204 80ED027A 		vstr.32	s14, [r0, #8]
+ 265 0208 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 266 020c 44DB     		blt	.L58
+ 267 020e 37EE677A 		vsub.f32	s14, s14, s15
+ 268 0212 90ED034A 		vldr.32	s8, [r0, #12]
+ 269 0216 D0ED082A 		vldr.32	s5, [r0, #32]
+ 270 021a C7EE269A 		vdiv.f32	s19, s14, s13
+ 271 021e 80ED027A 		vstr.32	s14, [r0, #8]
+ 272 0222 B0EE447A 		vmov.f32	s14, s8
+ 273 0226 77EEE96A 		vsub.f32	s13, s15, s19
+ 274 022a A6EEA27A 		vfma.f32	s14, s13, s5
+ 275 022e B4EEE77A 		vcmpe.f32	s14, s15
+ 276 0232 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 277 0236 38DB     		blt	.L49
+ 278 0238 37EE677A 		vsub.f32	s14, s14, s15
+ 279 023c 0023     		movs	r3, #0
+ 280              	.L16:
+ 281 023e 027E     		ldrb	r2, [r0, #24]	@ zero_extendqisi2
+ 282 0240 2AB9     		cbnz	r2, .L18
+ 283 0242 F4EE473A 		vcmp.f32	s7, s14
+ 284 0246 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 285 024a 98BF     		it	ls
+ 286 024c 0023     		movls	r3, #0
+ 287              	.L18:
+ 288 024e F4EEC73A 		vcmpe.f32	s7, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 6
+
+
+ 289 0252 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 290 0256 2ADD     		ble	.L50
+ 291 0258 67EE205A 		vmul.f32	s11, s14, s1
+ 292 025c 9FED186A 		vldr.32	s12, .L59
+ 293              	.L22:
+ 294 0260 36EE476A 		vsub.f32	s12, s12, s14
+ 295 0264 DFED164A 		vldr.32	s9, .L59
+ 296 0268 BEEE002A 		vmov.f32	s4, #-5.0e-1
+ 297 026c 0C46     		mov	r4, r1
+ 298 026e F6EE007A 		vmov.f32	s15, #5.0e-1
+ 299 0272 A3EE067A 		vfma.f32	s14, s6, s12
+ 300 0276 26EE826A 		vmul.f32	s12, s13, s4
+ 301 027a 69EEA77A 		vmul.f32	s15, s19, s15
+ 302 027e 66EEC66A 		vnmul.f32	s13, s13, s12
+ 303 0282 69EEE77A 		vnmul.f32	s15, s19, s15
+ 304 0286 35EEC76A 		vsub.f32	s12, s11, s14
+ 305 028a A8EE067A 		vfma.f32	s14, s16, s12
+ 306 028e A7EE875A 		vfma.f32	s10, s15, s14
+ 307 0292 E6EE874A 		vfma.f32	s9, s13, s14
+ 308 0296 E2E6     		b	.L14
+ 309              	.L58:
+ 310 0298 0023     		movs	r3, #0
+ 311 029a F0EE694A 		vmov.f32	s9, s19
+ 312 029e 90ED034A 		vldr.32	s8, [r0, #12]
+ 313 02a2 D0ED082A 		vldr.32	s5, [r0, #32]
+ 314 02a6 1C46     		mov	r4, r3
+ 315 02a8 D9E6     		b	.L14
+ 316              	.L49:
+ 317 02aa 0B46     		mov	r3, r1
+ 318 02ac C7E7     		b	.L16
+ 319              	.L50:
+ 320 02ae B7EE006A 		vmov.f32	s12, #1.0e+0
+ 321 02b2 77EE637A 		vsub.f32	s15, s14, s7
+ 322 02b6 F0EE465A 		vmov.f32	s11, s12
+ 323 02ba E8EEE75A 		vfms.f32	s11, s17, s15
+ 324 02be CFE7     		b	.L22
+ 325              	.L60:
+ 326              		.align	2
+ 327              	.L59:
+ 328 02c0 00000000 		.word	0
+ 330              		.section	.text._ZN7daisysp23VariableShapeOscillator7SetFreqEf,"ax",%progbits
+ 331              		.align	1
+ 332              		.p2align 2,,3
+ 333              		.global	_ZN7daisysp23VariableShapeOscillator7SetFreqEf
+ 334              		.syntax unified
+ 335              		.thumb
+ 336              		.thumb_func
+ 338              	_ZN7daisysp23VariableShapeOscillator7SetFreqEf:
+ 339              		@ args = 0, pretend = 0, frame = 0
+ 340              		@ frame_needed = 0, uses_anonymous_args = 0
+ 341              		@ link register save eliminated.
+ 342 0000 D0ED006A 		vldr.32	s13, [r0]
+ 343 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 344 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 345 000c F4EE477A 		vcmp.f32	s15, s14
+ 346 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 347 0014 67FE277A 		vselge.f32	s15, s14, s15
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 7
+
+
+ 348 0018 C0ED077A 		vstr.32	s15, [r0, #28]
+ 349 001c 7047     		bx	lr
+ 351 001e 00BF     		.section	.text._ZN7daisysp23VariableShapeOscillator5SetPWEf,"ax",%progbits
+ 352              		.align	1
+ 353              		.p2align 2,,3
+ 354              		.global	_ZN7daisysp23VariableShapeOscillator5SetPWEf
+ 355              		.syntax unified
+ 356              		.thumb
+ 357              		.thumb_func
+ 359              	_ZN7daisysp23VariableShapeOscillator5SetPWEf:
+ 360              		@ args = 0, pretend = 0, frame = 0
+ 361              		@ frame_needed = 0, uses_anonymous_args = 0
+ 362              		@ link register save eliminated.
+ 363 0000 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 364 0004 D0ED087A 		vldr.32	s15, [r0, #32]
+ 365 0008 F4EEC77A 		vcmpe.f32	s15, s14
+ 366 000c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 367 0010 0CDA     		bge	.L66
+ 368 0012 77EEA77A 		vadd.f32	s15, s15, s15
+ 369 0016 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 370              		.syntax unified
+ 371              	@ 36 "Source/Utility/dsp.h" 1
+ 372 001a 80FE270A 		vmaxnm.f32 s0, s0, s15
+ 373              	@ 0 "" 2
+ 374              		.thumb
+ 375              		.syntax unified
+ 376 001e 77EE677A 		vsub.f32	s15, s14, s15
+ 377              		.syntax unified
+ 378              	@ 47 "Source/Utility/dsp.h" 1
+ 379 0022 80FE670A 		vminnm.f32 s0, s0, s15
+ 380              	@ 0 "" 2
+ 381              		.thumb
+ 382              		.syntax unified
+ 383 0026 80ED090A 		vstr.32	s0, [r0, #36]
+ 384 002a 7047     		bx	lr
+ 385              	.L66:
+ 386 002c B6EE000A 		vmov.f32	s0, #5.0e-1
+ 387 0030 80ED090A 		vstr.32	s0, [r0, #36]
+ 388 0034 7047     		bx	lr
+ 390 0036 00BF     		.section	.text._ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf,"ax",%progbits
+ 391              		.align	1
+ 392              		.p2align 2,,3
+ 393              		.global	_ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf
+ 394              		.syntax unified
+ 395              		.thumb
+ 396              		.thumb_func
+ 398              	_ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf:
+ 399              		@ args = 0, pretend = 0, frame = 0
+ 400              		@ frame_needed = 0, uses_anonymous_args = 0
+ 401              		@ link register save eliminated.
+ 402 0000 80ED0A0A 		vstr.32	s0, [r0, #40]
+ 403 0004 7047     		bx	lr
+ 405 0006 00BF     		.section	.text._ZN7daisysp23VariableShapeOscillator7SetSyncEb,"ax",%progbits
+ 406              		.align	1
+ 407              		.p2align 2,,3
+ 408              		.global	_ZN7daisysp23VariableShapeOscillator7SetSyncEb
+ 409              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 8
+
+
+ 410              		.thumb
+ 411              		.thumb_func
+ 413              	_ZN7daisysp23VariableShapeOscillator7SetSyncEb:
+ 414              		@ args = 0, pretend = 0, frame = 0
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              		@ link register save eliminated.
+ 417 0000 0171     		strb	r1, [r0, #4]
+ 418 0002 7047     		bx	lr
+ 420              		.section	.text._ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf,"ax",%progbits
+ 421              		.align	1
+ 422              		.p2align 2,,3
+ 423              		.global	_ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf
+ 424              		.syntax unified
+ 425              		.thumb
+ 426              		.thumb_func
+ 428              	_ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf:
+ 429              		@ args = 0, pretend = 0, frame = 0
+ 430              		@ frame_needed = 0, uses_anonymous_args = 0
+ 431              		@ link register save eliminated.
+ 432 0000 D0ED006A 		vldr.32	s13, [r0]
+ 433 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 434 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 435 000c F4EEC77A 		vcmpe.f32	s15, s14
+ 436 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 437 0014 04DB     		blt	.L71
+ 438 0016 F0EE477A 		vmov.f32	s15, s14
+ 439 001a 4FF07C53 		mov	r3, #1056964608
+ 440 001e 4362     		str	r3, [r0, #36]	@ float
+ 441              	.L71:
+ 442 0020 C0ED087A 		vstr.32	s15, [r0, #32]
+ 443 0024 7047     		bx	lr
+ 445 0026 00BF     		.section	.text._ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff,"ax",%progbits
+ 446              		.align	1
+ 447              		.p2align 2,,3
+ 448              		.global	_ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff
+ 449              		.syntax unified
+ 450              		.thumb
+ 451              		.thumb_func
+ 453              	_ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff:
+ 454              		@ args = 0, pretend = 0, frame = 0
+ 455              		@ frame_needed = 0, uses_anonymous_args = 0
+ 456              		@ link register save eliminated.
+ 457 0000 B4EEE00A 		vcmpe.f32	s0, s1
+ 458 0004 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 459 0008 0CD5     		bpl	.L78
+ 460 000a 20EE011A 		vmul.f32	s2, s0, s2
+ 461 000e DFED0A7A 		vldr.32	s15, .L79
+ 462              	.L76:
+ 463 0012 77EEC07A 		vsub.f32	s15, s15, s0
+ 464 0016 A7EEA20A 		vfma.f32	s0, s15, s5
+ 465 001a 31EE401A 		vsub.f32	s2, s2, s0
+ 466 001e A1EE020A 		vfma.f32	s0, s2, s4
+ 467 0022 7047     		bx	lr
+ 468              	.L78:
+ 469 0024 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 470 0028 70EE600A 		vsub.f32	s1, s0, s1
+ 471 002c B0EE671A 		vmov.f32	s2, s15
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 9
+
+
+ 472 0030 A0EEE11A 		vfms.f32	s2, s1, s3
+ 473 0034 EDE7     		b	.L76
+ 474              	.L80:
+ 475 0036 00BF     		.align	2
+ 476              	.L79:
+ 477 0038 00000000 		.word	0
+ 479              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 variableshapeosc.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:17     .text._ZN7daisysp23VariableShapeOscillator4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:24     .text._ZN7daisysp23VariableShapeOscillator4InitEf:0000000000000000 _ZN7daisysp23VariableShapeOscillator4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:85     .text._ZN7daisysp23VariableShapeOscillator4InitEf:0000000000000098 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:90     .text._ZN7daisysp23VariableShapeOscillator7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:97     .text._ZN7daisysp23VariableShapeOscillator7ProcessEv:0000000000000000 _ZN7daisysp23VariableShapeOscillator7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:328    .text._ZN7daisysp23VariableShapeOscillator7ProcessEv:00000000000002c0 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:331    .text._ZN7daisysp23VariableShapeOscillator7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:338    .text._ZN7daisysp23VariableShapeOscillator7SetFreqEf:0000000000000000 _ZN7daisysp23VariableShapeOscillator7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:352    .text._ZN7daisysp23VariableShapeOscillator5SetPWEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:359    .text._ZN7daisysp23VariableShapeOscillator5SetPWEf:0000000000000000 _ZN7daisysp23VariableShapeOscillator5SetPWEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:391    .text._ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:398    .text._ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf:0000000000000000 _ZN7daisysp23VariableShapeOscillator12SetWaveshapeEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:406    .text._ZN7daisysp23VariableShapeOscillator7SetSyncEb:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:413    .text._ZN7daisysp23VariableShapeOscillator7SetSyncEb:0000000000000000 _ZN7daisysp23VariableShapeOscillator7SetSyncEb
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:421    .text._ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:428    .text._ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf:0000000000000000 _ZN7daisysp23VariableShapeOscillator11SetSyncFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:446    .text._ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:453    .text._ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff:0000000000000000 _ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWMaKLl.s:477    .text._ZN7daisysp23VariableShapeOscillator18ComputeNaiveSampleEffffff:0000000000000038 $d
+
+NO UNDEFINED SYMBOLS

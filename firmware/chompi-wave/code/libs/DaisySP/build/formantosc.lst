@@ -1,0 +1,236 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"formantosc.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp17FormantOscillator4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp17FormantOscillator4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp17FormantOscillator4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 054A     		ldr	r2, .L3
+  30 0004 80ED070A 		vstr.32	s0, [r0, #28]
+  31 0008 0360     		str	r3, [r0]	@ float
+  32 000a 4360     		str	r3, [r0, #4]	@ float
+  33 000c 8360     		str	r3, [r0, #8]	@ float
+  34 000e C360     		str	r3, [r0, #12]	@ float
+  35 0010 0261     		str	r2, [r0, #16]	@ float
+  36 0012 4361     		str	r3, [r0, #20]	@ float
+  37 0014 7047     		bx	lr
+  38              	.L4:
+  39 0016 00BF     		.align	2
+  40              	.L3:
+  41 0018 0000C842 		.word	1120403456
+  43              		.section	.text._ZN7daisysp17FormantOscillator7ProcessEv,"ax",%progbits
+  44              		.align	1
+  45              		.p2align 2,,3
+  46              		.global	_ZN7daisysp17FormantOscillator7ProcessEv
+  47              		.syntax unified
+  48              		.thumb
+  49              		.thumb_func
+  51              	_ZN7daisysp17FormantOscillator7ProcessEv:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54 0000 D0ED007A 		vldr.32	s15, [r0]
+  55 0004 B7EE007A 		vmov.f32	s14, #1.0e+0
+  56 0008 D0ED036A 		vldr.32	s13, [r0, #12]
+  57 000c 76EEA77A 		vadd.f32	s15, s13, s15
+  58 0010 10B5     		push	{r4, lr}
+  59 0012 F4EEC77A 		vcmpe.f32	s15, s14
+  60 0016 0446     		mov	r4, r0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s 			page 2
+
+
+  61 0018 C0ED007A 		vstr.32	s15, [r0]
+  62 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  63 0020 2DED0A8B 		vpush.64	{d8, d9, d10, d11, d12}
+  64 0024 90ED02AA 		vldr.32	s20, [r0, #8]
+  65 0028 56DB     		blt	.L11
+  66 002a 77EEC77A 		vsub.f32	s15, s15, s14
+  67 002e 90ED048A 		vldr.32	s16, [r0, #16]
+  68 0032 90ED010A 		vldr.32	s0, [r0, #4]
+  69 0036 90ED059A 		vldr.32	s18, [r0, #20]
+  70 003a 87EEA6BA 		vdiv.f32	s22, s15, s13
+  71 003e D0ED06AA 		vldr.32	s21, [r0, #24]
+  72 0042 9FED35CA 		vldr.32	s24, .L14
+  73 0046 DFED359A 		vldr.32	s19, .L14+4
+  74 004a C0ED007A 		vstr.32	s15, [r0]
+  75 004e 77EE4B8A 		vsub.f32	s17, s14, s22
+  76 0052 A8EE880A 		vfma.f32	s0, s17, s16
+  77 0056 39EE000A 		vadd.f32	s0, s18, s0
+  78 005a A8EEAA0A 		vfma.f32	s0, s17, s21
+  79 005e 20EE0C0A 		vmul.f32	s0, s0, s24
+  80 0062 FFF7FEFF 		bl	sinf
+  81 0066 79EE297A 		vadd.f32	s15, s18, s19
+  82 006a F0EE40BA 		vmov.f32	s23, s0
+  83 006e 37EEAA0A 		vadd.f32	s0, s15, s21
+  84 0072 20EE0C0A 		vmul.f32	s0, s0, s24
+  85 0076 FFF7FEFF 		bl	sinf
+  86 007a F6EE006A 		vmov.f32	s13, #5.0e-1
+  87 007e BEEE007A 		vmov.f32	s14, #-5.0e-1
+  88 0082 30EE6B0A 		vsub.f32	s0, s0, s23
+  89 0086 6BEE266A 		vmul.f32	s13, s22, s13
+  90 008a 28EE877A 		vmul.f32	s14, s17, s14
+  91 008e 68EE0B7A 		vmul.f32	s15, s16, s22
+  92 0092 66EE8B6A 		vmul.f32	s13, s13, s22
+  93 0096 27EE287A 		vmul.f32	s14, s14, s17
+  94 009a C4ED017A 		vstr.32	s15, [r4, #4]
+  95 009e A6EE80AA 		vfma.f32	s20, s13, s0
+  96 00a2 E0EE079A 		vfma.f32	s19, s0, s14
+  97              	.L8:
+  98 00a6 39EE2A9A 		vadd.f32	s18, s18, s21
+  99 00aa 0023     		movs	r3, #0
+ 100 00ac 9FED1A0A 		vldr.32	s0, .L14
+ 101 00b0 A361     		str	r3, [r4, #24]	@ float
+ 102 00b2 79EE277A 		vadd.f32	s15, s18, s15
+ 103 00b6 84ED059A 		vstr.32	s18, [r4, #20]
+ 104 00ba 27EE800A 		vmul.f32	s0, s15, s0
+ 105 00be FFF7FEFF 		bl	sinf
+ 106 00c2 F0EE407A 		vmov.f32	s15, s0
+ 107 00c6 B0EE4A0A 		vmov.f32	s0, s20
+ 108 00ca 79EEA77A 		vadd.f32	s15, s19, s15
+ 109 00ce BDEC0A8B 		vldm	sp!, {d8-d12}
+ 110 00d2 C4ED027A 		vstr.32	s15, [r4, #8]
+ 111 00d6 10BD     		pop	{r4, pc}
+ 112              	.L11:
+ 113 00d8 D0ED017A 		vldr.32	s15, [r0, #4]
+ 114 00dc 90ED040A 		vldr.32	s0, [r0, #16]
+ 115 00e0 77EE807A 		vadd.f32	s15, s15, s0
+ 116 00e4 F4EEC77A 		vcmpe.f32	s15, s14
+ 117 00e8 C0ED017A 		vstr.32	s15, [r0, #4]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s 			page 3
+
+
+ 118 00ec F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 119 00f0 0ADB     		blt	.L13
+ 120 00f2 77EEC77A 		vsub.f32	s15, s15, s14
+ 121 00f6 90ED059A 		vldr.32	s18, [r0, #20]
+ 122 00fa D0ED06AA 		vldr.32	s21, [r0, #24]
+ 123 00fe DFED079A 		vldr.32	s19, .L14+4
+ 124 0102 C0ED017A 		vstr.32	s15, [r0, #4]
+ 125 0106 CEE7     		b	.L8
+ 126              	.L13:
+ 127 0108 90ED059A 		vldr.32	s18, [r0, #20]
+ 128 010c D0ED06AA 		vldr.32	s21, [r0, #24]
+ 129 0110 DFED029A 		vldr.32	s19, .L14+4
+ 130 0114 C7E7     		b	.L8
+ 131              	.L15:
+ 132 0116 00BF     		.align	2
+ 133              	.L14:
+ 134 0118 DB0FC940 		.word	1086918619
+ 135 011c 00000000 		.word	0
+ 137              		.section	.text._ZN7daisysp17FormantOscillator14SetFormantFreqEf,"ax",%progbits
+ 138              		.align	1
+ 139              		.p2align 2,,3
+ 140              		.global	_ZN7daisysp17FormantOscillator14SetFormantFreqEf
+ 141              		.syntax unified
+ 142              		.thumb
+ 143              		.thumb_func
+ 145              	_ZN7daisysp17FormantOscillator14SetFormantFreqEf:
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		@ link register save eliminated.
+ 149 0000 D0ED076A 		vldr.32	s13, [r0, #28]
+ 150 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 151 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 152 000c F4EEC77A 		vcmpe.f32	s15, s14
+ 153 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 154 0014 0BDA     		bge	.L18
+ 155 0016 BDEE007A 		vmov.f32	s14, #-2.5e-1
+ 156 001a F4EE477A 		vcmp.f32	s15, s14
+ 157 001e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 158 0022 98BF     		it	ls
+ 159 0024 F0EE477A 		vmovls.f32	s15, s14
+ 160 0028 C0ED047A 		vstr.32	s15, [r0, #16]
+ 161 002c 7047     		bx	lr
+ 162              	.L18:
+ 163 002e F0EE477A 		vmov.f32	s15, s14
+ 164 0032 C0ED047A 		vstr.32	s15, [r0, #16]
+ 165 0036 7047     		bx	lr
+ 167              		.section	.text._ZN7daisysp17FormantOscillator14SetCarrierFreqEf,"ax",%progbits
+ 168              		.align	1
+ 169              		.p2align 2,,3
+ 170              		.global	_ZN7daisysp17FormantOscillator14SetCarrierFreqEf
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 175              	_ZN7daisysp17FormantOscillator14SetCarrierFreqEf:
+ 176              		@ args = 0, pretend = 0, frame = 0
+ 177              		@ frame_needed = 0, uses_anonymous_args = 0
+ 178              		@ link register save eliminated.
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s 			page 4
+
+
+ 179 0000 D0ED076A 		vldr.32	s13, [r0, #28]
+ 180 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 181 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 182 000c F4EEC77A 		vcmpe.f32	s15, s14
+ 183 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 184 0014 0BDA     		bge	.L22
+ 185 0016 BDEE007A 		vmov.f32	s14, #-2.5e-1
+ 186 001a F4EE477A 		vcmp.f32	s15, s14
+ 187 001e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 188 0022 98BF     		it	ls
+ 189 0024 F0EE477A 		vmovls.f32	s15, s14
+ 190 0028 C0ED037A 		vstr.32	s15, [r0, #12]
+ 191 002c 7047     		bx	lr
+ 192              	.L22:
+ 193 002e F0EE477A 		vmov.f32	s15, s14
+ 194 0032 C0ED037A 		vstr.32	s15, [r0, #12]
+ 195 0036 7047     		bx	lr
+ 197              		.section	.text._ZN7daisysp17FormantOscillator13SetPhaseShiftEf,"ax",%progbits
+ 198              		.align	1
+ 199              		.p2align 2,,3
+ 200              		.global	_ZN7daisysp17FormantOscillator13SetPhaseShiftEf
+ 201              		.syntax unified
+ 202              		.thumb
+ 203              		.thumb_func
+ 205              	_ZN7daisysp17FormantOscillator13SetPhaseShiftEf:
+ 206              		@ args = 0, pretend = 0, frame = 0
+ 207              		@ frame_needed = 0, uses_anonymous_args = 0
+ 208              		@ link register save eliminated.
+ 209 0000 D0ED057A 		vldr.32	s15, [r0, #20]
+ 210 0004 30EE670A 		vsub.f32	s0, s0, s15
+ 211 0008 80ED060A 		vstr.32	s0, [r0, #24]
+ 212 000c 7047     		bx	lr
+ 214 000e 00BF     		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 formantosc.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:17     .text._ZN7daisysp17FormantOscillator4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:24     .text._ZN7daisysp17FormantOscillator4InitEf:0000000000000000 _ZN7daisysp17FormantOscillator4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:41     .text._ZN7daisysp17FormantOscillator4InitEf:0000000000000018 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:44     .text._ZN7daisysp17FormantOscillator7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:51     .text._ZN7daisysp17FormantOscillator7ProcessEv:0000000000000000 _ZN7daisysp17FormantOscillator7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:134    .text._ZN7daisysp17FormantOscillator7ProcessEv:0000000000000118 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:138    .text._ZN7daisysp17FormantOscillator14SetFormantFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:145    .text._ZN7daisysp17FormantOscillator14SetFormantFreqEf:0000000000000000 _ZN7daisysp17FormantOscillator14SetFormantFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:168    .text._ZN7daisysp17FormantOscillator14SetCarrierFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:175    .text._ZN7daisysp17FormantOscillator14SetCarrierFreqEf:0000000000000000 _ZN7daisysp17FormantOscillator14SetCarrierFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:198    .text._ZN7daisysp17FormantOscillator13SetPhaseShiftEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc1j3Ful.s:205    .text._ZN7daisysp17FormantOscillator13SetPhaseShiftEf:0000000000000000 _ZN7daisysp17FormantOscillator13SetPhaseShiftEf
+
+UNDEFINED SYMBOLS
+sinf

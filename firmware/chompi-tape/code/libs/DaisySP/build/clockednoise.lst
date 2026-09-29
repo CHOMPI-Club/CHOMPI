@@ -1,0 +1,183 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"clockednoise.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp12ClockedNoise4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp12ClockedNoise4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp12ClockedNoise4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 044A     		ldr	r2, .L3
+  30 0004 80ED040A 		vstr.32	s0, [r0, #16]
+  31 0008 0360     		str	r3, [r0]	@ float
+  32 000a 4360     		str	r3, [r0, #4]	@ float
+  33 000c 8360     		str	r3, [r0, #8]	@ float
+  34 000e C260     		str	r2, [r0, #12]	@ float
+  35 0010 7047     		bx	lr
+  36              	.L4:
+  37 0012 00BF     		.align	2
+  38              	.L3:
+  39 0014 6F12833A 		.word	981668463
+  41              		.section	.text._ZN7daisysp12ClockedNoise7ProcessEv,"ax",%progbits
+  42              		.align	1
+  43              		.p2align 2,,3
+  44              		.global	_ZN7daisysp12ClockedNoise7ProcessEv
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  49              	_ZN7daisysp12ClockedNoise7ProcessEv:
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52 0000 10B5     		push	{r4, lr}
+  53 0002 0446     		mov	r4, r0
+  54 0004 2DED028B 		vpush.64	{d8}
+  55 0008 90ED028A 		vldr.32	s16, [r0, #8]
+  56 000c D0ED018A 		vldr.32	s17, [r0, #4]
+  57 0010 FFF7FEFF 		bl	rand
+  58 0014 D4ED034A 		vldr.32	s9, [r4, #12]
+  59 0018 F7EE005A 		vmov.f32	s11, #1.0e+0
+  60 001c 94ED006A 		vldr.32	s12, [r4]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s 			page 2
+
+
+  61 0020 F5EE007A 		vmov.f32	s15, #2.5e-1
+  62 0024 05EE100A 		vmov	s10, r0	@ int
+  63 0028 F0EE003A 		vmov.f32	s7, #2.0e+0
+  64 002c 34EE866A 		vadd.f32	s12, s9, s12
+  65 0030 DFED226A 		vldr.32	s13, .L10
+  66 0034 BAEEE05A 		vcvt.f32.s32	s10, s10, #31
+  67 0038 BFEE007A 		vmov.f32	s14, #-1.0e+0
+  68 003c B4EEE56A 		vcmpe.f32	s12, s11
+  69 0040 74EEE77A 		vsub.f32	s15, s9, s15
+  70 0044 B1EE004A 		vmov.f32	s8, #4.0e+0
+  71 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  72 004c A5EE237A 		vfma.f32	s14, s10, s7
+  73 0050 67EE847A 		vmul.f32	s15, s15, s8
+  74              		.syntax unified
+  75              	@ 36 "Source/Utility/dsp.h" 1
+  76 0054 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+  77              	@ 0 "" 2
+  78              	@ 47 "Source/Utility/dsp.h" 1
+  79 0058 C7FEE57A 		vminnm.f32 s15, s15, s11
+  80              	@ 0 "" 2
+  81              		.thumb
+  82              		.syntax unified
+  83 005c 2ADB     		blt	.L9
+  84 005e 36EE656A 		vsub.f32	s12, s12, s11
+  85 0062 BEEE005A 		vmov.f32	s10, #-5.0e-1
+  86 0066 B6EE004A 		vmov.f32	s8, #5.0e-1
+  87 006a C6EE243A 		vdiv.f32	s7, s12, s9
+  88 006e 84ED006A 		vstr.32	s12, [r4]
+  89 0072 37EE683A 		vsub.f32	s6, s14, s17
+  90 0076 F0EE478A 		vmov.f32	s17, s14
+  91 007a 75EEE35A 		vsub.f32	s11, s11, s7
+  92 007e 63EE844A 		vmul.f32	s9, s7, s8
+  93 0082 25EE856A 		vmul.f32	s12, s11, s10
+  94 0086 24EEA35A 		vmul.f32	s10, s9, s7
+  95 008a 66EE255A 		vmul.f32	s11, s12, s11
+  96 008e A3EE058A 		vfma.f32	s16, s6, s10
+  97 0092 E3EE256A 		vfma.f32	s13, s6, s11
+  98              	.L7:
+  99 0096 76EEA86A 		vadd.f32	s13, s13, s17
+ 100 009a C4ED018A 		vstr.32	s17, [r4, #4]
+ 101 009e 37EE487A 		vsub.f32	s14, s14, s16
+ 102 00a2 B0EE480A 		vmov.f32	s0, s16
+ 103 00a6 C4ED026A 		vstr.32	s13, [r4, #8]
+ 104 00aa BDEC028B 		vldm	sp!, {d8}
+ 105 00ae A7EE270A 		vfma.f32	s0, s14, s15
+ 106 00b2 10BD     		pop	{r4, pc}
+ 107              	.L9:
+ 108 00b4 84ED006A 		vstr.32	s12, [r4]
+ 109 00b8 EDE7     		b	.L7
+ 110              	.L11:
+ 111 00ba 00BF     		.align	2
+ 112              	.L10:
+ 113 00bc 00000000 		.word	0
+ 115              		.section	.text._ZN7daisysp12ClockedNoise7SetFreqEf,"ax",%progbits
+ 116              		.align	1
+ 117              		.p2align 2,,3
+ 118              		.global	_ZN7daisysp12ClockedNoise7SetFreqEf
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s 			page 3
+
+
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 123              	_ZN7daisysp12ClockedNoise7SetFreqEf:
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127 0000 90ED046A 		vldr.32	s12, [r0, #16]
+ 128 0004 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 129 0008 DFED056A 		vldr.32	s13, .L13
+ 130 000c C0EE067A 		vdiv.f32	s15, s0, s12
+ 131              		.syntax unified
+ 132              	@ 36 "Source/Utility/dsp.h" 1
+ 133 0010 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 134              	@ 0 "" 2
+ 135              	@ 47 "Source/Utility/dsp.h" 1
+ 136 0014 C7FEC77A 		vminnm.f32 s15, s15, s14
+ 137              	@ 0 "" 2
+ 138              		.thumb
+ 139              		.syntax unified
+ 140 0018 C0ED037A 		vstr.32	s15, [r0, #12]
+ 141 001c 7047     		bx	lr
+ 142              	.L14:
+ 143 001e 00BF     		.align	2
+ 144              	.L13:
+ 145 0020 00000000 		.word	0
+ 147              		.section	.text._ZN7daisysp12ClockedNoise4SyncEv,"ax",%progbits
+ 148              		.align	1
+ 149              		.p2align 2,,3
+ 150              		.global	_ZN7daisysp12ClockedNoise4SyncEv
+ 151              		.syntax unified
+ 152              		.thumb
+ 153              		.thumb_func
+ 155              	_ZN7daisysp12ClockedNoise4SyncEv:
+ 156              		@ args = 0, pretend = 0, frame = 0
+ 157              		@ frame_needed = 0, uses_anonymous_args = 0
+ 158              		@ link register save eliminated.
+ 159 0000 4FF07E53 		mov	r3, #1065353216
+ 160 0004 0360     		str	r3, [r0]	@ float
+ 161 0006 7047     		bx	lr
+ 163              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 clockednoise.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:17     .text._ZN7daisysp12ClockedNoise4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:24     .text._ZN7daisysp12ClockedNoise4InitEf:0000000000000000 _ZN7daisysp12ClockedNoise4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:39     .text._ZN7daisysp12ClockedNoise4InitEf:0000000000000014 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:42     .text._ZN7daisysp12ClockedNoise7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:49     .text._ZN7daisysp12ClockedNoise7ProcessEv:0000000000000000 _ZN7daisysp12ClockedNoise7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:113    .text._ZN7daisysp12ClockedNoise7ProcessEv:00000000000000bc $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:116    .text._ZN7daisysp12ClockedNoise7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:123    .text._ZN7daisysp12ClockedNoise7SetFreqEf:0000000000000000 _ZN7daisysp12ClockedNoise7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:145    .text._ZN7daisysp12ClockedNoise7SetFreqEf:0000000000000020 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:148    .text._ZN7daisysp12ClockedNoise4SyncEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccM8LKIg.s:155    .text._ZN7daisysp12ClockedNoise4SyncEv:0000000000000000 _ZN7daisysp12ClockedNoise4SyncEv
+
+UNDEFINED SYMBOLS
+rand

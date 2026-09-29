@@ -1,0 +1,1512 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"chorus.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp12ChorusEngine4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp12ChorusEngine4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp12ChorusEngine4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 10B5     		push	{r4, lr}
+  28 0002 0446     		mov	r4, r0
+  29 0004 4FF41652 		mov	r2, #9600
+  30 0008 0021     		movs	r1, #0
+  31 000a 2430     		adds	r0, r0, #36
+  32 000c 2DED028B 		vpush.64	{d8}
+  33 0010 B0EE408A 		vmov.f32	s16, s0
+  34 0014 84ED000A 		vstr.32	s0, [r4]
+  35 0018 FFF7FEFF 		bl	memset
+  36 001c 9FED1E6A 		vldr.32	s12, .L7
+  37 0020 DFED1E6A 		vldr.32	s13, .L7+4
+  38 0024 0020     		movs	r0, #0
+  39 0026 DFED1E7A 		vldr.32	s15, .L7+8
+  40 002a 0121     		movs	r1, #1
+  41              		.syntax unified
+  42              	@ 36 "Source/Utility/dsp.h" 1
+  43 002c C7FEA67A 		vmaxnm.f32 s15, s15, s13
+  44              	@ 0 "" 2
+  45              		.thumb
+  46              		.syntax unified
+  47 0030 C6EE086A 		vdiv.f32	s13, s12, s16
+  48 0034 9FED1B7A 		vldr.32	s14, .L7+12
+  49 0038 9FED1B6A 		vldr.32	s12, .L7+16
+  50 003c 0023     		movs	r3, #0
+  51 003e 9FED1B5A 		vldr.32	s10, .L7+20
+  52 0042 1B4A     		ldr	r2, .L7+24
+  53 0044 6360     		str	r3, [r4, #4]	@ float
+  54 0046 67EE877A 		vmul.f32	s15, s15, s14
+  55 004a 94ED027A 		vldr.32	s14, [r4, #8]
+  56 004e FDEE005A 		vmov.f32	s11, #-2.5e-1
+  57 0052 2261     		str	r2, [r4, #16]	@ float
+  58 0054 B5EEC07A 		vcmpe.f32	s14, #0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 2
+
+
+  59 0058 9FED167A 		vldr.32	s14, .L7+28
+  60 005c 67EE887A 		vmul.f32	s15, s15, s16
+  61              		.syntax unified
+  62              	@ 36 "Source/Utility/dsp.h" 1
+  63 0060 87FE057A 		vmaxnm.f32 s14, s14, s10
+  64              	@ 0 "" 2
+  65              		.thumb
+  66              		.syntax unified
+  67 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  68              		.syntax unified
+  69              	@ 47 "Source/Utility/dsp.h" 1
+  70 0068 87FE467A 		vminnm.f32 s14, s14, s12
+  71              	@ 0 "" 2
+  72              		.thumb
+  73              		.syntax unified
+  74 006c C4ED057A 		vstr.32	s15, [r4, #20]
+  75 0070 67EE277A 		vmul.f32	s15, s14, s15
+  76 0074 B5EE006A 		vmov.f32	s12, #2.5e-1
+  77 0078 BDEC028B 		vldm	sp!, {d8}
+  78 007c 48BF     		it	mi
+  79 007e F1EE666A 		vnegmi.f32	s13, s13
+  80 0082 C4ED037A 		vstr.32	s15, [r4, #12]
+  81              		.syntax unified
+  82              	@ 36 "Source/Utility/dsp.h" 1
+  83 0086 86FEA57A 		vmaxnm.f32 s14, s13, s11
+  84              	@ 0 "" 2
+  85              		.thumb
+  86              		.syntax unified
+  87 008a C4E90701 		strd	r0, r1, [r4, #28]
+  88              		.syntax unified
+  89              	@ 47 "Source/Utility/dsp.h" 1
+  90 008e 87FE467A 		vminnm.f32 s14, s14, s12
+  91              	@ 0 "" 2
+  92              		.thumb
+  93              		.syntax unified
+  94 0092 84ED027A 		vstr.32	s14, [r4, #8]
+  95 0096 10BD     		pop	{r4, pc}
+  96              	.L8:
+  97              		.align	2
+  98              	.L7:
+  99 0098 9A99993F 		.word	1067030938
+ 100 009c CDCCC040 		.word	1086377165
+ 101 00a0 CDCCCC3D 		.word	1036831949
+ 102 00a4 6F12833A 		.word	981668463
+ 103 00a8 7B146E3F 		.word	1064178811
+ 104 00ac 00000000 		.word	0
+ 105 00b0 CDCC4C3E 		.word	1045220557
+ 106 00b4 6666663F 		.word	1063675494
+ 108              		.section	.text._ZN7daisysp12ChorusEngine7ProcessEf,"ax",%progbits
+ 109              		.align	1
+ 110              		.p2align 2,,3
+ 111              		.global	_ZN7daisysp12ChorusEngine7ProcessEf
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 116              	_ZN7daisysp12ChorusEngine7ProcessEf:
+ 117              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 3
+
+
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119 0000 90ED027A 		vldr.32	s14, [r0, #8]
+ 120 0004 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 121 0008 D0ED017A 		vldr.32	s15, [r0, #4]
+ 122 000c 77EE277A 		vadd.f32	s15, s14, s15
+ 123 0010 70B5     		push	{r4, r5, r6, lr}
+ 124 0012 F4EEE67A 		vcmpe.f32	s15, s13
+ 125 0016 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 126 001a 55DD     		ble	.L15
+ 127 001c 77EEE67A 		vsub.f32	s15, s15, s13
+ 128 0020 B1EE477A 		vneg.f32	s14, s14
+ 129 0024 76EEE77A 		vsub.f32	s15, s13, s15
+ 130 0028 80ED027A 		vstr.32	s14, [r0, #8]
+ 131 002c C0ED017A 		vstr.32	s15, [r0, #4]
+ 132              	.L12:
+ 133 0030 D0ED036A 		vldr.32	s13, [r0, #12]
+ 134 0034 40F65F13 		movw	r3, #2399
+ 135 0038 90ED057A 		vldr.32	s14, [r0, #20]
+ 136 003c B6EE006A 		vmov.f32	s12, #5.0e-1
+ 137 0040 C269     		ldr	r2, [r0, #28]
+ 138 0042 A6EEA77A 		vfma.f32	s14, s13, s15
+ 139 0046 2949     		ldr	r1, .L18
+ 140 0048 00EB820E 		add	lr, r0, r2, lsl #2
+ 141 004c D0ED045A 		vldr.32	s11, [r0, #16]
+ 142 0050 FDEEC77A 		vcvt.s32.f32	s15, s14
+ 143 0054 17EE904A 		vmov	r4, s15	@ int
+ 144 0058 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 145 005c A342     		cmp	r3, r4
+ 146 005e 77EE677A 		vsub.f32	s15, s14, s15
+ 147 0062 28BF     		it	cs
+ 148 0064 2346     		movcs	r3, r4
+ 149 0066 0362     		str	r3, [r0, #32]
+ 150 0068 1344     		add	r3, r3, r2
+ 151 006a 02F65F12 		addw	r2, r2, #2399
+ 152 006e C0ED067A 		vstr.32	s15, [r0, #24]
+ 153 0072 03F1010C 		add	ip, r3, #1
+ 154 0076 A1FB0346 		umull	r4, r6, r1, r3
+ 155 007a A1FB0C45 		umull	r4, r5, r1, ip
+ 156 007e 360A     		lsrs	r6, r6, #8
+ 157 0080 A1FB0241 		umull	r4, r1, r1, r2
+ 158 0084 4FF41664 		mov	r4, #2400
+ 159 0088 2D0A     		lsrs	r5, r5, #8
+ 160 008a 04FB1633 		mls	r3, r4, r6, r3
+ 161 008e 090A     		lsrs	r1, r1, #8
+ 162 0090 04FB15CC 		mls	ip, r4, r5, ip
+ 163 0094 00EB8303 		add	r3, r0, r3, lsl #2
+ 164 0098 04FB1121 		mls	r1, r4, r1, r2
+ 165 009c 00EB8C0C 		add	ip, r0, ip, lsl #2
+ 166 00a0 93ED097A 		vldr.32	s14, [r3, #36]
+ 167 00a4 DCED096A 		vldr.32	s13, [ip, #36]
+ 168 00a8 76EEC76A 		vsub.f32	s13, s13, s14
+ 169 00ac A6EEA77A 		vfma.f32	s14, s13, s15
+ 170 00b0 F0EE407A 		vmov.f32	s15, s0
+ 171 00b4 E5EE877A 		vfma.f32	s15, s11, s14
+ 172 00b8 30EE070A 		vadd.f32	s0, s0, s14
+ 173 00bc 20EE060A 		vmul.f32	s0, s0, s12
+ 174 00c0 CEED097A 		vstr.32	s15, [lr, #36]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 4
+
+
+ 175 00c4 C161     		str	r1, [r0, #28]
+ 176 00c6 70BD     		pop	{r4, r5, r6, pc}
+ 177              	.L15:
+ 178 00c8 BFEE006A 		vmov.f32	s12, #-1.0e+0
+ 179 00cc F4EEC67A 		vcmpe.f32	s15, s12
+ 180 00d0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 181 00d4 07D5     		bpl	.L17
+ 182 00d6 77EEA67A 		vadd.f32	s15, s15, s13
+ 183 00da B1EE477A 		vneg.f32	s14, s14
+ 184 00de 76EE677A 		vsub.f32	s15, s12, s15
+ 185 00e2 80ED027A 		vstr.32	s14, [r0, #8]
+ 186              	.L17:
+ 187 00e6 C0ED017A 		vstr.32	s15, [r0, #4]
+ 188 00ea A1E7     		b	.L12
+ 189              	.L19:
+ 190              		.align	2
+ 191              	.L18:
+ 192 00ec B5814E1B 		.word	458129845
+ 194              		.section	.text._ZN7daisysp12ChorusEngine11SetLfoDepthEf,"ax",%progbits
+ 195              		.align	1
+ 196              		.p2align 2,,3
+ 197              		.global	_ZN7daisysp12ChorusEngine11SetLfoDepthEf
+ 198              		.syntax unified
+ 199              		.thumb
+ 200              		.thumb_func
+ 202              	_ZN7daisysp12ChorusEngine11SetLfoDepthEf:
+ 203              		@ args = 0, pretend = 0, frame = 0
+ 204              		@ frame_needed = 0, uses_anonymous_args = 0
+ 205              		@ link register save eliminated.
+ 206 0000 DFED077A 		vldr.32	s15, .L21
+ 207              		.syntax unified
+ 208              	@ 36 "Source/Utility/dsp.h" 1
+ 209 0004 80FE270A 		vmaxnm.f32 s0, s0, s15
+ 210              	@ 0 "" 2
+ 211              		.thumb
+ 212              		.syntax unified
+ 213 0008 D0ED057A 		vldr.32	s15, [r0, #20]
+ 214 000c 9FED057A 		vldr.32	s14, .L21+4
+ 215              		.syntax unified
+ 216              	@ 47 "Source/Utility/dsp.h" 1
+ 217 0010 80FE470A 		vminnm.f32 s0, s0, s14
+ 218              	@ 0 "" 2
+ 219              		.thumb
+ 220              		.syntax unified
+ 221 0014 27EE800A 		vmul.f32	s0, s15, s0
+ 222 0018 80ED030A 		vstr.32	s0, [r0, #12]
+ 223 001c 7047     		bx	lr
+ 224              	.L22:
+ 225 001e 00BF     		.align	2
+ 226              	.L21:
+ 227 0020 00000000 		.word	0
+ 228 0024 7B146E3F 		.word	1064178811
+ 230              		.section	.text._ZN7daisysp12ChorusEngine10SetLfoFreqEf,"ax",%progbits
+ 231              		.align	1
+ 232              		.p2align 2,,3
+ 233              		.global	_ZN7daisysp12ChorusEngine10SetLfoFreqEf
+ 234              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 5
+
+
+ 235              		.thumb
+ 236              		.thumb_func
+ 238              	_ZN7daisysp12ChorusEngine10SetLfoFreqEf:
+ 239              		@ args = 0, pretend = 0, frame = 0
+ 240              		@ frame_needed = 0, uses_anonymous_args = 0
+ 241              		@ link register save eliminated.
+ 242 0000 F1EE007A 		vmov.f32	s15, #4.0e+0
+ 243 0004 D0ED006A 		vldr.32	s13, [r0]
+ 244 0008 90ED027A 		vldr.32	s14, [r0, #8]
+ 245 000c 20EE270A 		vmul.f32	s0, s0, s15
+ 246 0010 B5EEC07A 		vcmpe.f32	s14, #0
+ 247 0014 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 248 0018 C0EE267A 		vdiv.f32	s15, s0, s13
+ 249 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 250 0020 FDEE006A 		vmov.f32	s13, #-2.5e-1
+ 251 0024 48BF     		it	mi
+ 252 0026 F1EE677A 		vnegmi.f32	s15, s15
+ 253              		.syntax unified
+ 254              	@ 36 "Source/Utility/dsp.h" 1
+ 255 002a C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 256              	@ 0 "" 2
+ 257              	@ 47 "Source/Utility/dsp.h" 1
+ 258 002e C7FEC77A 		vminnm.f32 s15, s15, s14
+ 259              	@ 0 "" 2
+ 260              		.thumb
+ 261              		.syntax unified
+ 262 0032 C0ED027A 		vstr.32	s15, [r0, #8]
+ 263 0036 7047     		bx	lr
+ 265              		.section	.text._ZN7daisysp12ChorusEngine8SetDelayEf,"ax",%progbits
+ 266              		.align	1
+ 267              		.p2align 2,,3
+ 268              		.global	_ZN7daisysp12ChorusEngine8SetDelayEf
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 273              	_ZN7daisysp12ChorusEngine8SetDelayEf:
+ 274              		@ args = 0, pretend = 0, frame = 0
+ 275              		@ frame_needed = 0, uses_anonymous_args = 0
+ 276              		@ link register save eliminated.
+ 277 0000 DFED0D7A 		vldr.32	s15, .L28
+ 278 0004 9FED0D7A 		vldr.32	s14, .L28+4
+ 279 0008 F0EE676A 		vmov.f32	s13, s15
+ 280 000c 9FED0C6A 		vldr.32	s12, .L28+8
+ 281 0010 E0EE066A 		vfma.f32	s13, s0, s12
+ 282              		.syntax unified
+ 283              	@ 36 "Source/Utility/dsp.h" 1
+ 284 0014 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 285              	@ 0 "" 2
+ 286              		.thumb
+ 287              		.syntax unified
+ 288 0018 67EE877A 		vmul.f32	s15, s15, s14
+ 289 001c D0ED006A 		vldr.32	s13, [r0]
+ 290 0020 90ED037A 		vldr.32	s14, [r0, #12]
+ 291 0024 67EEA67A 		vmul.f32	s15, s15, s13
+ 292              		.syntax unified
+ 293              	@ 47 "Source/Utility/dsp.h" 1
+ 294 0028 87FE677A 		vminnm.f32 s14, s14, s15
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 6
+
+
+ 295              	@ 0 "" 2
+ 296              		.thumb
+ 297              		.syntax unified
+ 298 002c 80ED037A 		vstr.32	s14, [r0, #12]
+ 299 0030 C0ED057A 		vstr.32	s15, [r0, #20]
+ 300 0034 7047     		bx	lr
+ 301              	.L29:
+ 302 0036 00BF     		.align	2
+ 303              	.L28:
+ 304 0038 CDCCCC3D 		.word	1036831949
+ 305 003c 6F12833A 		.word	981668463
+ 306 0040 CDCCFC40 		.word	1090309325
+ 308              		.section	.text._ZN7daisysp12ChorusEngine10SetDelayMsEf,"ax",%progbits
+ 309              		.align	1
+ 310              		.p2align 2,,3
+ 311              		.global	_ZN7daisysp12ChorusEngine10SetDelayMsEf
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 316              	_ZN7daisysp12ChorusEngine10SetDelayMsEf:
+ 317              		@ args = 0, pretend = 0, frame = 0
+ 318              		@ frame_needed = 0, uses_anonymous_args = 0
+ 319              		@ link register save eliminated.
+ 320 0000 9FED0A7A 		vldr.32	s14, .L31
+ 321 0004 DFED0A7A 		vldr.32	s15, .L31+4
+ 322              		.syntax unified
+ 323              	@ 36 "Source/Utility/dsp.h" 1
+ 324 0008 87FE800A 		vmaxnm.f32 s0, s15, s0
+ 325              	@ 0 "" 2
+ 326              		.thumb
+ 327              		.syntax unified
+ 328 000c 20EE070A 		vmul.f32	s0, s0, s14
+ 329 0010 90ED007A 		vldr.32	s14, [r0]
+ 330 0014 D0ED037A 		vldr.32	s15, [r0, #12]
+ 331 0018 20EE070A 		vmul.f32	s0, s0, s14
+ 332              		.syntax unified
+ 333              	@ 47 "Source/Utility/dsp.h" 1
+ 334 001c C7FEC07A 		vminnm.f32 s15, s15, s0
+ 335              	@ 0 "" 2
+ 336              		.thumb
+ 337              		.syntax unified
+ 338 0020 C0ED037A 		vstr.32	s15, [r0, #12]
+ 339 0024 80ED050A 		vstr.32	s0, [r0, #20]
+ 340 0028 7047     		bx	lr
+ 341              	.L32:
+ 342 002a 00BF     		.align	2
+ 343              	.L31:
+ 344 002c 6F12833A 		.word	981668463
+ 345 0030 CDCCCC3D 		.word	1036831949
+ 347              		.section	.text._ZN7daisysp12ChorusEngine11SetFeedbackEf,"ax",%progbits
+ 348              		.align	1
+ 349              		.p2align 2,,3
+ 350              		.global	_ZN7daisysp12ChorusEngine11SetFeedbackEf
+ 351              		.syntax unified
+ 352              		.thumb
+ 353              		.thumb_func
+ 355              	_ZN7daisysp12ChorusEngine11SetFeedbackEf:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 7
+
+
+ 356              		@ args = 0, pretend = 0, frame = 0
+ 357              		@ frame_needed = 0, uses_anonymous_args = 0
+ 358              		@ link register save eliminated.
+ 359 0000 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 360 0004 9FED047A 		vldr.32	s14, .L34
+ 361              		.syntax unified
+ 362              	@ 36 "Source/Utility/dsp.h" 1
+ 363 0008 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 364              	@ 0 "" 2
+ 365              	@ 47 "Source/Utility/dsp.h" 1
+ 366 000c 80FE670A 		vminnm.f32 s0, s0, s15
+ 367              	@ 0 "" 2
+ 368              		.thumb
+ 369              		.syntax unified
+ 370 0010 80ED040A 		vstr.32	s0, [r0, #16]
+ 371 0014 7047     		bx	lr
+ 372              	.L35:
+ 373 0016 00BF     		.align	2
+ 374              	.L34:
+ 375 0018 00000000 		.word	0
+ 377              		.section	.text._ZN7daisysp12ChorusEngine10ProcessLfoEv,"ax",%progbits
+ 378              		.align	1
+ 379              		.p2align 2,,3
+ 380              		.global	_ZN7daisysp12ChorusEngine10ProcessLfoEv
+ 381              		.syntax unified
+ 382              		.thumb
+ 383              		.thumb_func
+ 385              	_ZN7daisysp12ChorusEngine10ProcessLfoEv:
+ 386              		@ args = 0, pretend = 0, frame = 0
+ 387              		@ frame_needed = 0, uses_anonymous_args = 0
+ 388              		@ link register save eliminated.
+ 389 0000 90ED027A 		vldr.32	s14, [r0, #8]
+ 390 0004 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 391 0008 D0ED017A 		vldr.32	s15, [r0, #4]
+ 392 000c 77EE277A 		vadd.f32	s15, s14, s15
+ 393 0010 F4EEC07A 		vcmpe.f32	s15, s0
+ 394 0014 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 395 0018 0EDD     		ble	.L42
+ 396 001a 77EEC07A 		vsub.f32	s15, s15, s0
+ 397 001e B1EE477A 		vneg.f32	s14, s14
+ 398 0022 70EE677A 		vsub.f32	s15, s0, s15
+ 399 0026 90ED030A 		vldr.32	s0, [r0, #12]
+ 400 002a 80ED027A 		vstr.32	s14, [r0, #8]
+ 401 002e 27EE800A 		vmul.f32	s0, s15, s0
+ 402 0032 C0ED017A 		vstr.32	s15, [r0, #4]
+ 403 0036 7047     		bx	lr
+ 404              	.L42:
+ 405 0038 FFEE006A 		vmov.f32	s13, #-1.0e+0
+ 406 003c F4EEE67A 		vcmpe.f32	s15, s13
+ 407 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 408 0044 07D5     		bpl	.L43
+ 409 0046 77EE807A 		vadd.f32	s15, s15, s0
+ 410 004a B1EE477A 		vneg.f32	s14, s14
+ 411 004e 76EEE77A 		vsub.f32	s15, s13, s15
+ 412 0052 80ED027A 		vstr.32	s14, [r0, #8]
+ 413              	.L43:
+ 414 0056 90ED030A 		vldr.32	s0, [r0, #12]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 8
+
+
+ 415 005a C0ED017A 		vstr.32	s15, [r0, #4]
+ 416 005e 27EE800A 		vmul.f32	s0, s15, s0
+ 417 0062 7047     		bx	lr
+ 419              		.section	.text._ZN7daisysp6Chorus4InitEf,"ax",%progbits
+ 420              		.align	1
+ 421              		.p2align 2,,3
+ 422              		.global	_ZN7daisysp6Chorus4InitEf
+ 423              		.syntax unified
+ 424              		.thumb
+ 425              		.thumb_func
+ 427              	_ZN7daisysp6Chorus4InitEf:
+ 428              		@ args = 0, pretend = 0, frame = 0
+ 429              		@ frame_needed = 0, uses_anonymous_args = 0
+ 430 0000 70B5     		push	{r4, r5, r6, lr}
+ 431 0002 0446     		mov	r4, r0
+ 432 0004 4FF41652 		mov	r2, #9600
+ 433 0008 0021     		movs	r1, #0
+ 434 000a 2430     		adds	r0, r0, #36
+ 435 000c 04F50055 		add	r5, r4, #8192
+ 436 0010 2DED048B 		vpush.64	{d8, d9}
+ 437 0014 B0EE408A 		vmov.f32	s16, s0
+ 438 0018 84ED000A 		vstr.32	s0, [r4]
+ 439 001c FFF7FEFF 		bl	memset
+ 440 0020 DFED546A 		vldr.32	s13, .L54
+ 441 0024 9FED547A 		vldr.32	s14, .L54+4
+ 442 0028 0020     		movs	r0, #0
+ 443              		.syntax unified
+ 444              	@ 36 "Source/Utility/dsp.h" 1
+ 445 002a 87FE267A 		vmaxnm.f32 s14, s14, s13
+ 446              	@ 0 "" 2
+ 447              		.thumb
+ 448              		.syntax unified
+ 449 002e DFED536A 		vldr.32	s13, .L54+8
+ 450 0032 0121     		movs	r1, #1
+ 451 0034 DFED527A 		vldr.32	s15, .L54+12
+ 452 0038 05F2A456 		addw	r6, r5, #1444
+ 453 003c C6EE888A 		vdiv.f32	s17, s13, s16
+ 454 0040 9FED509A 		vldr.32	s18, .L54+16
+ 455 0044 9FED506A 		vldr.32	s12, .L54+20
+ 456 0048 0023     		movs	r3, #0
+ 457 004a 504A     		ldr	r2, .L54+24
+ 458 004c 05F2A455 		addw	r5, r5, #1444
+ 459 0050 6360     		str	r3, [r4, #4]	@ float
+ 460 0052 2261     		str	r2, [r4, #16]	@ float
+ 461 0054 4FF41652 		mov	r2, #9600
+ 462 0058 27EE277A 		vmul.f32	s14, s14, s15
+ 463 005c D4ED027A 		vldr.32	s15, [r4, #8]
+ 464 0060 F5EEC07A 		vcmpe.f32	s15, #0
+ 465 0064 DFED4A7A 		vldr.32	s15, .L54+28
+ 466 0068 27EE087A 		vmul.f32	s14, s14, s16
+ 467              		.syntax unified
+ 468              	@ 36 "Source/Utility/dsp.h" 1
+ 469 006c C7FE897A 		vmaxnm.f32 s15, s15, s18
+ 470              	@ 0 "" 2
+ 471              		.thumb
+ 472              		.syntax unified
+ 473 0070 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 9
+
+
+ 474 0074 84ED057A 		vstr.32	s14, [r4, #20]
+ 475              		.syntax unified
+ 476              	@ 47 "Source/Utility/dsp.h" 1
+ 477 0078 C7FEC67A 		vminnm.f32 s15, s15, s12
+ 478              	@ 0 "" 2
+ 479              		.thumb
+ 480              		.syntax unified
+ 481 007c 27EE277A 		vmul.f32	s14, s14, s15
+ 482 0080 B5EE006A 		vmov.f32	s12, #2.5e-1
+ 483 0084 FDEE007A 		vmov.f32	s15, #-2.5e-1
+ 484 0088 48BF     		it	mi
+ 485 008a F1EE686A 		vnegmi.f32	s13, s17
+ 486 008e 84ED037A 		vstr.32	s14, [r4, #12]
+ 487 0092 58BF     		it	pl
+ 488 0094 F0EE686A 		vmovpl.f32	s13, s17
+ 489              		.syntax unified
+ 490              	@ 36 "Source/Utility/dsp.h" 1
+ 491 0098 C6FEA77A 		vmaxnm.f32 s15, s13, s15
+ 492              	@ 0 "" 2
+ 493              		.thumb
+ 494              		.syntax unified
+ 495 009c C4E90701 		strd	r0, r1, [r4, #28]
+ 496 00a0 42F2C850 		movw	r0, #9672
+ 497 00a4 0021     		movs	r1, #0
+ 498              		.syntax unified
+ 499              	@ 47 "Source/Utility/dsp.h" 1
+ 500 00a6 C7FEC67A 		vminnm.f32 s15, s15, s12
+ 501              	@ 0 "" 2
+ 502              		.thumb
+ 503              		.syntax unified
+ 504 00aa 2044     		add	r0, r0, r4
+ 505 00ac C4ED027A 		vstr.32	s15, [r4, #8]
+ 506 00b0 86ED008A 		vstr.32	s16, [r6]
+ 507 00b4 04F58044 		add	r4, r4, #16384
+ 508 00b8 FFF7FEFF 		bl	memset
+ 509 00bc DFED307A 		vldr.32	s15, .L54+12
+ 510 00c0 DFED2C6A 		vldr.32	s13, .L54
+ 511 00c4 0023     		movs	r3, #0
+ 512 00c6 9FED2C7A 		vldr.32	s14, .L54+4
+ 513 00ca 0122     		movs	r2, #1
+ 514              		.syntax unified
+ 515              	@ 36 "Source/Utility/dsp.h" 1
+ 516 00cc 87FE267A 		vmaxnm.f32 s14, s14, s13
+ 517              	@ 0 "" 2
+ 518              		.thumb
+ 519              		.syntax unified
+ 520 00d0 27EE277A 		vmul.f32	s14, s14, s15
+ 521 00d4 D6ED026A 		vldr.32	s13, [r6, #8]
+ 522 00d8 EB61     		str	r3, [r5, #28]
+ 523 00da B5EE005A 		vmov.f32	s10, #2.5e-1
+ 524 00de F4EEC96A 		vcmpe.f32	s13, s18
+ 525 00e2 2A4B     		ldr	r3, .L54+24
+ 526 00e4 67EE087A 		vmul.f32	s15, s14, s16
+ 527 00e8 2A62     		str	r2, [r5, #32]
+ 528 00ea 9FED267A 		vldr.32	s14, .L54+16
+ 529 00ee F7EE005A 		vmov.f32	s11, #1.0e+0
+ 530 00f2 9FED256A 		vldr.32	s12, .L54+20
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 10
+
+
+ 531 00f6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 532 00fa C6ED057A 		vstr.32	s15, [r6, #20]
+ 533 00fe 04F53560 		add	r0, r4, #2896
+ 534 0102 DFED236A 		vldr.32	s13, .L54+28
+ 535 0106 04F64832 		addw	r2, r4, #2888
+ 536              		.syntax unified
+ 537              	@ 36 "Source/Utility/dsp.h" 1
+ 538 010a C6FE876A 		vmaxnm.f32 s13, s13, s14
+ 539              	@ 0 "" 2
+ 540              	@ 47 "Source/Utility/dsp.h" 1
+ 541 010e C6FEC66A 		vminnm.f32 s13, s13, s12
+ 542              	@ 0 "" 2
+ 543              		.thumb
+ 544              		.syntax unified
+ 545 0112 67EEA67A 		vmul.f32	s15, s15, s13
+ 546 0116 3361     		str	r3, [r6, #16]	@ float
+ 547 0118 04F64C33 		addw	r3, r4, #2892
+ 548 011c 86ED019A 		vstr.32	s18, [r6, #4]
+ 549 0120 48BF     		it	mi
+ 550 0122 F1EE688A 		vnegmi.f32	s17, s17
+ 551 0126 4FF07C51 		mov	r1, #1056964608
+ 552 012a C5ED037A 		vstr.32	s15, [r5, #12]
+ 553 012e BDEE006A 		vmov.f32	s12, #-2.5e-1
+ 554              		.syntax unified
+ 555              	@ 36 "Source/Utility/dsp.h" 1
+ 556 0132 C8FE867A 		vmaxnm.f32 s15, s17, s12
+ 557              	@ 0 "" 2
+ 558              	@ 36 "Source/Utility/dsp.h" 1
+ 559 0136 85FE076A 		vmaxnm.f32 s12, s10, s14
+ 560              	@ 0 "" 2
+ 561              	@ 47 "Source/Utility/dsp.h" 1
+ 562 013a C7FEC57A 		vminnm.f32 s15, s15, s10
+ 563              	@ 0 "" 2
+ 564              	@ 47 "Source/Utility/dsp.h" 1
+ 565 013e 86FE656A 		vminnm.f32 s12, s12, s11
+ 566              	@ 0 "" 2
+ 567              		.thumb
+ 568              		.syntax unified
+ 569 0142 C5ED027A 		vstr.32	s15, [r5, #8]
+ 570 0146 F6EE086A 		vmov.f32	s13, #7.5e-1
+ 571 014a 83ED006A 		vstr.32	s12, [r3]
+ 572 014e 04F65833 		addw	r3, r4, #2904
+ 573 0152 04F65434 		addw	r4, r4, #2900
+ 574              		.syntax unified
+ 575              	@ 36 "Source/Utility/dsp.h" 1
+ 576 0156 C6FE877A 		vmaxnm.f32 s15, s13, s14
+ 577              	@ 0 "" 2
+ 578              		.thumb
+ 579              		.syntax unified
+ 580 015a BDEC048B 		vldm	sp!, {d8-d9}
+ 581              		.syntax unified
+ 582              	@ 47 "Source/Utility/dsp.h" 1
+ 583 015e C7FEE57A 		vminnm.f32 s15, s15, s11
+ 584              	@ 0 "" 2
+ 585              		.thumb
+ 586              		.syntax unified
+ 587 0162 C0ED007A 		vstr.32	s15, [r0]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 11
+
+
+ 588 0166 1160     		str	r1, [r2]	@ float
+ 589 0168 83ED007A 		vstr.32	s14, [r3]
+ 590 016c 84ED007A 		vstr.32	s14, [r4]
+ 591 0170 70BD     		pop	{r4, r5, r6, pc}
+ 592              	.L55:
+ 593 0172 00BF     		.align	2
+ 594              	.L54:
+ 595 0174 CDCCC040 		.word	1086377165
+ 596 0178 CDCCCC3D 		.word	1036831949
+ 597 017c 9A99993F 		.word	1067030938
+ 598 0180 6F12833A 		.word	981668463
+ 599 0184 00000000 		.word	0
+ 600 0188 7B146E3F 		.word	1064178811
+ 601 018c CDCC4C3E 		.word	1045220557
+ 602 0190 6666663F 		.word	1063675494
+ 604              		.section	.text._ZN7daisysp6Chorus7ProcessEf,"ax",%progbits
+ 605              		.align	1
+ 606              		.p2align 2,,3
+ 607              		.global	_ZN7daisysp6Chorus7ProcessEf
+ 608              		.syntax unified
+ 609              		.thumb
+ 610              		.thumb_func
+ 612              	_ZN7daisysp6Chorus7ProcessEf:
+ 613              		@ args = 0, pretend = 0, frame = 0
+ 614              		@ frame_needed = 0, uses_anonymous_args = 0
+ 615 0000 00F58042 		add	r2, r0, #16384
+ 616 0004 0023     		movs	r3, #0
+ 617 0006 B7EE006A 		vmov.f32	s12, #1.0e+0
+ 618 000a 02F65831 		addw	r1, r2, #2904
+ 619 000e F0EE406A 		vmov.f32	s13, s0
+ 620 0012 F0B5     		push	{r4, r5, r6, r7, lr}
+ 621 0014 02F65434 		addw	r4, r2, #2900
+ 622 0018 2360     		str	r3, [r4]	@ float
+ 623 001a 0B60     		str	r3, [r1]	@ float
+ 624 001c 90ED027A 		vldr.32	s14, [r0, #8]
+ 625 0020 D0ED017A 		vldr.32	s15, [r0, #4]
+ 626 0024 77EE277A 		vadd.f32	s15, s14, s15
+ 627 0028 F4EEC67A 		vcmpe.f32	s15, s12
+ 628 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 629 0030 40F3F280 		ble	.L68
+ 630 0034 77EEC67A 		vsub.f32	s15, s15, s12
+ 631 0038 B1EE477A 		vneg.f32	s14, s14
+ 632 003c 76EE677A 		vsub.f32	s15, s12, s15
+ 633 0040 80ED027A 		vstr.32	s14, [r0, #8]
+ 634              	.L67:
+ 635 0044 C0ED017A 		vstr.32	s15, [r0, #4]
+ 636              	.L59:
+ 637 0048 90ED037A 		vldr.32	s14, [r0, #12]
+ 638 004c 40F65F13 		movw	r3, #2399
+ 639 0050 90ED056A 		vldr.32	s12, [r0, #20]
+ 640 0054 4FF41665 		mov	r5, #2400
+ 641 0058 C169     		ldr	r1, [r0, #28]
+ 642 005a B7EE005A 		vmov.f32	s10, #1.0e+0
+ 643 005e A7EE876A 		vfma.f32	s12, s15, s14
+ 644 0062 90ED043A 		vldr.32	s6, [r0, #16]
+ 645 0066 00EB810E 		add	lr, r0, r1, lsl #2
+ 646 006a F6EE003A 		vmov.f32	s7, #5.0e-1
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 12
+
+
+ 647 006e 9FED7E7A 		vldr.32	s14, .L69
+ 648 0072 B0EE470A 		vmov.f32	s0, s14
+ 649 0076 FDEEC65A 		vcvt.s32.f32	s11, s12
+ 650 007a 15EE904A 		vmov	r4, s11	@ int
+ 651 007e F8EEE55A 		vcvt.f32.s32	s11, s11
+ 652 0082 A342     		cmp	r3, r4
+ 653 0084 36EE656A 		vsub.f32	s12, s12, s11
+ 654 0088 28BF     		it	cs
+ 655 008a 2346     		movcs	r3, r4
+ 656 008c 774C     		ldr	r4, .L69+4
+ 657 008e 0362     		str	r3, [r0, #32]
+ 658 0090 0B44     		add	r3, r3, r1
+ 659 0092 80ED066A 		vstr.32	s12, [r0, #24]
+ 660 0096 01F65F11 		addw	r1, r1, #2399
+ 661 009a A4FB0376 		umull	r7, r6, r4, r3
+ 662 009e 03F1010C 		add	ip, r3, #1
+ 663 00a2 360A     		lsrs	r6, r6, #8
+ 664 00a4 05FB1633 		mls	r3, r5, r6, r3
+ 665 00a8 00EB8303 		add	r3, r0, r3, lsl #2
+ 666 00ac D3ED097A 		vldr.32	s15, [r3, #36]
+ 667 00b0 A4FB0C63 		umull	r6, r3, r4, ip
+ 668 00b4 A4FB0164 		umull	r6, r4, r4, r1
+ 669 00b8 1B0A     		lsrs	r3, r3, #8
+ 670 00ba 240A     		lsrs	r4, r4, #8
+ 671 00bc 05FB13CC 		mls	ip, r5, r3, ip
+ 672 00c0 02F64C33 		addw	r3, r2, #2892
+ 673 00c4 05FB1414 		mls	r4, r5, r4, r1
+ 674 00c8 00F50051 		add	r1, r0, #8192
+ 675 00cc 00EB8C0C 		add	ip, r0, ip, lsl #2
+ 676 00d0 D3ED004A 		vldr.32	s9, [r3]
+ 677 00d4 01F5B563 		add	r3, r1, #1448
+ 678 00d8 DCED095A 		vldr.32	s11, [ip, #36]
+ 679 00dc 35EE644A 		vsub.f32	s8, s10, s9
+ 680 00e0 75EEE75A 		vsub.f32	s11, s11, s15
+ 681 00e4 E6EE257A 		vfma.f32	s15, s12, s11
+ 682 00e8 B0EE666A 		vmov.f32	s12, s13
+ 683 00ec A7EE836A 		vfma.f32	s12, s15, s6
+ 684 00f0 76EEA77A 		vadd.f32	s15, s13, s15
+ 685 00f4 67EEA37A 		vmul.f32	s15, s15, s7
+ 686 00f8 8EED096A 		vstr.32	s12, [lr, #36]
+ 687 00fc C461     		str	r4, [r0, #28]
+ 688 00fe 01F2AC50 		addw	r0, r1, #1452
+ 689 0102 A7EE840A 		vfma.f32	s0, s15, s8
+ 690 0106 A7EEA47A 		vfma.f32	s14, s15, s9
+ 691 010a 90ED006A 		vldr.32	s12, [r0]
+ 692 010e D3ED007A 		vldr.32	s15, [r3]
+ 693 0112 76EE277A 		vadd.f32	s15, s12, s15
+ 694 0116 F4EEC57A 		vcmpe.f32	s15, s10
+ 695 011a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 696 011e 40F38E80 		ble	.L65
+ 697 0122 77EEC57A 		vsub.f32	s15, s15, s10
+ 698 0126 B1EE466A 		vneg.f32	s12, s12
+ 699 012a 75EE677A 		vsub.f32	s15, s10, s15
+ 700 012e C3ED007A 		vstr.32	s15, [r3]
+ 701 0132 80ED006A 		vstr.32	s12, [r0]
+ 702              	.L62:
+ 703 0136 01F5B665 		add	r5, r1, #1456
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 13
+
+
+ 704 013a 01F5B760 		add	r0, r1, #1464
+ 705 013e 40F65F13 		movw	r3, #2399
+ 706 0142 01F2BC54 		addw	r4, r1, #1468
+ 707 0146 D5ED005A 		vldr.32	s11, [r5]
+ 708 014a 02F53566 		add	r6, r2, #2896
+ 709 014e 90ED006A 		vldr.32	s12, [r0]
+ 710 0152 4FF4166E 		mov	lr, #2400
+ 711 0156 D1F8C005 		ldr	r0, [r1, #1472]
+ 712 015a B6EE004A 		vmov.f32	s8, #5.0e-1
+ 713 015e A5EEA76A 		vfma.f32	s12, s11, s15
+ 714 0162 D6ED004A 		vldr.32	s9, [r6]
+ 715 0166 F7EE005A 		vmov.f32	s11, #1.0e+0
+ 716 016a 75EEE45A 		vsub.f32	s11, s11, s9
+ 717 016e FDEEC67A 		vcvt.s32.f32	s15, s12
+ 718 0172 17EE905A 		vmov	r5, s15	@ int
+ 719 0176 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 720 017a AB42     		cmp	r3, r5
+ 721 017c 76EE677A 		vsub.f32	s15, s12, s15
+ 722 0180 28BF     		it	cs
+ 723 0182 2B46     		movcs	r3, r5
+ 724 0184 394D     		ldr	r5, .L69+4
+ 725 0186 C4ED007A 		vstr.32	s15, [r4]
+ 726 018a C1F8C435 		str	r3, [r1, #1476]
+ 727 018e 0344     		add	r3, r3, r0
+ 728 0190 A5FB0376 		umull	r7, r6, r5, r3
+ 729 0194 03F1010C 		add	ip, r3, #1
+ 730 0198 360A     		lsrs	r6, r6, #8
+ 731 019a 0EFB1633 		mls	r3, lr, r6, r3
+ 732 019e 04EB8303 		add	r3, r4, r3, lsl #2
+ 733 01a2 93ED036A 		vldr.32	s12, [r3, #12]
+ 734 01a6 A5FB0C63 		umull	r6, r3, r5, ip
+ 735 01aa 1B0A     		lsrs	r3, r3, #8
+ 736 01ac 0EFB13CC 		mls	ip, lr, r3, ip
+ 737 01b0 04EB8C0C 		add	ip, r4, ip, lsl #2
+ 738 01b4 04EB8004 		add	r4, r4, r0, lsl #2
+ 739 01b8 00F65F10 		addw	r0, r0, #2399
+ 740 01bc 9CED035A 		vldr.32	s10, [ip, #12]
+ 741 01c0 A5FB0053 		umull	r5, r3, r5, r0
+ 742 01c4 01F2B455 		addw	r5, r1, #1460
+ 743 01c8 35EE465A 		vsub.f32	s10, s10, s12
+ 744 01cc 1B0A     		lsrs	r3, r3, #8
+ 745 01ce A7EE856A 		vfma.f32	s12, s15, s10
+ 746 01d2 0EFB1300 		mls	r0, lr, r3, r0
+ 747 01d6 02F64833 		addw	r3, r2, #2888
+ 748 01da 93ED005A 		vldr.32	s10, [r3]
+ 749 01de 02F65433 		addw	r3, r2, #2900
+ 750 01e2 02F65832 		addw	r2, r2, #2904
+ 751 01e6 76EE867A 		vadd.f32	s15, s13, s12
+ 752 01ea 67EE847A 		vmul.f32	s15, s15, s8
+ 753 01ee A5EEA70A 		vfma.f32	s0, s11, s15
+ 754 01f2 A4EEA77A 		vfma.f32	s14, s9, s15
+ 755 01f6 D5ED007A 		vldr.32	s15, [r5]
+ 756 01fa E6EE276A 		vfma.f32	s13, s12, s15
+ 757 01fe 20EE050A 		vmul.f32	s0, s0, s10
+ 758 0202 27EE057A 		vmul.f32	s14, s14, s10
+ 759 0206 C4ED036A 		vstr.32	s13, [r4, #12]
+ 760 020a C1F8C005 		str	r0, [r1, #1472]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 14
+
+
+ 761 020e 83ED000A 		vstr.32	s0, [r3]
+ 762 0212 82ED007A 		vstr.32	s14, [r2]
+ 763 0216 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 764              	.L68:
+ 765 0218 FFEE005A 		vmov.f32	s11, #-1.0e+0
+ 766 021c F4EEE57A 		vcmpe.f32	s15, s11
+ 767 0220 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 768 0224 7FF50EAF 		bpl	.L67
+ 769 0228 77EE867A 		vadd.f32	s15, s15, s12
+ 770 022c B1EE477A 		vneg.f32	s14, s14
+ 771 0230 75EEE77A 		vsub.f32	s15, s11, s15
+ 772 0234 80ED027A 		vstr.32	s14, [r0, #8]
+ 773 0238 C0ED017A 		vstr.32	s15, [r0, #4]
+ 774 023c 04E7     		b	.L59
+ 775              	.L65:
+ 776 023e FFEE005A 		vmov.f32	s11, #-1.0e+0
+ 777 0242 F4EEE57A 		vcmpe.f32	s15, s11
+ 778 0246 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 779 024a 02D4     		bmi	.L63
+ 780 024c C3ED007A 		vstr.32	s15, [r3]
+ 781 0250 71E7     		b	.L62
+ 782              	.L63:
+ 783 0252 77EE857A 		vadd.f32	s15, s15, s10
+ 784 0256 B1EE466A 		vneg.f32	s12, s12
+ 785 025a 75EEE77A 		vsub.f32	s15, s11, s15
+ 786 025e C3ED007A 		vstr.32	s15, [r3]
+ 787 0262 80ED006A 		vstr.32	s12, [r0]
+ 788 0266 66E7     		b	.L62
+ 789              	.L70:
+ 790              		.align	2
+ 791              	.L69:
+ 792 0268 00000000 		.word	0
+ 793 026c B5814E1B 		.word	458129845
+ 795              		.section	.text._ZN7daisysp6Chorus7GetLeftEv,"ax",%progbits
+ 796              		.align	1
+ 797              		.p2align 2,,3
+ 798              		.global	_ZN7daisysp6Chorus7GetLeftEv
+ 799              		.syntax unified
+ 800              		.thumb
+ 801              		.thumb_func
+ 803              	_ZN7daisysp6Chorus7GetLeftEv:
+ 804              		@ args = 0, pretend = 0, frame = 0
+ 805              		@ frame_needed = 0, uses_anonymous_args = 0
+ 806              		@ link register save eliminated.
+ 807 0000 44F65433 		movw	r3, #19284
+ 808 0004 0344     		add	r3, r3, r0
+ 809 0006 93ED000A 		vldr.32	s0, [r3]
+ 810 000a 7047     		bx	lr
+ 812              		.section	.text._ZN7daisysp6Chorus8GetRightEv,"ax",%progbits
+ 813              		.align	1
+ 814              		.p2align 2,,3
+ 815              		.global	_ZN7daisysp6Chorus8GetRightEv
+ 816              		.syntax unified
+ 817              		.thumb
+ 818              		.thumb_func
+ 820              	_ZN7daisysp6Chorus8GetRightEv:
+ 821              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 15
+
+
+ 822              		@ frame_needed = 0, uses_anonymous_args = 0
+ 823              		@ link register save eliminated.
+ 824 0000 44F65833 		movw	r3, #19288
+ 825 0004 0344     		add	r3, r3, r0
+ 826 0006 93ED000A 		vldr.32	s0, [r3]
+ 827 000a 7047     		bx	lr
+ 829              		.section	.text._ZN7daisysp6Chorus6SetPanEff,"ax",%progbits
+ 830              		.align	1
+ 831              		.p2align 2,,3
+ 832              		.global	_ZN7daisysp6Chorus6SetPanEff
+ 833              		.syntax unified
+ 834              		.thumb
+ 835              		.thumb_func
+ 837              	_ZN7daisysp6Chorus6SetPanEff:
+ 838              		@ args = 0, pretend = 0, frame = 0
+ 839              		@ frame_needed = 0, uses_anonymous_args = 0
+ 840              		@ link register save eliminated.
+ 841 0000 00F58040 		add	r0, r0, #16384
+ 842 0004 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 843 0008 9FED097A 		vldr.32	s14, .L74
+ 844 000c 00F64C33 		addw	r3, r0, #2892
+ 845 0010 00F53560 		add	r0, r0, #2896
+ 846              		.syntax unified
+ 847              	@ 36 "Source/Utility/dsp.h" 1
+ 848 0014 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 849              	@ 0 "" 2
+ 850              	@ 36 "Source/Utility/dsp.h" 1
+ 851 0018 C0FE870A 		vmaxnm.f32 s1, s1, s14
+ 852              	@ 0 "" 2
+ 853              	@ 47 "Source/Utility/dsp.h" 1
+ 854 001c 80FE670A 		vminnm.f32 s0, s0, s15
+ 855              	@ 0 "" 2
+ 856              	@ 47 "Source/Utility/dsp.h" 1
+ 857 0020 C0FEE70A 		vminnm.f32 s1, s1, s15
+ 858              	@ 0 "" 2
+ 859              		.thumb
+ 860              		.syntax unified
+ 861 0024 83ED000A 		vstr.32	s0, [r3]
+ 862 0028 C0ED000A 		vstr.32	s1, [r0]
+ 863 002c 7047     		bx	lr
+ 864              	.L75:
+ 865 002e 00BF     		.align	2
+ 866              	.L74:
+ 867 0030 00000000 		.word	0
+ 869              		.section	.text._ZN7daisysp6Chorus6SetPanEf,"ax",%progbits
+ 870              		.align	1
+ 871              		.p2align 2,,3
+ 872              		.global	_ZN7daisysp6Chorus6SetPanEf
+ 873              		.syntax unified
+ 874              		.thumb
+ 875              		.thumb_func
+ 877              	_ZN7daisysp6Chorus6SetPanEf:
+ 878              		@ args = 0, pretend = 0, frame = 0
+ 879              		@ frame_needed = 0, uses_anonymous_args = 0
+ 880              		@ link register save eliminated.
+ 881 0000 00F58040 		add	r0, r0, #16384
+ 882 0004 F7EE007A 		vmov.f32	s15, #1.0e+0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 16
+
+
+ 883 0008 9FED077A 		vldr.32	s14, .L77
+ 884 000c 00F64C33 		addw	r3, r0, #2892
+ 885 0010 00F53560 		add	r0, r0, #2896
+ 886              		.syntax unified
+ 887              	@ 36 "Source/Utility/dsp.h" 1
+ 888 0014 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 889              	@ 0 "" 2
+ 890              	@ 47 "Source/Utility/dsp.h" 1
+ 891 0018 80FE670A 		vminnm.f32 s0, s0, s15
+ 892              	@ 0 "" 2
+ 893              		.thumb
+ 894              		.syntax unified
+ 895 001c 83ED000A 		vstr.32	s0, [r3]
+ 896 0020 80ED000A 		vstr.32	s0, [r0]
+ 897 0024 7047     		bx	lr
+ 898              	.L78:
+ 899 0026 00BF     		.align	2
+ 900              	.L77:
+ 901 0028 00000000 		.word	0
+ 903              		.section	.text._ZN7daisysp6Chorus11SetLfoDepthEff,"ax",%progbits
+ 904              		.align	1
+ 905              		.p2align 2,,3
+ 906              		.global	_ZN7daisysp6Chorus11SetLfoDepthEff
+ 907              		.syntax unified
+ 908              		.thumb
+ 909              		.thumb_func
+ 911              	_ZN7daisysp6Chorus11SetLfoDepthEff:
+ 912              		@ args = 0, pretend = 0, frame = 0
+ 913              		@ frame_needed = 0, uses_anonymous_args = 0
+ 914              		@ link register save eliminated.
+ 915 0000 42F2A453 		movw	r3, #9636
+ 916 0004 90ED057A 		vldr.32	s14, [r0, #20]
+ 917 0008 9FED0B6A 		vldr.32	s12, .L80
+ 918 000c 0344     		add	r3, r3, r0
+ 919 000e DFED0B6A 		vldr.32	s13, .L80+4
+ 920              		.syntax unified
+ 921              	@ 36 "Source/Utility/dsp.h" 1
+ 922 0012 80FE060A 		vmaxnm.f32 s0, s0, s12
+ 923              	@ 0 "" 2
+ 924              		.thumb
+ 925              		.syntax unified
+ 926 0016 D3ED057A 		vldr.32	s15, [r3, #20]
+ 927              		.syntax unified
+ 928              	@ 47 "Source/Utility/dsp.h" 1
+ 929 001a 80FE660A 		vminnm.f32 s0, s0, s13
+ 930              	@ 0 "" 2
+ 931              	@ 36 "Source/Utility/dsp.h" 1
+ 932 001e C0FE860A 		vmaxnm.f32 s1, s1, s12
+ 933              	@ 0 "" 2
+ 934              		.thumb
+ 935              		.syntax unified
+ 936 0022 27EE000A 		vmul.f32	s0, s14, s0
+ 937              		.syntax unified
+ 938              	@ 47 "Source/Utility/dsp.h" 1
+ 939 0026 C0FEE60A 		vminnm.f32 s1, s1, s13
+ 940              	@ 0 "" 2
+ 941              		.thumb
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 17
+
+
+ 942              		.syntax unified
+ 943 002a 67EEA00A 		vmul.f32	s1, s15, s1
+ 944 002e 80ED030A 		vstr.32	s0, [r0, #12]
+ 945 0032 C3ED030A 		vstr.32	s1, [r3, #12]
+ 946 0036 7047     		bx	lr
+ 947              	.L81:
+ 948              		.align	2
+ 949              	.L80:
+ 950 0038 00000000 		.word	0
+ 951 003c 7B146E3F 		.word	1064178811
+ 953              		.section	.text._ZN7daisysp6Chorus11SetLfoDepthEf,"ax",%progbits
+ 954              		.align	1
+ 955              		.p2align 2,,3
+ 956              		.global	_ZN7daisysp6Chorus11SetLfoDepthEf
+ 957              		.syntax unified
+ 958              		.thumb
+ 959              		.thumb_func
+ 961              	_ZN7daisysp6Chorus11SetLfoDepthEf:
+ 962              		@ args = 0, pretend = 0, frame = 0
+ 963              		@ frame_needed = 0, uses_anonymous_args = 0
+ 964              		@ link register save eliminated.
+ 965 0000 42F2A453 		movw	r3, #9636
+ 966 0004 9FED0A7A 		vldr.32	s14, .L83
+ 967 0008 DFED0A7A 		vldr.32	s15, .L83+4
+ 968 000c 0344     		add	r3, r3, r0
+ 969              		.syntax unified
+ 970              	@ 36 "Source/Utility/dsp.h" 1
+ 971 000e 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 972              	@ 0 "" 2
+ 973              		.thumb
+ 974              		.syntax unified
+ 975 0012 90ED057A 		vldr.32	s14, [r0, #20]
+ 976              		.syntax unified
+ 977              	@ 47 "Source/Utility/dsp.h" 1
+ 978 0016 80FE670A 		vminnm.f32 s0, s0, s15
+ 979              	@ 0 "" 2
+ 980              		.thumb
+ 981              		.syntax unified
+ 982 001a D3ED057A 		vldr.32	s15, [r3, #20]
+ 983 001e 27EE007A 		vmul.f32	s14, s14, s0
+ 984 0022 27EE800A 		vmul.f32	s0, s15, s0
+ 985 0026 80ED037A 		vstr.32	s14, [r0, #12]
+ 986 002a 83ED030A 		vstr.32	s0, [r3, #12]
+ 987 002e 7047     		bx	lr
+ 988              	.L84:
+ 989              		.align	2
+ 990              	.L83:
+ 991 0030 00000000 		.word	0
+ 992 0034 7B146E3F 		.word	1064178811
+ 994              		.section	.text._ZN7daisysp6Chorus10SetLfoFreqEff,"ax",%progbits
+ 995              		.align	1
+ 996              		.p2align 2,,3
+ 997              		.global	_ZN7daisysp6Chorus10SetLfoFreqEff
+ 998              		.syntax unified
+ 999              		.thumb
+ 1000              		.thumb_func
+ 1002              	_ZN7daisysp6Chorus10SetLfoFreqEff:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 18
+
+
+ 1003              		@ args = 0, pretend = 0, frame = 0
+ 1004              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1005              		@ link register save eliminated.
+ 1006 0000 F1EE007A 		vmov.f32	s15, #4.0e+0
+ 1007 0004 D0ED006A 		vldr.32	s13, [r0]
+ 1008 0008 90ED027A 		vldr.32	s14, [r0, #8]
+ 1009 000c 00F50053 		add	r3, r0, #8192
+ 1010 0010 BDEE006A 		vmov.f32	s12, #-2.5e-1
+ 1011 0014 20EE270A 		vmul.f32	s0, s0, s15
+ 1012 0018 03F2A452 		addw	r2, r3, #1444
+ 1013 001c B5EEC07A 		vcmpe.f32	s14, #0
+ 1014 0020 03F2A453 		addw	r3, r3, #1444
+ 1015 0024 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 1016 0028 C0EE267A 		vdiv.f32	s15, s0, s13
+ 1017 002c F1EE006A 		vmov.f32	s13, #4.0e+0
+ 1018 0030 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1019 0034 60EEA60A 		vmul.f32	s1, s1, s13
+ 1020 0038 D2ED006A 		vldr.32	s13, [r2]
+ 1021 003c 48BF     		it	mi
+ 1022 003e F1EE677A 		vnegmi.f32	s15, s15
+ 1023              		.syntax unified
+ 1024              	@ 36 "Source/Utility/dsp.h" 1
+ 1025 0042 C7FE867A 		vmaxnm.f32 s15, s15, s12
+ 1026              	@ 0 "" 2
+ 1027              	@ 47 "Source/Utility/dsp.h" 1
+ 1028 0046 C7FEC77A 		vminnm.f32 s15, s15, s14
+ 1029              	@ 0 "" 2
+ 1030              		.thumb
+ 1031              		.syntax unified
+ 1032 004a C0ED027A 		vstr.32	s15, [r0, #8]
+ 1033 004e C0EEA67A 		vdiv.f32	s15, s1, s13
+ 1034 0052 92ED027A 		vldr.32	s14, [r2, #8]
+ 1035 0056 B5EEC07A 		vcmpe.f32	s14, #0
+ 1036 005a FDEE006A 		vmov.f32	s13, #-2.5e-1
+ 1037 005e B5EE007A 		vmov.f32	s14, #2.5e-1
+ 1038 0062 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1039 0066 48BF     		it	mi
+ 1040 0068 F1EE677A 		vnegmi.f32	s15, s15
+ 1041              		.syntax unified
+ 1042              	@ 36 "Source/Utility/dsp.h" 1
+ 1043 006c C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 1044              	@ 0 "" 2
+ 1045              	@ 47 "Source/Utility/dsp.h" 1
+ 1046 0070 C7FEC77A 		vminnm.f32 s15, s15, s14
+ 1047              	@ 0 "" 2
+ 1048              		.thumb
+ 1049              		.syntax unified
+ 1050 0074 C3ED027A 		vstr.32	s15, [r3, #8]
+ 1051 0078 7047     		bx	lr
+ 1053 007a 00BF     		.section	.text._ZN7daisysp6Chorus10SetLfoFreqEf,"ax",%progbits
+ 1054              		.align	1
+ 1055              		.p2align 2,,3
+ 1056              		.global	_ZN7daisysp6Chorus10SetLfoFreqEf
+ 1057              		.syntax unified
+ 1058              		.thumb
+ 1059              		.thumb_func
+ 1061              	_ZN7daisysp6Chorus10SetLfoFreqEf:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 19
+
+
+ 1062              		@ args = 0, pretend = 0, frame = 0
+ 1063              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1064              		@ link register save eliminated.
+ 1065 0000 F1EE007A 		vmov.f32	s15, #4.0e+0
+ 1066 0004 D0ED006A 		vldr.32	s13, [r0]
+ 1067 0008 90ED027A 		vldr.32	s14, [r0, #8]
+ 1068 000c 00F50053 		add	r3, r0, #8192
+ 1069 0010 20EE270A 		vmul.f32	s0, s0, s15
+ 1070 0014 03F2A452 		addw	r2, r3, #1444
+ 1071 0018 B5EEC07A 		vcmpe.f32	s14, #0
+ 1072 001c 03F2A453 		addw	r3, r3, #1444
+ 1073 0020 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 1074 0024 C0EE267A 		vdiv.f32	s15, s0, s13
+ 1075 0028 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1076 002c FDEE006A 		vmov.f32	s13, #-2.5e-1
+ 1077 0030 48BF     		it	mi
+ 1078 0032 F1EE677A 		vnegmi.f32	s15, s15
+ 1079              		.syntax unified
+ 1080              	@ 36 "Source/Utility/dsp.h" 1
+ 1081 0036 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 1082              	@ 0 "" 2
+ 1083              		.thumb
+ 1084              		.syntax unified
+ 1085 003a D2ED006A 		vldr.32	s13, [r2]
+ 1086              		.syntax unified
+ 1087              	@ 47 "Source/Utility/dsp.h" 1
+ 1088 003e C7FEC77A 		vminnm.f32 s15, s15, s14
+ 1089              	@ 0 "" 2
+ 1090              		.thumb
+ 1091              		.syntax unified
+ 1092 0042 C0ED027A 		vstr.32	s15, [r0, #8]
+ 1093 0046 C0EE267A 		vdiv.f32	s15, s0, s13
+ 1094 004a 92ED027A 		vldr.32	s14, [r2, #8]
+ 1095 004e B5EEC07A 		vcmpe.f32	s14, #0
+ 1096 0052 FDEE006A 		vmov.f32	s13, #-2.5e-1
+ 1097 0056 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 1098 005a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1099 005e 48BF     		it	mi
+ 1100 0060 F1EE677A 		vnegmi.f32	s15, s15
+ 1101              		.syntax unified
+ 1102              	@ 36 "Source/Utility/dsp.h" 1
+ 1103 0064 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 1104              	@ 0 "" 2
+ 1105              	@ 47 "Source/Utility/dsp.h" 1
+ 1106 0068 C7FEC77A 		vminnm.f32 s15, s15, s14
+ 1107              	@ 0 "" 2
+ 1108              		.thumb
+ 1109              		.syntax unified
+ 1110 006c C3ED027A 		vstr.32	s15, [r3, #8]
+ 1111 0070 7047     		bx	lr
+ 1113 0072 00BF     		.section	.text._ZN7daisysp6Chorus8SetDelayEff,"ax",%progbits
+ 1114              		.align	1
+ 1115              		.p2align 2,,3
+ 1116              		.global	_ZN7daisysp6Chorus8SetDelayEff
+ 1117              		.syntax unified
+ 1118              		.thumb
+ 1119              		.thumb_func
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 20
+
+
+ 1121              	_ZN7daisysp6Chorus8SetDelayEff:
+ 1122              		@ args = 0, pretend = 0, frame = 0
+ 1123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1124              		@ link register save eliminated.
+ 1125 0000 DFED187A 		vldr.32	s15, .L100
+ 1126 0004 42F2A453 		movw	r3, #9636
+ 1127 0008 9FED176A 		vldr.32	s12, .L100+4
+ 1128 000c F0EE676A 		vmov.f32	s13, s15
+ 1129 0010 DFED165A 		vldr.32	s11, .L100+8
+ 1130 0014 F0EE674A 		vmov.f32	s9, s15
+ 1131 0018 0344     		add	r3, r3, r0
+ 1132 001a 90ED005A 		vldr.32	s10, [r0]
+ 1133 001e E0EE256A 		vfma.f32	s13, s0, s11
+ 1134 0022 E0EEA54A 		vfma.f32	s9, s1, s11
+ 1135              		.syntax unified
+ 1136              	@ 36 "Source/Utility/dsp.h" 1
+ 1137 0026 87FEA67A 		vmaxnm.f32 s14, s15, s13
+ 1138              	@ 0 "" 2
+ 1139              	@ 36 "Source/Utility/dsp.h" 1
+ 1140 002a C7FEA47A 		vmaxnm.f32 s15, s15, s9
+ 1141              	@ 0 "" 2
+ 1142              		.thumb
+ 1143              		.syntax unified
+ 1144 002e 27EE067A 		vmul.f32	s14, s14, s12
+ 1145 0032 D0ED036A 		vldr.32	s13, [r0, #12]
+ 1146 0036 67EE867A 		vmul.f32	s15, s15, s12
+ 1147 003a 93ED006A 		vldr.32	s12, [r3]
+ 1148 003e 27EE057A 		vmul.f32	s14, s14, s10
+ 1149 0042 67EE867A 		vmul.f32	s15, s15, s12
+ 1150              		.syntax unified
+ 1151              	@ 47 "Source/Utility/dsp.h" 1
+ 1152 0046 C6FEC76A 		vminnm.f32 s13, s13, s14
+ 1153              	@ 0 "" 2
+ 1154              		.thumb
+ 1155              		.syntax unified
+ 1156 004a C0ED036A 		vstr.32	s13, [r0, #12]
+ 1157 004e D3ED036A 		vldr.32	s13, [r3, #12]
+ 1158 0052 80ED057A 		vstr.32	s14, [r0, #20]
+ 1159 0056 C3ED057A 		vstr.32	s15, [r3, #20]
+ 1160              		.syntax unified
+ 1161              	@ 47 "Source/Utility/dsp.h" 1
+ 1162 005a C6FEE77A 		vminnm.f32 s15, s13, s15
+ 1163              	@ 0 "" 2
+ 1164              		.thumb
+ 1165              		.syntax unified
+ 1166 005e C3ED037A 		vstr.32	s15, [r3, #12]
+ 1167 0062 7047     		bx	lr
+ 1168              	.L101:
+ 1169              		.align	2
+ 1170              	.L100:
+ 1171 0064 CDCCCC3D 		.word	1036831949
+ 1172 0068 6F12833A 		.word	981668463
+ 1173 006c CDCCFC40 		.word	1090309325
+ 1175              		.section	.text._ZN7daisysp6Chorus8SetDelayEf,"ax",%progbits
+ 1176              		.align	1
+ 1177              		.p2align 2,,3
+ 1178              		.global	_ZN7daisysp6Chorus8SetDelayEf
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 21
+
+
+ 1179              		.syntax unified
+ 1180              		.thumb
+ 1181              		.thumb_func
+ 1183              	_ZN7daisysp6Chorus8SetDelayEf:
+ 1184              		@ args = 0, pretend = 0, frame = 0
+ 1185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1186              		@ link register save eliminated.
+ 1187 0000 DFED147A 		vldr.32	s15, .L103
+ 1188 0004 42F2A453 		movw	r3, #9636
+ 1189 0008 9FED136A 		vldr.32	s12, .L103+4
+ 1190 000c F0EE676A 		vmov.f32	s13, s15
+ 1191 0010 9FED127A 		vldr.32	s14, .L103+8
+ 1192 0014 0344     		add	r3, r3, r0
+ 1193 0016 E0EE066A 		vfma.f32	s13, s0, s12
+ 1194 001a 93ED006A 		vldr.32	s12, [r3]
+ 1195              		.syntax unified
+ 1196              	@ 36 "Source/Utility/dsp.h" 1
+ 1197 001e C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 1198              	@ 0 "" 2
+ 1199              		.thumb
+ 1200              		.syntax unified
+ 1201 0022 67EE877A 		vmul.f32	s15, s15, s14
+ 1202 0026 90ED007A 		vldr.32	s14, [r0]
+ 1203 002a D0ED036A 		vldr.32	s13, [r0, #12]
+ 1204 002e 27EE877A 		vmul.f32	s14, s15, s14
+ 1205 0032 67EE867A 		vmul.f32	s15, s15, s12
+ 1206              		.syntax unified
+ 1207              	@ 47 "Source/Utility/dsp.h" 1
+ 1208 0036 C6FEC76A 		vminnm.f32 s13, s13, s14
+ 1209              	@ 0 "" 2
+ 1210              		.thumb
+ 1211              		.syntax unified
+ 1212 003a C0ED036A 		vstr.32	s13, [r0, #12]
+ 1213 003e D3ED036A 		vldr.32	s13, [r3, #12]
+ 1214 0042 80ED057A 		vstr.32	s14, [r0, #20]
+ 1215 0046 C3ED057A 		vstr.32	s15, [r3, #20]
+ 1216              		.syntax unified
+ 1217              	@ 47 "Source/Utility/dsp.h" 1
+ 1218 004a C6FEE77A 		vminnm.f32 s15, s13, s15
+ 1219              	@ 0 "" 2
+ 1220              		.thumb
+ 1221              		.syntax unified
+ 1222 004e C3ED037A 		vstr.32	s15, [r3, #12]
+ 1223 0052 7047     		bx	lr
+ 1224              	.L104:
+ 1225              		.align	2
+ 1226              	.L103:
+ 1227 0054 CDCCCC3D 		.word	1036831949
+ 1228 0058 CDCCFC40 		.word	1090309325
+ 1229 005c 6F12833A 		.word	981668463
+ 1231              		.section	.text._ZN7daisysp6Chorus10SetDelayMsEff,"ax",%progbits
+ 1232              		.align	1
+ 1233              		.p2align 2,,3
+ 1234              		.global	_ZN7daisysp6Chorus10SetDelayMsEff
+ 1235              		.syntax unified
+ 1236              		.thumb
+ 1237              		.thumb_func
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 22
+
+
+ 1239              	_ZN7daisysp6Chorus10SetDelayMsEff:
+ 1240              		@ args = 0, pretend = 0, frame = 0
+ 1241              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1242              		@ link register save eliminated.
+ 1243 0000 42F2A453 		movw	r3, #9636
+ 1244 0004 9FED127A 		vldr.32	s14, .L106
+ 1245 0008 DFED127A 		vldr.32	s15, .L106+4
+ 1246 000c 0344     		add	r3, r3, r0
+ 1247 000e D0ED006A 		vldr.32	s13, [r0]
+ 1248              		.syntax unified
+ 1249              	@ 36 "Source/Utility/dsp.h" 1
+ 1250 0012 87FE800A 		vmaxnm.f32 s0, s15, s0
+ 1251              	@ 0 "" 2
+ 1252              	@ 36 "Source/Utility/dsp.h" 1
+ 1253 0016 C7FEA07A 		vmaxnm.f32 s15, s15, s1
+ 1254              	@ 0 "" 2
+ 1255              		.thumb
+ 1256              		.syntax unified
+ 1257 001a 20EE070A 		vmul.f32	s0, s0, s14
+ 1258 001e D3ED000A 		vldr.32	s1, [r3]
+ 1259 0022 67EE877A 		vmul.f32	s15, s15, s14
+ 1260 0026 90ED037A 		vldr.32	s14, [r0, #12]
+ 1261 002a 20EE260A 		vmul.f32	s0, s0, s13
+ 1262 002e 67EEA07A 		vmul.f32	s15, s15, s1
+ 1263              		.syntax unified
+ 1264              	@ 47 "Source/Utility/dsp.h" 1
+ 1265 0032 87FE407A 		vminnm.f32 s14, s14, s0
+ 1266              	@ 0 "" 2
+ 1267              		.thumb
+ 1268              		.syntax unified
+ 1269 0036 80ED037A 		vstr.32	s14, [r0, #12]
+ 1270 003a 93ED037A 		vldr.32	s14, [r3, #12]
+ 1271 003e 80ED050A 		vstr.32	s0, [r0, #20]
+ 1272 0042 C3ED057A 		vstr.32	s15, [r3, #20]
+ 1273              		.syntax unified
+ 1274              	@ 47 "Source/Utility/dsp.h" 1
+ 1275 0046 C7FE677A 		vminnm.f32 s15, s14, s15
+ 1276              	@ 0 "" 2
+ 1277              		.thumb
+ 1278              		.syntax unified
+ 1279 004a C3ED037A 		vstr.32	s15, [r3, #12]
+ 1280 004e 7047     		bx	lr
+ 1281              	.L107:
+ 1282              		.align	2
+ 1283              	.L106:
+ 1284 0050 6F12833A 		.word	981668463
+ 1285 0054 CDCCCC3D 		.word	1036831949
+ 1287              		.section	.text._ZN7daisysp6Chorus10SetDelayMsEf,"ax",%progbits
+ 1288              		.align	1
+ 1289              		.p2align 2,,3
+ 1290              		.global	_ZN7daisysp6Chorus10SetDelayMsEf
+ 1291              		.syntax unified
+ 1292              		.thumb
+ 1293              		.thumb_func
+ 1295              	_ZN7daisysp6Chorus10SetDelayMsEf:
+ 1296              		@ args = 0, pretend = 0, frame = 0
+ 1297              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 23
+
+
+ 1298              		@ link register save eliminated.
+ 1299 0000 42F2A453 		movw	r3, #9636
+ 1300 0004 9FED107A 		vldr.32	s14, .L109
+ 1301 0008 DFED107A 		vldr.32	s15, .L109+4
+ 1302 000c 0344     		add	r3, r3, r0
+ 1303              		.syntax unified
+ 1304              	@ 36 "Source/Utility/dsp.h" 1
+ 1305 000e 87FE800A 		vmaxnm.f32 s0, s15, s0
+ 1306              	@ 0 "" 2
+ 1307              		.thumb
+ 1308              		.syntax unified
+ 1309 0012 20EE070A 		vmul.f32	s0, s0, s14
+ 1310 0016 D0ED007A 		vldr.32	s15, [r0]
+ 1311 001a D3ED006A 		vldr.32	s13, [r3]
+ 1312 001e 90ED037A 		vldr.32	s14, [r0, #12]
+ 1313 0022 60EE277A 		vmul.f32	s15, s0, s15
+ 1314 0026 20EE260A 		vmul.f32	s0, s0, s13
+ 1315              		.syntax unified
+ 1316              	@ 47 "Source/Utility/dsp.h" 1
+ 1317 002a 87FE677A 		vminnm.f32 s14, s14, s15
+ 1318              	@ 0 "" 2
+ 1319              		.thumb
+ 1320              		.syntax unified
+ 1321 002e C0ED057A 		vstr.32	s15, [r0, #20]
+ 1322 0032 80ED037A 		vstr.32	s14, [r0, #12]
+ 1323 0036 83ED050A 		vstr.32	s0, [r3, #20]
+ 1324 003a D3ED037A 		vldr.32	s15, [r3, #12]
+ 1325              		.syntax unified
+ 1326              	@ 47 "Source/Utility/dsp.h" 1
+ 1327 003e 87FEC00A 		vminnm.f32 s0, s15, s0
+ 1328              	@ 0 "" 2
+ 1329              		.thumb
+ 1330              		.syntax unified
+ 1331 0042 83ED030A 		vstr.32	s0, [r3, #12]
+ 1332 0046 7047     		bx	lr
+ 1333              	.L110:
+ 1334              		.align	2
+ 1335              	.L109:
+ 1336 0048 6F12833A 		.word	981668463
+ 1337 004c CDCCCC3D 		.word	1036831949
+ 1339              		.section	.text._ZN7daisysp6Chorus11SetFeedbackEff,"ax",%progbits
+ 1340              		.align	1
+ 1341              		.p2align 2,,3
+ 1342              		.global	_ZN7daisysp6Chorus11SetFeedbackEff
+ 1343              		.syntax unified
+ 1344              		.thumb
+ 1345              		.thumb_func
+ 1347              	_ZN7daisysp6Chorus11SetFeedbackEff:
+ 1348              		@ args = 0, pretend = 0, frame = 0
+ 1349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1350              		@ link register save eliminated.
+ 1351 0000 42F2A453 		movw	r3, #9636
+ 1352 0004 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 1353 0008 9FED077A 		vldr.32	s14, .L112
+ 1354 000c 0344     		add	r3, r3, r0
+ 1355              		.syntax unified
+ 1356              	@ 36 "Source/Utility/dsp.h" 1
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 24
+
+
+ 1357 000e 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 1358              	@ 0 "" 2
+ 1359              	@ 36 "Source/Utility/dsp.h" 1
+ 1360 0012 C0FE870A 		vmaxnm.f32 s1, s1, s14
+ 1361              	@ 0 "" 2
+ 1362              	@ 47 "Source/Utility/dsp.h" 1
+ 1363 0016 80FE670A 		vminnm.f32 s0, s0, s15
+ 1364              	@ 0 "" 2
+ 1365              	@ 47 "Source/Utility/dsp.h" 1
+ 1366 001a C0FEE70A 		vminnm.f32 s1, s1, s15
+ 1367              	@ 0 "" 2
+ 1368              		.thumb
+ 1369              		.syntax unified
+ 1370 001e 80ED040A 		vstr.32	s0, [r0, #16]
+ 1371 0022 C3ED040A 		vstr.32	s1, [r3, #16]
+ 1372 0026 7047     		bx	lr
+ 1373              	.L113:
+ 1374              		.align	2
+ 1375              	.L112:
+ 1376 0028 00000000 		.word	0
+ 1378              		.section	.text._ZN7daisysp6Chorus11SetFeedbackEf,"ax",%progbits
+ 1379              		.align	1
+ 1380              		.p2align 2,,3
+ 1381              		.global	_ZN7daisysp6Chorus11SetFeedbackEf
+ 1382              		.syntax unified
+ 1383              		.thumb
+ 1384              		.thumb_func
+ 1386              	_ZN7daisysp6Chorus11SetFeedbackEf:
+ 1387              		@ args = 0, pretend = 0, frame = 0
+ 1388              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1389              		@ link register save eliminated.
+ 1390 0000 42F2A453 		movw	r3, #9636
+ 1391 0004 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 1392 0008 9FED057A 		vldr.32	s14, .L115
+ 1393 000c 0344     		add	r3, r3, r0
+ 1394              		.syntax unified
+ 1395              	@ 36 "Source/Utility/dsp.h" 1
+ 1396 000e 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 1397              	@ 0 "" 2
+ 1398              	@ 47 "Source/Utility/dsp.h" 1
+ 1399 0012 80FE670A 		vminnm.f32 s0, s0, s15
+ 1400              	@ 0 "" 2
+ 1401              		.thumb
+ 1402              		.syntax unified
+ 1403 0016 80ED040A 		vstr.32	s0, [r0, #16]
+ 1404 001a 83ED040A 		vstr.32	s0, [r3, #16]
+ 1405 001e 7047     		bx	lr
+ 1406              	.L116:
+ 1407              		.align	2
+ 1408              	.L115:
+ 1409 0020 00000000 		.word	0
+ 1411              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 25
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 chorus.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:17     .text._ZN7daisysp12ChorusEngine4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:24     .text._ZN7daisysp12ChorusEngine4InitEf:0000000000000000 _ZN7daisysp12ChorusEngine4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:99     .text._ZN7daisysp12ChorusEngine4InitEf:0000000000000098 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:109    .text._ZN7daisysp12ChorusEngine7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:116    .text._ZN7daisysp12ChorusEngine7ProcessEf:0000000000000000 _ZN7daisysp12ChorusEngine7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:192    .text._ZN7daisysp12ChorusEngine7ProcessEf:00000000000000ec $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:195    .text._ZN7daisysp12ChorusEngine11SetLfoDepthEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:202    .text._ZN7daisysp12ChorusEngine11SetLfoDepthEf:0000000000000000 _ZN7daisysp12ChorusEngine11SetLfoDepthEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:227    .text._ZN7daisysp12ChorusEngine11SetLfoDepthEf:0000000000000020 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:231    .text._ZN7daisysp12ChorusEngine10SetLfoFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:238    .text._ZN7daisysp12ChorusEngine10SetLfoFreqEf:0000000000000000 _ZN7daisysp12ChorusEngine10SetLfoFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:266    .text._ZN7daisysp12ChorusEngine8SetDelayEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:273    .text._ZN7daisysp12ChorusEngine8SetDelayEf:0000000000000000 _ZN7daisysp12ChorusEngine8SetDelayEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:304    .text._ZN7daisysp12ChorusEngine8SetDelayEf:0000000000000038 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:309    .text._ZN7daisysp12ChorusEngine10SetDelayMsEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:316    .text._ZN7daisysp12ChorusEngine10SetDelayMsEf:0000000000000000 _ZN7daisysp12ChorusEngine10SetDelayMsEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:344    .text._ZN7daisysp12ChorusEngine10SetDelayMsEf:000000000000002c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:348    .text._ZN7daisysp12ChorusEngine11SetFeedbackEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:355    .text._ZN7daisysp12ChorusEngine11SetFeedbackEf:0000000000000000 _ZN7daisysp12ChorusEngine11SetFeedbackEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:375    .text._ZN7daisysp12ChorusEngine11SetFeedbackEf:0000000000000018 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:378    .text._ZN7daisysp12ChorusEngine10ProcessLfoEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:385    .text._ZN7daisysp12ChorusEngine10ProcessLfoEv:0000000000000000 _ZN7daisysp12ChorusEngine10ProcessLfoEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:420    .text._ZN7daisysp6Chorus4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:427    .text._ZN7daisysp6Chorus4InitEf:0000000000000000 _ZN7daisysp6Chorus4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:595    .text._ZN7daisysp6Chorus4InitEf:0000000000000174 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:605    .text._ZN7daisysp6Chorus7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:612    .text._ZN7daisysp6Chorus7ProcessEf:0000000000000000 _ZN7daisysp6Chorus7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:792    .text._ZN7daisysp6Chorus7ProcessEf:0000000000000268 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:796    .text._ZN7daisysp6Chorus7GetLeftEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:803    .text._ZN7daisysp6Chorus7GetLeftEv:0000000000000000 _ZN7daisysp6Chorus7GetLeftEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:813    .text._ZN7daisysp6Chorus8GetRightEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:820    .text._ZN7daisysp6Chorus8GetRightEv:0000000000000000 _ZN7daisysp6Chorus8GetRightEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:830    .text._ZN7daisysp6Chorus6SetPanEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:837    .text._ZN7daisysp6Chorus6SetPanEff:0000000000000000 _ZN7daisysp6Chorus6SetPanEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:867    .text._ZN7daisysp6Chorus6SetPanEff:0000000000000030 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:870    .text._ZN7daisysp6Chorus6SetPanEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:877    .text._ZN7daisysp6Chorus6SetPanEf:0000000000000000 _ZN7daisysp6Chorus6SetPanEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:901    .text._ZN7daisysp6Chorus6SetPanEf:0000000000000028 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:904    .text._ZN7daisysp6Chorus11SetLfoDepthEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:911    .text._ZN7daisysp6Chorus11SetLfoDepthEff:0000000000000000 _ZN7daisysp6Chorus11SetLfoDepthEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:950    .text._ZN7daisysp6Chorus11SetLfoDepthEff:0000000000000038 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:954    .text._ZN7daisysp6Chorus11SetLfoDepthEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:961    .text._ZN7daisysp6Chorus11SetLfoDepthEf:0000000000000000 _ZN7daisysp6Chorus11SetLfoDepthEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:991    .text._ZN7daisysp6Chorus11SetLfoDepthEf:0000000000000030 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:995    .text._ZN7daisysp6Chorus10SetLfoFreqEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1002   .text._ZN7daisysp6Chorus10SetLfoFreqEff:0000000000000000 _ZN7daisysp6Chorus10SetLfoFreqEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1054   .text._ZN7daisysp6Chorus10SetLfoFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1061   .text._ZN7daisysp6Chorus10SetLfoFreqEf:0000000000000000 _ZN7daisysp6Chorus10SetLfoFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1114   .text._ZN7daisysp6Chorus8SetDelayEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1121   .text._ZN7daisysp6Chorus8SetDelayEff:0000000000000000 _ZN7daisysp6Chorus8SetDelayEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1171   .text._ZN7daisysp6Chorus8SetDelayEff:0000000000000064 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1176   .text._ZN7daisysp6Chorus8SetDelayEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1183   .text._ZN7daisysp6Chorus8SetDelayEf:0000000000000000 _ZN7daisysp6Chorus8SetDelayEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1227   .text._ZN7daisysp6Chorus8SetDelayEf:0000000000000054 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1232   .text._ZN7daisysp6Chorus10SetDelayMsEff:0000000000000000 $t
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s 			page 26
+
+
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1239   .text._ZN7daisysp6Chorus10SetDelayMsEff:0000000000000000 _ZN7daisysp6Chorus10SetDelayMsEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1284   .text._ZN7daisysp6Chorus10SetDelayMsEff:0000000000000050 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1288   .text._ZN7daisysp6Chorus10SetDelayMsEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1295   .text._ZN7daisysp6Chorus10SetDelayMsEf:0000000000000000 _ZN7daisysp6Chorus10SetDelayMsEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1336   .text._ZN7daisysp6Chorus10SetDelayMsEf:0000000000000048 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1340   .text._ZN7daisysp6Chorus11SetFeedbackEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1347   .text._ZN7daisysp6Chorus11SetFeedbackEff:0000000000000000 _ZN7daisysp6Chorus11SetFeedbackEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1376   .text._ZN7daisysp6Chorus11SetFeedbackEff:0000000000000028 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1379   .text._ZN7daisysp6Chorus11SetFeedbackEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1386   .text._ZN7daisysp6Chorus11SetFeedbackEf:0000000000000000 _ZN7daisysp6Chorus11SetFeedbackEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccWeXTix.s:1409   .text._ZN7daisysp6Chorus11SetFeedbackEf:0000000000000020 $d
+
+UNDEFINED SYMBOLS
+memset

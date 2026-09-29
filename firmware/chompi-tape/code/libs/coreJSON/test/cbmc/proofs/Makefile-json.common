@@ -1,0 +1,30 @@
+# Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# SPDX-License-Identifier: MIT-0
+
+HARNESS_ENTRY=harness
+
+# This value was experimentally chosen to provide 100% coverage
+# without tripping unwinding assertions and without exhausting memory.
+CBMC_MAX_BUFSIZE ?= 11
+CBMC_MAX_QUERYKEYLENGTH ?= 6
+
+DEFINES += -DCBMC_MAX_BUFSIZE=$(CBMC_MAX_BUFSIZE)
+ifdef CBMC_MAX_QUERYKEYLENGTH
+    DEFINES += -DCBMC_MAX_QUERYKEYLENGTH=$(CBMC_MAX_QUERYKEYLENGTH)
+endif
+
+INCLUDES += -I$(CBMC_ROOT)/include
+
+PROOF_SOURCES += $(PROOFDIR)/$(HARNESS_FILE).c
+PROOF_SOURCES += $(PROOF_SOURCE)/core_json_contracts.c
+
+PROJECT_SOURCES += $(PROOFDIR)/core_json.c
+
+CHECKFLAGS += --pointer-primitive-check
+
+CBMCFLAGS += --slice-formula
+
+include ../Makefile.common
+
+cleanclean: veryclean
+	-$(RM) $(PROOFDIR)/core_json.c

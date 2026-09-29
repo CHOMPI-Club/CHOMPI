@@ -1,0 +1,62 @@
+build/src/hid/rgb_led.o: src/hid/rgb_led.cpp src/hid/rgb_led.h \
+ src/hid/led.h src/daisy_core.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_default_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/features.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_newlib_version.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_intsup.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_stdint.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/stdlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdlib \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/cpu_defines.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/newlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/config.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/reent.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_types.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/lock.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/cdefs.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/stdlib.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/alloca.h \
+ /Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h \
+ src/per/gpio.h src/util/color.h
+src/hid/rgb_led.h:
+src/hid/led.h:
+src/daisy_core.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_default_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/features.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_newlib_version.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_intsup.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_stdint.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/stdlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/cstdlib:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/c++config.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/os_defines.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7e-m+dp/hard/bits/cpu_defines.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/stdlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/ieeefp.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/newlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/config.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/reent.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/_ansi.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/_types.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/lock.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/sys/cdefs.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/machine/stdlib.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/alloca.h:
+/Applications/ArmGNUToolchain/10.3-2021.10/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h:
+src/per/gpio.h:
+src/util/color.h:

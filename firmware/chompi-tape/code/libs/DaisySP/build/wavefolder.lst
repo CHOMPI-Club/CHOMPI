@@ -1,0 +1,78 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"wavefolder.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp10Wavefolder4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp10Wavefolder4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp10Wavefolder4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 4FF07E52 		mov	r2, #1065353216
+  29 0004 0023     		movs	r3, #0
+  30 0006 0260     		str	r2, [r0]	@ float
+  31 0008 4360     		str	r3, [r0, #4]	@ float
+  32 000a 7047     		bx	lr
+  34              		.section	.text._ZN7daisysp10Wavefolder7ProcessEf,"ax",%progbits
+  35              		.align	1
+  36              		.p2align 2,,3
+  37              		.global	_ZN7daisysp10Wavefolder7ProcessEf
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  42              	_ZN7daisysp10Wavefolder7ProcessEf:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46 0000 90ED015A 		vldr.32	s10, [r0, #4]
+  47 0004 B7EE007A 		vmov.f32	s14, #1.0e+0
+  48 0008 D0ED007A 		vldr.32	s15, [r0]
+  49 000c F6EE005A 		vmov.f32	s11, #5.0e-1
+  50 0010 30EE050A 		vadd.f32	s0, s0, s10
+  51 0014 B0EE006A 		vmov.f32	s12, #2.0e+0
+  52 0018 FFEE006A 		vmov.f32	s13, #-1.0e+0
+  53 001c 20EE270A 		vmul.f32	s0, s0, s15
+  54 0020 70EE077A 		vadd.f32	s15, s0, s14
+  55 0024 67EEA57A 		vmul.f32	s15, s15, s11
+  56 0028 FBFE677A 		vrintm.f32	s15, s15
+  57 002c A7EEC60A 		vfms.f32	s0, s15, s12
+  58 0030 FDEEE77A 		vcvt.s32.f32	s15, s15
+  59 0034 17EE903A 		vmov	r3, s15	@ int
+  60 0038 13F0010F 		tst	r3, #1
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s 			page 2
+
+
+  61 003c 07FE267A 		vseleq.f32	s14, s14, s13
+  62 0040 20EE070A 		vmul.f32	s0, s0, s14
+  63 0044 7047     		bx	lr
+  65 0046 00BF     		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 wavefolder.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s:17     .text._ZN7daisysp10Wavefolder4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s:24     .text._ZN7daisysp10Wavefolder4InitEv:0000000000000000 _ZN7daisysp10Wavefolder4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s:35     .text._ZN7daisysp10Wavefolder7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUwFARC.s:42     .text._ZN7daisysp10Wavefolder7ProcessEf:0000000000000000 _ZN7daisysp10Wavefolder7ProcessEf
+
+NO UNDEFINED SYMBOLS

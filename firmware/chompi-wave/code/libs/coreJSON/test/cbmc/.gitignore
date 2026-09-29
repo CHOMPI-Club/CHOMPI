@@ -1,0 +1,22 @@
+# Emitted when running CBMC proofs
+proofs/**/logs
+proofs/**/gotos
+proofs/**/report
+proofs/**/html
+proofs/**/core_json.c
+proofs/output
+
+# Emitted by CBMC Viewer
+TAGS-*
+
+# Emitted by Arpa
+arpa_cmake/
+arpa-validation-logs/
+Makefile.arpa
+
+# Emitted by litani
+.ninja_deps
+.ninja_log
+.litani_cache_dir
+
+__pycache__/

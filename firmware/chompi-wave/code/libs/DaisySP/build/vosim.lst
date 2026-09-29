@@ -1,0 +1,273 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"vosim.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp15VosimOscillator4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp15VosimOscillator4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp15VosimOscillator4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 DFED176A 		vldr.32	s13, .L9
+  29 0004 F5EE007A 		vmov.f32	s15, #2.5e-1
+  30 0008 9FED167A 		vldr.32	s14, .L9+4
+  31 000c 0023     		movs	r3, #0
+  32 000e 86EE806A 		vdiv.f32	s12, s13, s0
+  33 0012 DFED155A 		vldr.32	s11, .L9+8
+  34 0016 4FF07C52 		mov	r2, #1056964608
+  35 001a 80ED000A 		vstr.32	s0, [r0]
+  36 001e 4360     		str	r3, [r0, #4]	@ float
+  37 0020 C261     		str	r2, [r0, #28]	@ float
+  38 0022 8360     		str	r3, [r0, #8]	@ float
+  39 0024 C7EE006A 		vdiv.f32	s13, s14, s0
+  40 0028 C360     		str	r3, [r0, #12]	@ float
+  41 002a 85EE807A 		vdiv.f32	s14, s11, s0
+  42 002e B4EE676A 		vcmp.f32	s12, s15
+  43 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  44 0036 F4EE676A 		vcmp.f32	s13, s15
+  45 003a 37FE866A 		vselgt.f32	s12, s15, s12
+  46 003e 80ED046A 		vstr.32	s12, [r0, #16]
+  47 0042 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  48 0046 B4EE677A 		vcmp.f32	s14, s15
+  49 004a 77FEA66A 		vselgt.f32	s13, s15, s13
+  50 004e C0ED056A 		vstr.32	s13, [r0, #20]
+  51 0052 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  52 0056 37FE877A 		vselgt.f32	s14, s15, s14
+  53 005a 80ED067A 		vstr.32	s14, [r0, #24]
+  54 005e 7047     		bx	lr
+  55              	.L10:
+  56              		.align	2
+  57              	.L9:
+  58 0060 0000D242 		.word	1121058816
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 2
+
+
+  59 0064 00C0AD44 		.word	1152237568
+  60 0068 00404C44 		.word	1145847808
+  62              		.section	.text._ZN7daisysp15VosimOscillator7ProcessEv,"ax",%progbits
+  63              		.align	1
+  64              		.p2align 2,,3
+  65              		.global	_ZN7daisysp15VosimOscillator7ProcessEv
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  70              	_ZN7daisysp15VosimOscillator7ProcessEv:
+  71              		@ args = 0, pretend = 0, frame = 0
+  72              		@ frame_needed = 0, uses_anonymous_args = 0
+  73 0000 D0ED017A 		vldr.32	s15, [r0, #4]
+  74 0004 B7EE007A 		vmov.f32	s14, #1.0e+0
+  75 0008 D0ED046A 		vldr.32	s13, [r0, #16]
+  76 000c 76EEA77A 		vadd.f32	s15, s13, s15
+  77 0010 10B5     		push	{r4, lr}
+  78 0012 F4EEC77A 		vcmpe.f32	s15, s14
+  79 0016 0446     		mov	r4, r0
+  80 0018 C0ED017A 		vstr.32	s15, [r0, #4]
+  81 001c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  82 0020 2DED088B 		vpush.64	{d8, d9, d10, d11}
+  83 0024 4EDB     		blt	.L19
+  84 0026 77EEC77A 		vsub.f32	s15, s15, s14
+  85 002a 90ED059A 		vldr.32	s18, [r0, #20]
+  86 002e D0ED069A 		vldr.32	s19, [r0, #24]
+  87 0032 C7EEA68A 		vdiv.f32	s17, s15, s13
+  88 0036 C0ED017A 		vstr.32	s15, [r0, #4]
+  89 003a 28EE899A 		vmul.f32	s18, s17, s18
+  90 003e 68EEA99A 		vmul.f32	s19, s17, s19
+  91 0042 80ED029A 		vstr.32	s18, [r0, #8]
+  92 0046 C0ED039A 		vstr.32	s19, [r0, #12]
+  93              	.L14:
+  94 004a F5EE00BA 		vmov.f32	s23, #2.5e-1
+  95 004e 9FED2EBA 		vldr.32	s22, .L23
+  96 0052 B6EE007A 		vmov.f32	s14, #5.0e-1
+  97 0056 F6EE088A 		vmov.f32	s17, #7.5e-1
+  98 005a B0EE6B0A 		vmov.f32	s0, s23
+  99 005e A7EE870A 		vfma.f32	s0, s15, s14
+ 100 0062 20EE0B0A 		vmul.f32	s0, s0, s22
+ 101 0066 FFF7FEFF 		bl	sinf
+ 102 006a D4ED077A 		vldr.32	s15, [r4, #28]
+ 103 006e F0EE40AA 		vmov.f32	s21, s0
+ 104 0072 E7EEEB8A 		vfms.f32	s17, s15, s23
+ 105 0076 38EE899A 		vadd.f32	s18, s17, s18
+ 106 007a 28EE8B0A 		vmul.f32	s0, s17, s22
+ 107 007e FFF7FEFF 		bl	sinf
+ 108 0082 78EEA98A 		vadd.f32	s17, s17, s19
+ 109 0086 B0EE40AA 		vmov.f32	s20, s0
+ 110 008a 29EE0B0A 		vmul.f32	s0, s18, s22
+ 111 008e FFF7FEFF 		bl	sinf
+ 112 0092 B0EE408A 		vmov.f32	s16, s0
+ 113 0096 28EE8B0A 		vmul.f32	s0, s17, s22
+ 114 009a FFF7FEFF 		bl	sinf
+ 115 009e F7EE007A 		vmov.f32	s15, #1.0e+0
+ 116 00a2 30EE4A0A 		vsub.f32	s0, s0, s20
+ 117 00a6 38EE4A8A 		vsub.f32	s16, s16, s20
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 3
+
+
+ 118 00aa 7AEEA7AA 		vadd.f32	s21, s21, s15
+ 119 00ae 38EE008A 		vadd.f32	s16, s16, s0
+ 120 00b2 B0EE4A0A 		vmov.f32	s0, s20
+ 121 00b6 28EE2A8A 		vmul.f32	s16, s16, s21
+ 122 00ba A8EE2B0A 		vfma.f32	s0, s16, s23
+ 123 00be BDEC088B 		vldm	sp!, {d8-d11}
+ 124 00c2 10BD     		pop	{r4, pc}
+ 125              	.L19:
+ 126 00c4 90ED029A 		vldr.32	s18, [r0, #8]
+ 127 00c8 90ED050A 		vldr.32	s0, [r0, #20]
+ 128 00cc D0ED038A 		vldr.32	s17, [r0, #12]
+ 129 00d0 39EE009A 		vadd.f32	s18, s18, s0
+ 130 00d4 D0ED069A 		vldr.32	s19, [r0, #24]
+ 131 00d8 78EEA99A 		vadd.f32	s19, s17, s19
+ 132 00dc B4EEC79A 		vcmpe.f32	s18, s14
+ 133 00e0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 134 00e4 A8BF     		it	ge
+ 135 00e6 39EE479A 		vsubge.f32	s18, s18, s14
+ 136 00ea B7EE007A 		vmov.f32	s14, #1.0e+0
+ 137 00ee 80ED029A 		vstr.32	s18, [r0, #8]
+ 138 00f2 F4EEC79A 		vcmpe.f32	s19, s14
+ 139 00f6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 140 00fa A8BF     		it	ge
+ 141 00fc 79EEC79A 		vsubge.f32	s19, s19, s14
+ 142 0100 C0ED039A 		vstr.32	s19, [r0, #12]
+ 143 0104 A1E7     		b	.L14
+ 144              	.L24:
+ 145 0106 00BF     		.align	2
+ 146              	.L23:
+ 147 0108 DB0FC940 		.word	1086918619
+ 149              		.section	.text._ZN7daisysp15VosimOscillator7SetFreqEf,"ax",%progbits
+ 150              		.align	1
+ 151              		.p2align 2,,3
+ 152              		.global	_ZN7daisysp15VosimOscillator7SetFreqEf
+ 153              		.syntax unified
+ 154              		.thumb
+ 155              		.thumb_func
+ 157              	_ZN7daisysp15VosimOscillator7SetFreqEf:
+ 158              		@ args = 0, pretend = 0, frame = 0
+ 159              		@ frame_needed = 0, uses_anonymous_args = 0
+ 160              		@ link register save eliminated.
+ 161 0000 D0ED006A 		vldr.32	s13, [r0]
+ 162 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 163 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 164 000c F4EE477A 		vcmp.f32	s15, s14
+ 165 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 166 0014 77FE277A 		vselgt.f32	s15, s14, s15
+ 167 0018 C0ED047A 		vstr.32	s15, [r0, #16]
+ 168 001c 7047     		bx	lr
+ 170 001e 00BF     		.section	.text._ZN7daisysp15VosimOscillator12SetForm1FreqEf,"ax",%progbits
+ 171              		.align	1
+ 172              		.p2align 2,,3
+ 173              		.global	_ZN7daisysp15VosimOscillator12SetForm1FreqEf
+ 174              		.syntax unified
+ 175              		.thumb
+ 176              		.thumb_func
+ 178              	_ZN7daisysp15VosimOscillator12SetForm1FreqEf:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 4
+
+
+ 179              		@ args = 0, pretend = 0, frame = 0
+ 180              		@ frame_needed = 0, uses_anonymous_args = 0
+ 181              		@ link register save eliminated.
+ 182 0000 D0ED006A 		vldr.32	s13, [r0]
+ 183 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 184 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 185 000c F4EE477A 		vcmp.f32	s15, s14
+ 186 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 187 0014 77FE277A 		vselgt.f32	s15, s14, s15
+ 188 0018 C0ED057A 		vstr.32	s15, [r0, #20]
+ 189 001c 7047     		bx	lr
+ 191 001e 00BF     		.section	.text._ZN7daisysp15VosimOscillator12SetForm2FreqEf,"ax",%progbits
+ 192              		.align	1
+ 193              		.p2align 2,,3
+ 194              		.global	_ZN7daisysp15VosimOscillator12SetForm2FreqEf
+ 195              		.syntax unified
+ 196              		.thumb
+ 197              		.thumb_func
+ 199              	_ZN7daisysp15VosimOscillator12SetForm2FreqEf:
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		@ link register save eliminated.
+ 203 0000 D0ED006A 		vldr.32	s13, [r0]
+ 204 0004 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 205 0008 C0EE267A 		vdiv.f32	s15, s0, s13
+ 206 000c F4EE477A 		vcmp.f32	s15, s14
+ 207 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 208 0014 77FE277A 		vselgt.f32	s15, s14, s15
+ 209 0018 C0ED067A 		vstr.32	s15, [r0, #24]
+ 210 001c 7047     		bx	lr
+ 212 001e 00BF     		.section	.text._ZN7daisysp15VosimOscillator8SetShapeEf,"ax",%progbits
+ 213              		.align	1
+ 214              		.p2align 2,,3
+ 215              		.global	_ZN7daisysp15VosimOscillator8SetShapeEf
+ 216              		.syntax unified
+ 217              		.thumb
+ 218              		.thumb_func
+ 220              	_ZN7daisysp15VosimOscillator8SetShapeEf:
+ 221              		@ args = 0, pretend = 0, frame = 0
+ 222              		@ frame_needed = 0, uses_anonymous_args = 0
+ 223              		@ link register save eliminated.
+ 224 0000 80ED070A 		vstr.32	s0, [r0, #28]
+ 225 0004 7047     		bx	lr
+ 227 0006 00BF     		.section	.text._ZN7daisysp15VosimOscillator4SineEf,"ax",%progbits
+ 228              		.align	1
+ 229              		.p2align 2,,3
+ 230              		.global	_ZN7daisysp15VosimOscillator4SineEf
+ 231              		.syntax unified
+ 232              		.thumb
+ 233              		.thumb_func
+ 235              	_ZN7daisysp15VosimOscillator4SineEf:
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238              		@ link register save eliminated.
+ 239 0000 DFED027A 		vldr.32	s15, .L36
+ 240 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 241 0008 FFF7FEBF 		b	sinf
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 5
+
+
+ 242              	.L37:
+ 243              		.align	2
+ 244              	.L36:
+ 245 000c DB0FC940 		.word	1086918619
+ 247              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 vosim.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:17     .text._ZN7daisysp15VosimOscillator4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:24     .text._ZN7daisysp15VosimOscillator4InitEf:0000000000000000 _ZN7daisysp15VosimOscillator4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:58     .text._ZN7daisysp15VosimOscillator4InitEf:0000000000000060 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:63     .text._ZN7daisysp15VosimOscillator7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:70     .text._ZN7daisysp15VosimOscillator7ProcessEv:0000000000000000 _ZN7daisysp15VosimOscillator7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:147    .text._ZN7daisysp15VosimOscillator7ProcessEv:0000000000000108 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:150    .text._ZN7daisysp15VosimOscillator7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:157    .text._ZN7daisysp15VosimOscillator7SetFreqEf:0000000000000000 _ZN7daisysp15VosimOscillator7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:171    .text._ZN7daisysp15VosimOscillator12SetForm1FreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:178    .text._ZN7daisysp15VosimOscillator12SetForm1FreqEf:0000000000000000 _ZN7daisysp15VosimOscillator12SetForm1FreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:192    .text._ZN7daisysp15VosimOscillator12SetForm2FreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:199    .text._ZN7daisysp15VosimOscillator12SetForm2FreqEf:0000000000000000 _ZN7daisysp15VosimOscillator12SetForm2FreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:213    .text._ZN7daisysp15VosimOscillator8SetShapeEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:220    .text._ZN7daisysp15VosimOscillator8SetShapeEf:0000000000000000 _ZN7daisysp15VosimOscillator8SetShapeEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:228    .text._ZN7daisysp15VosimOscillator4SineEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:235    .text._ZN7daisysp15VosimOscillator4SineEf:0000000000000000 _ZN7daisysp15VosimOscillator4SineEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccjPeutT.s:245    .text._ZN7daisysp15VosimOscillator4SineEf:000000000000000c $d
+
+UNDEFINED SYMBOLS
+sinf

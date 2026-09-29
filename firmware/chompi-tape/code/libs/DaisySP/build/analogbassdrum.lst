@@ -1,0 +1,613 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"analogbassdrum.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp14AnalogBassDrum4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp14AnalogBassDrum4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp14AnalogBassDrum4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0346     		mov	r3, r0
+  29 0002 DFED1E7A 		vldr.32	s15, .L3
+  30 0006 0022     		movs	r2, #0
+  31 0008 DFED1D5A 		vldr.32	s11, .L3+4
+  32 000c 1D49     		ldr	r1, .L3+8
+  33 000e F7EE004A 		vmov.f32	s9, #1.0e+0
+  34 0012 DFF878C0 		ldr	ip, .L3+16
+  35 0016 C5EE806A 		vdiv.f32	s13, s11, s0
+  36 001a 9FED1B7A 		vldr.32	s14, .L3+12
+  37 001e 4830     		adds	r0, r0, #72
+  38              		.syntax unified
+  39              	@ 36 "Source/Utility/dsp.h" 1
+  40 0020 87FE277A 		vmaxnm.f32 s14, s14, s15
+  41              	@ 0 "" 2
+  42              	@ 36 "Source/Utility/dsp.h" 1
+  43 0024 C6FEA76A 		vmaxnm.f32 s13, s13, s15
+  44              	@ 0 "" 2
+  45              	@ 47 "Source/Utility/dsp.h" 1
+  46 0028 87FE647A 		vminnm.f32 s14, s14, s9
+  47              	@ 0 "" 2
+  48              		.thumb
+  49              		.syntax unified
+  50 002c B6EE005A 		vmov.f32	s10, #5.0e-1
+  51 0030 83ED000A 		vstr.32	s0, [r3]
+  52              		.syntax unified
+  53              	@ 47 "Source/Utility/dsp.h" 1
+  54 0034 C6FEC56A 		vminnm.f32 s13, s13, s10
+  55              	@ 0 "" 2
+  56              		.thumb
+  57              		.syntax unified
+  58 0038 C3E90822 		strd	r2, r2, [r3, #32]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 2
+
+
+  59 003c C3ED0A7A 		vstr.32	s15, [r3, #40]
+  60 0040 C3ED0B7A 		vstr.32	s15, [r3, #44]
+  61 0044 C3ED0C7A 		vstr.32	s15, [r3, #48]
+  62 0048 C3ED0D7A 		vstr.32	s15, [r3, #52]
+  63 004c C3ED0E7A 		vstr.32	s15, [r3, #56]
+  64 0050 C3ED0F7A 		vstr.32	s15, [r3, #60]
+  65 0054 C3ED107A 		vstr.32	s15, [r3, #64]
+  66 0058 C3ED117A 		vstr.32	s15, [r3, #68]
+  67 005c C3ED257A 		vstr.32	s15, [r3, #148]
+  68 0060 9A83     		strh	r2, [r3, #28]	@ movhi
+  69 0062 83ED017A 		vstr.32	s14, [r3, #4]
+  70 0066 C3ED026A 		vstr.32	s13, [r3, #8]
+  71 006a 83ED037A 		vstr.32	s14, [r3, #12]
+  72 006e C3F810C0 		str	ip, [r3, #16]	@ float
+  73 0072 C3ED065A 		vstr.32	s11, [r3, #24]
+  74 0076 5961     		str	r1, [r3, #20]	@ float
+  75 0078 FFF7FEBF 		b	_ZN7daisysp3Svf4InitEf
+  76              	.L4:
+  77              		.align	2
+  78              	.L3:
+  79 007c 00000000 		.word	0
+  80 0080 00004842 		.word	1112014848
+  81 0084 0000C841 		.word	1103626240
+  82 0088 CDCCCC3D 		.word	1036831949
+  83 008c 295C8FBD 		.word	-1114678231
+  85              		.section	.text._ZN7daisysp14AnalogBassDrum7ProcessEb,"ax",%progbits
+  86              		.align	1
+  87              		.p2align 2,,3
+  88              		.global	_ZN7daisysp14AnalogBassDrum7ProcessEb
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  93              	_ZN7daisysp14AnalogBassDrum7ProcessEb:
+  94              		@ args = 0, pretend = 0, frame = 8
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+  97 0002 9FEDCA7A 		vldr.32	s14, .L33
+  98 0006 0446     		mov	r4, r0
+  99 0008 DFEDC97A 		vldr.32	s15, .L33+4
+ 100 000c B0EE000A 		vmov.f32	s0, #2.0e+0
+ 101 0010 D0ED046A 		vldr.32	s13, [r0, #16]
+ 102 0014 0F46     		mov	r7, r1
+ 103 0016 DFEDC70A 		vldr.32	s1, .L33+8
+ 104 001a 2DED088B 		vpush.64	{d8, d9, d10, d11}
+ 105 001e 90ED008A 		vldr.32	s16, [r0]
+ 106 0022 83B0     		sub	sp, sp, #12
+ 107 0024 9FEDC4BA 		vldr.32	s22, .L33+12
+ 108 0028 F1EE009A 		vmov.f32	s19, #4.0e+0
+ 109 002c 28EE077A 		vmul.f32	s14, s16, s14
+ 110 0030 D0ED028A 		vldr.32	s17, [r0, #8]
+ 111 0034 68EE277A 		vmul.f32	s15, s16, s15
+ 112 0038 DFEDC0AA 		vldr.32	s21, .L33+16
+ 113 003c 66EE8B6A 		vmul.f32	s13, s13, s22
+ 114 0040 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 115 0044 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 116 0048 66EEA00A 		vmul.f32	s1, s13, s1
+ 117 004c 17EE106A 		vmov	r6, s14	@ int
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 3
+
+
+ 118 0050 68EE2AAA 		vmul.f32	s21, s16, s21
+ 119 0054 17EE905A 		vmov	r5, s15	@ int
+ 120 0058 FFF7FEFF 		bl	powf
+ 121 005c D4ED037A 		vldr.32	s15, [r4, #12]
+ 122 0060 B0EE40AA 		vmov.f32	s20, s0
+ 123 0064 DFEDB60A 		vldr.32	s1, .L33+20
+ 124 0068 B0EE000A 		vmov.f32	s0, #2.0e+0
+ 125 006c 67EE8B7A 		vmul.f32	s15, s15, s22
+ 126 0070 94ED029A 		vldr.32	s18, [r4, #8]
+ 127 0074 9FEDB3BA 		vldr.32	s22, .L33+24
+ 128 0078 29EE299A 		vmul.f32	s18, s18, s19
+ 129 007c 67EEA00A 		vmul.f32	s1, s15, s1
+ 130 0080 FFF7FEFF 		bl	powf
+ 131 0084 B5EE007A 		vmov.f32	s14, #2.5e-1
+ 132 0088 D4ED037A 		vldr.32	s15, [r4, #12]
+ 133 008c 29EE000A 		vmul.f32	s0, s18, s0
+ 134 0090 F7EE009A 		vmov.f32	s19, #1.0e+0
+ 135 0094 77EE877A 		vadd.f32	s15, s15, s14
+ 136              		.syntax unified
+ 137              	@ 47 "Source/Utility/dsp.h" 1
+ 138 0098 C0FE699A 		vminnm.f32 s19, s0, s19
+ 139              	@ 0 "" 2
+ 140              		.thumb
+ 141              		.syntax unified
+ 142 009c 27EE8BBA 		vmul.f32	s22, s15, s22
+ 143 00a0 1FB9     		cbnz	r7, .L6
+ 144 00a2 237F     		ldrb	r3, [r4, #28]	@ zero_extendqisi2
+ 145 00a4 002B     		cmp	r3, #0
+ 146 00a6 00F00581 		beq	.L30
+ 147              	.L6:
+ 148 00aa B1EE0C7A 		vmov.f32	s14, #7.0e+0
+ 149 00ae 94ED016A 		vldr.32	s12, [r4, #4]
+ 150 00b2 F0EE087A 		vmov.f32	s15, #3.0e+0
+ 151 00b6 0022     		movs	r2, #0
+ 152 00b8 FFEE006A 		vmov.f32	s13, #-1.0e+0
+ 153 00bc 0023     		movs	r3, #0
+ 154 00be 2662     		str	r6, [r4, #32]
+ 155 00c0 E6EE077A 		vfma.f32	s15, s12, s14
+ 156 00c4 2277     		strb	r2, [r4, #28]
+ 157 00c6 6562     		str	r5, [r4, #36]
+ 158 00c8 E363     		str	r3, [r4, #60]	@ float
+ 159 00ca C4ED0B7A 		vstr.32	s15, [r4, #44]
+ 160              	.L7:
+ 161 00ce 7EB1     		cbz	r6, .L8
+ 162 00d0 013E     		subs	r6, r6, #1
+ 163 00d2 2662     		str	r6, [r4, #32]
+ 164 00d4 002E     		cmp	r6, #0
+ 165 00d6 00F0F880 		beq	.L9
+ 166 00da D4ED0B7A 		vldr.32	s15, [r4, #44]
+ 167 00de 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
+ 168 00e0 C4ED0A7A 		vstr.32	s15, [r4, #40]
+ 169 00e4 BBB1     		cbz	r3, .L31
+ 170              	.L23:
+ 171 00e6 DFED987A 		vldr.32	s15, .L33+28
+ 172 00ea B0EE679A 		vmov.f32	s18, s15
+ 173 00ee 16E0     		b	.L12
+ 174              	.L8:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 4
+
+
+ 175 00f0 9FED966A 		vldr.32	s12, .L33+32
+ 176 00f4 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 177 00f8 D4ED0A5A 		vldr.32	s11, [r4, #40]
+ 178 00fc 28EE066A 		vmul.f32	s12, s16, s12
+ 179 0100 C7EE067A 		vdiv.f32	s15, s14, s12
+ 180 0104 77EE677A 		vsub.f32	s15, s14, s15
+ 181 0108 67EEA57A 		vmul.f32	s15, s15, s11
+ 182              	.L29:
+ 183 010c 637F     		ldrb	r3, [r4, #29]	@ zero_extendqisi2
+ 184 010e C4ED0A7A 		vstr.32	s15, [r4, #40]
+ 185 0112 002B     		cmp	r3, #0
+ 186 0114 E7D1     		bne	.L23
+ 187              	.L31:
+ 188 0116 9FED8E9A 		vldr.32	s18, .L33+36
+ 189 011a 27EE899A 		vmul.f32	s18, s15, s18
+ 190              	.L12:
+ 191 011e F7EE005A 		vmov.f32	s11, #1.0e+0
+ 192 0122 94ED0C7A 		vldr.32	s14, [r4, #48]
+ 193 0126 37EEC75A 		vsub.f32	s10, s15, s14
+ 194 012a 85EEAA6A 		vdiv.f32	s12, s11, s21
+ 195 012e A6EE057A 		vfma.f32	s14, s12, s10
+ 196 0132 77EEC77A 		vsub.f32	s15, s15, s14
+ 197 0136 84ED0C7A 		vstr.32	s14, [r4, #48]
+ 198 013a 37EE899A 		vadd.f32	s18, s15, s18
+ 199 013e B5EEC09A 		vcmpe.f32	s18, #0
+ 200 0142 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 201 0146 C0F2A880 		blt	.L32
+ 202              	.L13:
+ 203 014a 002D     		cmp	r5, #0
+ 204 014c 00F09280 		beq	.L14
+ 205 0150 013D     		subs	r5, r5, #1
+ 206 0152 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 207 0156 DFED7C7A 		vldr.32	s15, .L33+28
+ 208 015a DFED7E5A 		vldr.32	s11, .L33+40
+ 209 015e 002D     		cmp	r5, #0
+ 210 0160 6562     		str	r5, [r4, #36]
+ 211 0162 45FEA77A 		vseleq.f32	s15, s11, s15
+ 212 0166 C4ED0E7A 		vstr.32	s15, [r4, #56]
+ 213              	.L16:
+ 214 016a D4ED0D7A 		vldr.32	s15, [r4, #52]
+ 215 016e 002B     		cmp	r3, #0
+ 216 0170 DFED755A 		vldr.32	s11, .L33+28
+ 217 0174 07FE257A 		vseleq.f32	s14, s14, s11
+ 218 0178 37EE677A 		vsub.f32	s14, s14, s15
+ 219 017c F4EEE56A 		vcmpe.f32	s13, s11
+ 220 0180 E6EE077A 		vfma.f32	s15, s12, s14
+ 221 0184 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 222 0188 C4ED0D7A 		vstr.32	s15, [r4, #52]
+ 223 018c 0DDA     		bge	.L18
+ 224 018e 76EEA66A 		vadd.f32	s13, s13, s13
+ 225 0192 9FED717A 		vldr.32	s14, .L33+44
+ 226 0196 F7EE005A 		vmov.f32	s11, #1.0e+0
+ 227 019a B0EEE66A 		vabs.f32	s12, s13
+ 228 019e 26EE877A 		vmul.f32	s14, s13, s14
+ 229 01a2 36EE256A 		vadd.f32	s12, s12, s11
+ 230 01a6 C7EE066A 		vdiv.f32	s13, s14, s12
+ 231              	.L18:
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 5
+
+
+ 232 01aa DFED6C5A 		vldr.32	s11, .L33+48
+ 233 01ae 9FED6A6A 		vldr.32	s12, .L33+44
+ 234 01b2 94ED054A 		vldr.32	s8, [r4, #20]
+ 235 01b6 DFED634A 		vldr.32	s9, .L33+24
+ 236 01ba B7EE007A 		vmov.f32	s14, #1.0e+0
+ 237 01be 94ED065A 		vldr.32	s10, [r4, #24]
+ 238 01c2 67EEA57A 		vmul.f32	s15, s15, s11
+ 239 01c6 D4ED025A 		vldr.32	s11, [r4, #8]
+ 240 01ca 76EE866A 		vadd.f32	s13, s13, s12
+ 241 01ce DFED64AA 		vldr.32	s21, .L33+52
+ 242 01d2 B0EE478A 		vmov.f32	s16, s14
+ 243 01d6 9FED5C6A 		vldr.32	s12, .L33+28
+ 244 01da 66EEA46A 		vmul.f32	s13, s13, s9
+ 245 01de A7EE848A 		vfma.f32	s16, s15, s8
+ 246 01e2 A6EE858A 		vfma.f32	s16, s13, s10
+ 247 01e6 28EE258A 		vmul.f32	s16, s16, s11
+ 248              		.syntax unified
+ 249              	@ 36 "Source/Utility/dsp.h" 1
+ 250 01ea 88FE068A 		vmaxnm.f32 s16, s16, s12
+ 251              	@ 0 "" 2
+ 252              	@ 47 "Source/Utility/dsp.h" 1
+ 253 01ee 88FE6A8A 		vminnm.f32 s16, s16, s21
+ 254              	@ 0 "" 2
+ 255              		.thumb
+ 256              		.syntax unified
+ 257 01f2 002B     		cmp	r3, #0
+ 258 01f4 70D0     		beq	.L19
+ 259 01f6 D4ED257A 		vldr.32	s15, [r4, #148]
+ 260 01fa D4ED046A 		vldr.32	s13, [r4, #16]
+ 261 01fe 38EE278A 		vadd.f32	s16, s16, s15
+ 262 0202 DFED587A 		vldr.32	s15, .L33+56
+ 263 0206 94ED01AA 		vldr.32	s20, [r4, #4]
+ 264 020a B4EEC78A 		vcmpe.f32	s16, s14
+ 265 020e 2AEE26AA 		vmul.f32	s20, s20, s13
+ 266 0212 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 267 0216 84ED11AA 		vstr.32	s20, [r4, #68]
+ 268 021a B7EECAAA 		vcvt.f64.f32	d10, s20
+ 269 021e A8BF     		it	ge
+ 270 0220 38EE478A 		vsubge.f32	s16, s16, s14
+ 271 0224 84ED258A 		vstr.32	s16, [r4, #148]
+ 272 0228 28EE278A 		vmul.f32	s16, s16, s15
+ 273 022c B7EEC88A 		vcvt.f64.f32	d8, s16
+ 274 0230 B0EE480B 		vmov.f64	d0, d8
+ 275 0234 FFF7FEFF 		bl	sin
+ 276 0238 20EE0A7B 		vmul.f64	d7, d0, d10
+ 277 023c B0EE480B 		vmov.f64	d0, d8
+ 278 0240 B7EEC78B 		vcvt.f32.f64	s16, d7
+ 279 0244 FFF7FEFF 		bl	cos
+ 280 0248 2AEE000B 		vmul.f64	d0, d10, d0
+ 281 024c B7EEC00B 		vcvt.f32.f64	s0, d0
+ 282 0250 84ED0F0A 		vstr.32	s0, [r4, #60]
+ 283              	.L22:
+ 284 0254 B0EE487A 		vmov.f32	s14, s16
+ 285 0258 94ED100A 		vldr.32	s0, [r4, #64]
+ 286 025c ABEE097A 		vfma.f32	s14, s22, s18
+ 287 0260 37EE407A 		vsub.f32	s14, s14, s0
+ 288 0264 A9EE870A 		vfma.f32	s0, s19, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 6
+
+
+ 289 0268 84ED100A 		vstr.32	s0, [r4, #64]
+ 290 026c 03B0     		add	sp, sp, #12
+ 291              		@ sp needed
+ 292 026e BDEC088B 		vldm	sp!, {d8-d11}
+ 293 0272 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 294              	.L14:
+ 295 0274 9FED3C5A 		vldr.32	s10, .L33+60
+ 296 0278 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 297 027c D4ED0E5A 		vldr.32	s11, [r4, #56]
+ 298 0280 28EE058A 		vmul.f32	s16, s16, s10
+ 299 0284 9FED307A 		vldr.32	s14, .L33+28
+ 300 0288 87EE885A 		vdiv.f32	s10, s15, s16
+ 301 028c 77EEC57A 		vsub.f32	s15, s15, s10
+ 302 0290 65EEA77A 		vmul.f32	s15, s11, s15
+ 303 0294 C4ED0E7A 		vstr.32	s15, [r4, #56]
+ 304 0298 67E7     		b	.L16
+ 305              	.L32:
+ 306 029a 39EE099A 		vadd.f32	s18, s18, s18
+ 307 029e DFED2E7A 		vldr.32	s15, .L33+44
+ 308 02a2 B0EEC97A 		vabs.f32	s14, s18
+ 309 02a6 69EE277A 		vmul.f32	s15, s18, s15
+ 310 02aa 77EE255A 		vadd.f32	s11, s14, s11
+ 311 02ae 87EEA59A 		vdiv.f32	s18, s15, s11
+ 312 02b2 4AE7     		b	.L13
+ 313              	.L30:
+ 314 02b4 F2EE047A 		vmov.f32	s15, #1.0e+1
+ 315 02b8 94ED0F7A 		vldr.32	s14, [r4, #60]
+ 316 02bc FFEE006A 		vmov.f32	s13, #-1.0e+0
+ 317 02c0 D4E90865 		ldrd	r6, r5, [r4, #32]
+ 318 02c4 E7EE276A 		vfma.f32	s13, s14, s15
+ 319 02c8 01E7     		b	.L7
+ 320              	.L9:
+ 321 02ca B7EE007A 		vmov.f32	s14, #1.0e+0
+ 322 02ce D4ED0B7A 		vldr.32	s15, [r4, #44]
+ 323 02d2 77EEC77A 		vsub.f32	s15, s15, s14
+ 324 02d6 19E7     		b	.L29
+ 325              	.L19:
+ 326 02d8 2046     		mov	r0, r4
+ 327 02da 94ED000A 		vldr.32	s0, [r4]
+ 328 02de 4830     		adds	r0, r0, #72
+ 329 02e0 28EE000A 		vmul.f32	s0, s16, s0
+ 330 02e4 0190     		str	r0, [sp, #4]
+ 331 02e6 FFF7FEFF 		bl	_ZN7daisysp3Svf7SetFreqEf
+ 332 02ea 9FED200A 		vldr.32	s0, .L33+64
+ 333 02ee 0198     		ldr	r0, [sp, #4]
+ 334 02f0 2AEE000A 		vmul.f32	s0, s20, s0
+ 335 02f4 20EE2A0A 		vmul.f32	s0, s0, s21
+ 336 02f8 20EE080A 		vmul.f32	s0, s0, s16
+ 337 02fc FFF7FEFF 		bl	_ZN7daisysp3Svf6SetResEf
+ 338 0300 DFED0A7A 		vldr.32	s15, .L33
+ 339 0304 D4ED0E6A 		vldr.32	s13, [r4, #56]
+ 340 0308 87EEA80A 		vdiv.f32	s0, s15, s17
+ 341 030c 9FED187A 		vldr.32	s14, .L33+68
+ 342 0310 0198     		ldr	r0, [sp, #4]
+ 343 0312 F0EE497A 		vmov.f32	s15, s18
+ 344 0316 E6EEC77A 		vfms.f32	s15, s13, s14
+ 345 031a 20EE270A 		vmul.f32	s0, s0, s15
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 7
+
+
+ 346 031e FFF7FEFF 		bl	_ZN7daisysp3Svf7ProcessEf
+ 347 0322 A36F     		ldr	r3, [r4, #120]	@ float
+ 348 0324 94ED208A 		vldr.32	s16, [r4, #128]
+ 349 0328 E363     		str	r3, [r4, #60]	@ float
+ 350 032a 93E7     		b	.L22
+ 351              	.L34:
+ 352              		.align	2
+ 353              	.L33:
+ 354 032c 6F12833A 		.word	981668463
+ 355 0330 A69BC43B 		.word	1002740646
+ 356 0334 0000A042 		.word	1117782016
+ 357 0338 ABAAAA3D 		.word	1034594987
+ 358 033c 17B7D138 		.word	953267991
+ 359 0340 0000D842 		.word	1121452032
+ 360 0344 0AD7A33D 		.word	1034147594
+ 361 0348 00000000 		.word	0
+ 362 034c 17B75139 		.word	961656599
+ 363 0350 5839343D 		.word	1026832728
+ 364 0354 CDCC4CBF 		.word	-1085485875
+ 365 0358 3333333F 		.word	1060320051
+ 366 035c 9A99D93F 		.word	1071225242
+ 367 0360 CDCCCC3E 		.word	1053609165
+ 368 0364 DB0FC940 		.word	1086918619
+ 369 0368 CDCC4C3D 		.word	1028443341
+ 370 036c 0080BB44 		.word	1153138688
+ 371 0370 CDCC4C3E 		.word	1045220557
+ 373              		.section	.text._ZN7daisysp14AnalogBassDrum4TrigEv,"ax",%progbits
+ 374              		.align	1
+ 375              		.p2align 2,,3
+ 376              		.global	_ZN7daisysp14AnalogBassDrum4TrigEv
+ 377              		.syntax unified
+ 378              		.thumb
+ 379              		.thumb_func
+ 381              	_ZN7daisysp14AnalogBassDrum4TrigEv:
+ 382              		@ args = 0, pretend = 0, frame = 0
+ 383              		@ frame_needed = 0, uses_anonymous_args = 0
+ 384              		@ link register save eliminated.
+ 385 0000 0123     		movs	r3, #1
+ 386 0002 0377     		strb	r3, [r0, #28]
+ 387 0004 7047     		bx	lr
+ 389 0006 00BF     		.section	.text._ZN7daisysp14AnalogBassDrum10SetSustainEb,"ax",%progbits
+ 390              		.align	1
+ 391              		.p2align 2,,3
+ 392              		.global	_ZN7daisysp14AnalogBassDrum10SetSustainEb
+ 393              		.syntax unified
+ 394              		.thumb
+ 395              		.thumb_func
+ 397              	_ZN7daisysp14AnalogBassDrum10SetSustainEb:
+ 398              		@ args = 0, pretend = 0, frame = 0
+ 399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 400              		@ link register save eliminated.
+ 401 0000 4177     		strb	r1, [r0, #29]
+ 402 0002 7047     		bx	lr
+ 404              		.section	.text._ZN7daisysp14AnalogBassDrum9SetAccentEf,"ax",%progbits
+ 405              		.align	1
+ 406              		.p2align 2,,3
+ 407              		.global	_ZN7daisysp14AnalogBassDrum9SetAccentEf
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 8
+
+
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 412              	_ZN7daisysp14AnalogBassDrum9SetAccentEf:
+ 413              		@ args = 0, pretend = 0, frame = 0
+ 414              		@ frame_needed = 0, uses_anonymous_args = 0
+ 415              		@ link register save eliminated.
+ 416 0000 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 417 0004 9FED047A 		vldr.32	s14, .L38
+ 418              		.syntax unified
+ 419              	@ 36 "Source/Utility/dsp.h" 1
+ 420 0008 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 421              	@ 0 "" 2
+ 422              	@ 47 "Source/Utility/dsp.h" 1
+ 423 000c 80FE670A 		vminnm.f32 s0, s0, s15
+ 424              	@ 0 "" 2
+ 425              		.thumb
+ 426              		.syntax unified
+ 427 0010 80ED010A 		vstr.32	s0, [r0, #4]
+ 428 0014 7047     		bx	lr
+ 429              	.L39:
+ 430 0016 00BF     		.align	2
+ 431              	.L38:
+ 432 0018 00000000 		.word	0
+ 434              		.section	.text._ZN7daisysp14AnalogBassDrum7SetFreqEf,"ax",%progbits
+ 435              		.align	1
+ 436              		.p2align 2,,3
+ 437              		.global	_ZN7daisysp14AnalogBassDrum7SetFreqEf
+ 438              		.syntax unified
+ 439              		.thumb
+ 440              		.thumb_func
+ 442              	_ZN7daisysp14AnalogBassDrum7SetFreqEf:
+ 443              		@ args = 0, pretend = 0, frame = 0
+ 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 445              		@ link register save eliminated.
+ 446 0000 90ED006A 		vldr.32	s12, [r0]
+ 447 0004 B6EE007A 		vmov.f32	s14, #5.0e-1
+ 448 0008 DFED056A 		vldr.32	s13, .L41
+ 449 000c C0EE067A 		vdiv.f32	s15, s0, s12
+ 450              		.syntax unified
+ 451              	@ 36 "Source/Utility/dsp.h" 1
+ 452 0010 C7FEA67A 		vmaxnm.f32 s15, s15, s13
+ 453              	@ 0 "" 2
+ 454              	@ 47 "Source/Utility/dsp.h" 1
+ 455 0014 C7FEC77A 		vminnm.f32 s15, s15, s14
+ 456              	@ 0 "" 2
+ 457              		.thumb
+ 458              		.syntax unified
+ 459 0018 C0ED027A 		vstr.32	s15, [r0, #8]
+ 460 001c 7047     		bx	lr
+ 461              	.L42:
+ 462 001e 00BF     		.align	2
+ 463              	.L41:
+ 464 0020 00000000 		.word	0
+ 466              		.section	.text._ZN7daisysp14AnalogBassDrum7SetToneEf,"ax",%progbits
+ 467              		.align	1
+ 468              		.p2align 2,,3
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 9
+
+
+ 469              		.global	_ZN7daisysp14AnalogBassDrum7SetToneEf
+ 470              		.syntax unified
+ 471              		.thumb
+ 472              		.thumb_func
+ 474              	_ZN7daisysp14AnalogBassDrum7SetToneEf:
+ 475              		@ args = 0, pretend = 0, frame = 0
+ 476              		@ frame_needed = 0, uses_anonymous_args = 0
+ 477              		@ link register save eliminated.
+ 478 0000 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 479 0004 9FED047A 		vldr.32	s14, .L44
+ 480              		.syntax unified
+ 481              	@ 36 "Source/Utility/dsp.h" 1
+ 482 0008 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 483              	@ 0 "" 2
+ 484              	@ 47 "Source/Utility/dsp.h" 1
+ 485 000c 80FE670A 		vminnm.f32 s0, s0, s15
+ 486              	@ 0 "" 2
+ 487              		.thumb
+ 488              		.syntax unified
+ 489 0010 80ED030A 		vstr.32	s0, [r0, #12]
+ 490 0014 7047     		bx	lr
+ 491              	.L45:
+ 492 0016 00BF     		.align	2
+ 493              	.L44:
+ 494 0018 00000000 		.word	0
+ 496              		.section	.text._ZN7daisysp14AnalogBassDrum8SetDecayEf,"ax",%progbits
+ 497              		.align	1
+ 498              		.p2align 2,,3
+ 499              		.global	_ZN7daisysp14AnalogBassDrum8SetDecayEf
+ 500              		.syntax unified
+ 501              		.thumb
+ 502              		.thumb_func
+ 504              	_ZN7daisysp14AnalogBassDrum8SetDecayEf:
+ 505              		@ args = 0, pretend = 0, frame = 0
+ 506              		@ frame_needed = 0, uses_anonymous_args = 0
+ 507              		@ link register save eliminated.
+ 508 0000 9FED047A 		vldr.32	s14, .L47
+ 509 0004 DFED047A 		vldr.32	s15, .L47+4
+ 510 0008 E0EE077A 		vfma.f32	s15, s0, s14
+ 511 000c C0ED047A 		vstr.32	s15, [r0, #16]
+ 512 0010 7047     		bx	lr
+ 513              	.L48:
+ 514 0012 00BF     		.align	2
+ 515              	.L47:
+ 516 0014 CDCCCC3D 		.word	1036831949
+ 517 0018 CDCCCCBD 		.word	-1110651699
+ 519              		.section	.text._ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf,"ax",%progbits
+ 520              		.align	1
+ 521              		.p2align 2,,3
+ 522              		.global	_ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf
+ 523              		.syntax unified
+ 524              		.thumb
+ 525              		.thumb_func
+ 527              	_ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf:
+ 528              		@ args = 0, pretend = 0, frame = 0
+ 529              		@ frame_needed = 0, uses_anonymous_args = 0
+ 530              		@ link register save eliminated.
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 10
+
+
+ 531 0000 DFED037A 		vldr.32	s15, .L50
+ 532 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 533 0008 80ED050A 		vstr.32	s0, [r0, #20]
+ 534 000c 7047     		bx	lr
+ 535              	.L51:
+ 536 000e 00BF     		.align	2
+ 537              	.L50:
+ 538 0010 00004842 		.word	1112014848
+ 540              		.section	.text._ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf,"ax",%progbits
+ 541              		.align	1
+ 542              		.p2align 2,,3
+ 543              		.global	_ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf
+ 544              		.syntax unified
+ 545              		.thumb
+ 546              		.thumb_func
+ 548              	_ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf:
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 0, uses_anonymous_args = 0
+ 551              		@ link register save eliminated.
+ 552 0000 DFED037A 		vldr.32	s15, .L53
+ 553 0004 20EE270A 		vmul.f32	s0, s0, s15
+ 554 0008 80ED060A 		vstr.32	s0, [r0, #24]
+ 555 000c 7047     		bx	lr
+ 556              	.L54:
+ 557 000e 00BF     		.align	2
+ 558              	.L53:
+ 559 0010 00004842 		.word	1112014848
+ 561              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s 			page 11
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 analogbassdrum.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:17     .text._ZN7daisysp14AnalogBassDrum4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:24     .text._ZN7daisysp14AnalogBassDrum4InitEf:0000000000000000 _ZN7daisysp14AnalogBassDrum4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:79     .text._ZN7daisysp14AnalogBassDrum4InitEf:000000000000007c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:86     .text._ZN7daisysp14AnalogBassDrum7ProcessEb:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:93     .text._ZN7daisysp14AnalogBassDrum7ProcessEb:0000000000000000 _ZN7daisysp14AnalogBassDrum7ProcessEb
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:354    .text._ZN7daisysp14AnalogBassDrum7ProcessEb:000000000000032c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:374    .text._ZN7daisysp14AnalogBassDrum4TrigEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:381    .text._ZN7daisysp14AnalogBassDrum4TrigEv:0000000000000000 _ZN7daisysp14AnalogBassDrum4TrigEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:390    .text._ZN7daisysp14AnalogBassDrum10SetSustainEb:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:397    .text._ZN7daisysp14AnalogBassDrum10SetSustainEb:0000000000000000 _ZN7daisysp14AnalogBassDrum10SetSustainEb
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:405    .text._ZN7daisysp14AnalogBassDrum9SetAccentEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:412    .text._ZN7daisysp14AnalogBassDrum9SetAccentEf:0000000000000000 _ZN7daisysp14AnalogBassDrum9SetAccentEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:432    .text._ZN7daisysp14AnalogBassDrum9SetAccentEf:0000000000000018 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:435    .text._ZN7daisysp14AnalogBassDrum7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:442    .text._ZN7daisysp14AnalogBassDrum7SetFreqEf:0000000000000000 _ZN7daisysp14AnalogBassDrum7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:464    .text._ZN7daisysp14AnalogBassDrum7SetFreqEf:0000000000000020 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:467    .text._ZN7daisysp14AnalogBassDrum7SetToneEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:474    .text._ZN7daisysp14AnalogBassDrum7SetToneEf:0000000000000000 _ZN7daisysp14AnalogBassDrum7SetToneEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:494    .text._ZN7daisysp14AnalogBassDrum7SetToneEf:0000000000000018 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:497    .text._ZN7daisysp14AnalogBassDrum8SetDecayEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:504    .text._ZN7daisysp14AnalogBassDrum8SetDecayEf:0000000000000000 _ZN7daisysp14AnalogBassDrum8SetDecayEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:516    .text._ZN7daisysp14AnalogBassDrum8SetDecayEf:0000000000000014 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:520    .text._ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:527    .text._ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf:0000000000000000 _ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:538    .text._ZN7daisysp14AnalogBassDrum17SetAttackFmAmountEf:0000000000000010 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:541    .text._ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:548    .text._ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf:0000000000000000 _ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXBHjHm.s:559    .text._ZN7daisysp14AnalogBassDrum15SetSelfFmAmountEf:0000000000000010 $d
+
+UNDEFINED SYMBOLS
+_ZN7daisysp3Svf4InitEf
+powf
+sin
+cos
+_ZN7daisysp3Svf7SetFreqEf
+_ZN7daisysp3Svf6SetResEf
+_ZN7daisysp3Svf7ProcessEf

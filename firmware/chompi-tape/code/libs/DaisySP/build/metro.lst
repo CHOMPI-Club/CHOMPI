@@ -1,0 +1,115 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"metro.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp5Metro4InitEff,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp5Metro4InitEff
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp5Metro4InitEff:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 DFED077A 		vldr.32	s15, .L3
+  29 0004 0023     		movs	r3, #0
+  30 0006 80ED000A 		vstr.32	s0, [r0]
+  31 000a 60EE277A 		vmul.f32	s15, s0, s15
+  32 000e 4360     		str	r3, [r0, #4]	@ float
+  33 0010 C0ED020A 		vstr.32	s1, [r0, #8]
+  34 0014 87EEA07A 		vdiv.f32	s14, s15, s1
+  35 0018 80ED037A 		vstr.32	s14, [r0, #12]
+  36 001c 7047     		bx	lr
+  37              	.L4:
+  38 001e 00BF     		.align	2
+  39              	.L3:
+  40 0020 DB0FC940 		.word	1086918619
+  42              		.section	.text._ZN7daisysp5Metro7ProcessEv,"ax",%progbits
+  43              		.align	1
+  44              		.p2align 2,,3
+  45              		.global	_ZN7daisysp5Metro7ProcessEv
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  50              	_ZN7daisysp5Metro7ProcessEv:
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54 0000 D0ED017A 		vldr.32	s15, [r0, #4]
+  55 0004 0346     		mov	r3, r0
+  56 0006 D0ED036A 		vldr.32	s13, [r0, #12]
+  57 000a 9FED097A 		vldr.32	s14, .L8
+  58 000e 77EEA67A 		vadd.f32	s15, s15, s13
+  59 0012 F4EEC77A 		vcmpe.f32	s15, s14
+  60 0016 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s 			page 2
+
+
+  61 001a 03DA     		bge	.L6
+  62 001c 0020     		movs	r0, #0
+  63 001e C3ED017A 		vstr.32	s15, [r3, #4]
+  64 0022 7047     		bx	lr
+  65              	.L6:
+  66 0024 77EEC77A 		vsub.f32	s15, s15, s14
+  67 0028 0120     		movs	r0, #1
+  68 002a C3ED017A 		vstr.32	s15, [r3, #4]
+  69 002e 7047     		bx	lr
+  70              	.L9:
+  71              		.align	2
+  72              	.L8:
+  73 0030 DB0FC940 		.word	1086918619
+  75              		.section	.text._ZN7daisysp5Metro7SetFreqEf,"ax",%progbits
+  76              		.align	1
+  77              		.p2align 2,,3
+  78              		.global	_ZN7daisysp5Metro7SetFreqEf
+  79              		.syntax unified
+  80              		.thumb
+  81              		.thumb_func
+  83              	_ZN7daisysp5Metro7SetFreqEf:
+  84              		@ args = 0, pretend = 0, frame = 0
+  85              		@ frame_needed = 0, uses_anonymous_args = 0
+  86              		@ link register save eliminated.
+  87 0000 DFED067A 		vldr.32	s15, .L11
+  88 0004 D0ED026A 		vldr.32	s13, [r0, #8]
+  89 0008 60EE277A 		vmul.f32	s15, s0, s15
+  90 000c 80ED000A 		vstr.32	s0, [r0]
+  91 0010 87EEA67A 		vdiv.f32	s14, s15, s13
+  92 0014 80ED037A 		vstr.32	s14, [r0, #12]
+  93 0018 7047     		bx	lr
+  94              	.L12:
+  95 001a 00BF     		.align	2
+  96              	.L11:
+  97 001c DB0FC940 		.word	1086918619
+  99              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 metro.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:17     .text._ZN7daisysp5Metro4InitEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:24     .text._ZN7daisysp5Metro4InitEff:0000000000000000 _ZN7daisysp5Metro4InitEff
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:40     .text._ZN7daisysp5Metro4InitEff:0000000000000020 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:43     .text._ZN7daisysp5Metro7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:50     .text._ZN7daisysp5Metro7ProcessEv:0000000000000000 _ZN7daisysp5Metro7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:73     .text._ZN7daisysp5Metro7ProcessEv:0000000000000030 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:76     .text._ZN7daisysp5Metro7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:83     .text._ZN7daisysp5Metro7SetFreqEf:0000000000000000 _ZN7daisysp5Metro7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccUxEKtk.s:97     .text._ZN7daisysp5Metro7SetFreqEf:000000000000001c $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Vendored libraries and ST middleware: keep the language stats on the firmware
+**/libs/**      linguist-vendored
+**/cube_dfu/**  linguist-vendored

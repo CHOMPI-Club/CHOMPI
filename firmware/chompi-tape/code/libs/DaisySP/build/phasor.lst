@@ -1,0 +1,88 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"phasor.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp6Phasor7SetFreqEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp6Phasor7SetFreqEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp6Phasor7SetFreqEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 DFED067A 		vldr.32	s15, .L3
+  29 0004 D0ED016A 		vldr.32	s13, [r0, #4]
+  30 0008 60EE277A 		vmul.f32	s15, s0, s15
+  31 000c 80ED000A 		vstr.32	s0, [r0]
+  32 0010 87EEA67A 		vdiv.f32	s14, s15, s13
+  33 0014 80ED027A 		vstr.32	s14, [r0, #8]
+  34 0018 7047     		bx	lr
+  35              	.L4:
+  36 001a 00BF     		.align	2
+  37              	.L3:
+  38 001c DB0FC940 		.word	1086918619
+  40              		.section	.text._ZN7daisysp6Phasor7ProcessEv,"ax",%progbits
+  41              		.align	1
+  42              		.p2align 2,,3
+  43              		.global	_ZN7daisysp6Phasor7ProcessEv
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  48              	_ZN7daisysp6Phasor7ProcessEv:
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52 0000 D0ED036A 		vldr.32	s13, [r0, #12]
+  53 0004 0023     		movs	r3, #0
+  54 0006 D0ED027A 		vldr.32	s15, [r0, #8]
+  55 000a 9FED0B7A 		vldr.32	s14, .L12
+  56 000e 76EEA77A 		vadd.f32	s15, s13, s15
+  57 0012 86EE870A 		vdiv.f32	s0, s13, s14
+  58 0016 F4EEC77A 		vcmpe.f32	s15, s14
+  59 001a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  60 001e C8BF     		it	gt
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s 			page 2
+
+
+  61 0020 77EEC77A 		vsubgt.f32	s15, s15, s14
+  62 0024 F5EEC07A 		vcmpe.f32	s15, #0
+  63 0028 C0ED037A 		vstr.32	s15, [r0, #12]
+  64 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  65 0030 48BF     		it	mi
+  66 0032 C360     		strmi	r3, [r0, #12]	@ float
+  67 0034 7047     		bx	lr
+  68              	.L13:
+  69 0036 00BF     		.align	2
+  70              	.L12:
+  71 0038 DB0FC940 		.word	1086918619
+  73              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 phasor.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:17     .text._ZN7daisysp6Phasor7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:24     .text._ZN7daisysp6Phasor7SetFreqEf:0000000000000000 _ZN7daisysp6Phasor7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:38     .text._ZN7daisysp6Phasor7SetFreqEf:000000000000001c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:41     .text._ZN7daisysp6Phasor7ProcessEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:48     .text._ZN7daisysp6Phasor7ProcessEv:0000000000000000 _ZN7daisysp6Phasor7ProcessEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccXzzZms.s:71     .text._ZN7daisysp6Phasor7ProcessEv:0000000000000038 $d
+
+NO UNDEFINED SYMBOLS

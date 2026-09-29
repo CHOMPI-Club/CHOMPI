@@ -1,0 +1,3 @@
+build/core/startup_stm32h750xx.o: core/startup_stm32h750xx.c \
+ /Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h
+/Applications/ArmGNUToolchain/10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h:

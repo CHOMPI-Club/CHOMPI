@@ -1,0 +1,71 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"dcblock.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp7DcBlock4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp7DcBlock4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp7DcBlock4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 024A     		ldr	r2, .L3
+  30 0004 4360     		str	r3, [r0, #4]	@ float
+  31 0006 0360     		str	r3, [r0]	@ float
+  32 0008 8260     		str	r2, [r0, #8]	@ float
+  33 000a 7047     		bx	lr
+  34              	.L4:
+  35              		.align	2
+  36              	.L3:
+  37 000c A4707D3F 		.word	1065185444
+  39              		.section	.text._ZN7daisysp7DcBlock7ProcessEf,"ax",%progbits
+  40              		.align	1
+  41              		.p2align 2,,3
+  42              		.global	_ZN7daisysp7DcBlock7ProcessEf
+  43              		.syntax unified
+  44              		.thumb
+  45              		.thumb_func
+  47              	_ZN7daisysp7DcBlock7ProcessEf:
+  48              		@ args = 0, pretend = 0, frame = 0
+  49              		@ frame_needed = 0, uses_anonymous_args = 0
+  50              		@ link register save eliminated.
+  51 0000 D0ED006A 		vldr.32	s13, [r0]
+  52 0004 80ED000A 		vstr.32	s0, [r0]
+  53 0008 30EE660A 		vsub.f32	s0, s0, s13
+  54 000c D0ED017A 		vldr.32	s15, [r0, #4]
+  55 0010 90ED027A 		vldr.32	s14, [r0, #8]
+  56 0014 A7EE270A 		vfma.f32	s0, s14, s15
+  57 0018 80ED010A 		vstr.32	s0, [r0, #4]
+  58 001c 7047     		bx	lr
+  60 001e 00BF     		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s 			page 2
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 dcblock.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s:17     .text._ZN7daisysp7DcBlock4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s:24     .text._ZN7daisysp7DcBlock4InitEf:0000000000000000 _ZN7daisysp7DcBlock4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s:37     .text._ZN7daisysp7DcBlock4InitEf:000000000000000c $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s:40     .text._ZN7daisysp7DcBlock7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccCt4OSR.s:47     .text._ZN7daisysp7DcBlock7ProcessEf:0000000000000000 _ZN7daisysp7DcBlock7ProcessEf
+
+NO UNDEFINED SYMBOLS

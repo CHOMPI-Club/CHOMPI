@@ -1,0 +1,87 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"fold.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp4Fold4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp4Fold4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp4Fold4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 0349     		ldr	r1, .L3
+  30 0004 0022     		movs	r2, #0
+  31 0006 0160     		str	r1, [r0]	@ float
+  32 0008 C260     		str	r2, [r0, #12]
+  33 000a 4360     		str	r3, [r0, #4]	@ float
+  34 000c 8360     		str	r3, [r0, #8]	@ float
+  35 000e 7047     		bx	lr
+  36              	.L4:
+  37              		.align	2
+  38              	.L3:
+  39 0010 00007A44 		.word	1148846080
+  41              		.section	.text._ZN7daisysp4Fold7ProcessEf,"ax",%progbits
+  42              		.align	1
+  43              		.p2align 2,,3
+  44              		.global	_ZN7daisysp4Fold7ProcessEf
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  49              	_ZN7daisysp4Fold7ProcessEf:
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+  53 0000 C368     		ldr	r3, [r0, #12]
+  54 0002 90ED017A 		vldr.32	s14, [r0, #4]
+  55 0006 06EE903A 		vmov	s13, r3	@ int
+  56 000a F8EEE66A 		vcvt.f32.s32	s13, s13
+  57 000e B4EEE67A 		vcmpe.f32	s14, s13
+  58 0012 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  59 0016 0AD5     		bpl	.L10
+  60 0018 D0ED006A 		vldr.32	s13, [r0]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s 			page 2
+
+
+  61 001c 0133     		adds	r3, r3, #1
+  62 001e 80ED020A 		vstr.32	s0, [r0, #8]
+  63 0022 36EE877A 		vadd.f32	s14, s13, s14
+  64 0026 C360     		str	r3, [r0, #12]
+  65 0028 80ED017A 		vstr.32	s14, [r0, #4]
+  66 002c 7047     		bx	lr
+  67              	.L10:
+  68 002e 0133     		adds	r3, r3, #1
+  69 0030 90ED020A 		vldr.32	s0, [r0, #8]
+  70 0034 C360     		str	r3, [r0, #12]
+  71 0036 7047     		bx	lr
+  73              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 fold.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s:17     .text._ZN7daisysp4Fold4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s:24     .text._ZN7daisysp4Fold4InitEv:0000000000000000 _ZN7daisysp4Fold4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s:39     .text._ZN7daisysp4Fold4InitEv:0000000000000010 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s:42     .text._ZN7daisysp4Fold7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccpBCciV.s:49     .text._ZN7daisysp4Fold7ProcessEf:0000000000000000 _ZN7daisysp4Fold7ProcessEf
+
+NO UNDEFINED SYMBOLS

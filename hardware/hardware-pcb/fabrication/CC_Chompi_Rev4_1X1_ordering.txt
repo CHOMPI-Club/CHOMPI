@@ -1,0 +1,8 @@
+copper weight: 1 oz
+mask color: green
+Panelization: (1 X 1)
+Total Panel size:(319.748000, 224.760000)
+Pcb size: (319.748000, 199.360000)
+Gutter size: (2.000000, 0.000000)
+SMT: BOTH
+

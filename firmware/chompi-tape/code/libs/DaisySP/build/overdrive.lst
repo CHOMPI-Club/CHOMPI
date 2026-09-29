@@ -1,0 +1,231 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"overdrive.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp9Overdrive4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp9Overdrive4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp9Overdrive4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 B6EE005A 		vmov.f32	s10, #5.0e-1
+  29 0004 DFED2C7A 		vldr.32	s15, .L6
+  30 0008 F7EE004A 		vmov.f32	s9, #1.0e+0
+  31 000c DFED2B6A 		vldr.32	s13, .L6+4
+  32              		.syntax unified
+  33              	@ 36 "Source/Utility/dsp.h" 1
+  34 0010 C5FE277A 		vmaxnm.f32 s15, s10, s15
+  35              	@ 0 "" 2
+  36              	@ 47 "Source/Utility/dsp.h" 1
+  37 0014 C7FEE47A 		vminnm.f32 s15, s15, s9
+  38              	@ 0 "" 2
+  39              		.thumb
+  40              		.syntax unified
+  41 0018 77EEA77A 		vadd.f32	s15, s15, s15
+  42 001c F3EE083A 		vmov.f32	s7, #2.4e+1
+  43 0020 F0EE005A 		vmov.f32	s11, #2.0e+0
+  44 0024 27EEA77A 		vmul.f32	s14, s15, s15
+  45 0028 C0ED007A 		vstr.32	s15, [r0]
+  46 002c B8EE084A 		vmov.f32	s8, #-3.0e+0
+  47 0030 75EEE75A 		vsub.f32	s11, s11, s15
+  48 0034 27EE076A 		vmul.f32	s12, s14, s14
+  49 0038 65EEA75A 		vmul.f32	s11, s11, s15
+  50 003c 26EE276A 		vmul.f32	s12, s12, s15
+  51 0040 26EE236A 		vmul.f32	s12, s12, s7
+  52 0044 A7EEC56A 		vfms.f32	s12, s15, s10
+  53 0048 27EE067A 		vmul.f32	s14, s14, s12
+  54 004c A7EE857A 		vfma.f32	s14, s15, s10
+  55 0050 F0EE667A 		vmov.f32	s15, s13
+  56 0054 37EE666A 		vsub.f32	s12, s14, s13
+  57 0058 80ED017A 		vstr.32	s14, [r0, #4]
+  58 005c E5EE867A 		vfma.f32	s15, s11, s12
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s 			page 2
+
+
+  59 0060 F4EEC47A 		vcmpe.f32	s15, s8
+  60 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  61 0068 20D4     		bmi	.L3
+  62 006a B0EE087A 		vmov.f32	s14, #3.0e+0
+  63 006e F4EEC77A 		vcmpe.f32	s15, s14
+  64 0072 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  65 0076 14DC     		bgt	.L4
+  66 0078 B3EE0B7A 		vmov.f32	s14, #2.7e+1
+  67 007c F2EE026A 		vmov.f32	s13, #9.0e+0
+  68 0080 B0EE476A 		vmov.f32	s12, s14
+  69 0084 67EEA66A 		vmul.f32	s13, s15, s13
+  70 0088 A7EEA76A 		vfma.f32	s12, s15, s15
+  71 008c A7EEA67A 		vfma.f32	s14, s15, s13
+  72 0090 67EE867A 		vmul.f32	s15, s15, s12
+  73 0094 C7EE876A 		vdiv.f32	s13, s15, s14
+  74 0098 C4EEA67A 		vdiv.f32	s15, s9, s13
+  75 009c C0ED027A 		vstr.32	s15, [r0, #8]
+  76 00a0 7047     		bx	lr
+  77              	.L4:
+  78 00a2 F0EE647A 		vmov.f32	s15, s9
+  79 00a6 C0ED027A 		vstr.32	s15, [r0, #8]
+  80 00aa 7047     		bx	lr
+  81              	.L3:
+  82 00ac FFEE007A 		vmov.f32	s15, #-1.0e+0
+  83 00b0 C0ED027A 		vstr.32	s15, [r0, #8]
+  84 00b4 7047     		bx	lr
+  85              	.L7:
+  86 00b6 00BF     		.align	2
+  87              	.L6:
+  88 00b8 00000000 		.word	0
+  89 00bc C3F5A83E 		.word	1051260355
+  91              		.section	.text._ZN7daisysp9Overdrive7ProcessEf,"ax",%progbits
+  92              		.align	1
+  93              		.p2align 2,,3
+  94              		.global	_ZN7daisysp9Overdrive7ProcessEf
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  99              	_ZN7daisysp9Overdrive7ProcessEf:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 90ED017A 		vldr.32	s14, [r0, #4]
+ 104 0004 F8EE087A 		vmov.f32	s15, #-3.0e+0
+ 105 0008 20EE070A 		vmul.f32	s0, s0, s14
+ 106 000c B4EEE70A 		vcmpe.f32	s0, s15
+ 107 0010 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 108 0014 22D4     		bmi	.L10
+ 109 0016 F0EE087A 		vmov.f32	s15, #3.0e+0
+ 110 001a B4EEE70A 		vcmpe.f32	s0, s15
+ 111 001e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 112 0022 14DC     		bgt	.L11
+ 113 0024 B3EE0B7A 		vmov.f32	s14, #2.7e+1
+ 114 0028 F2EE026A 		vmov.f32	s13, #9.0e+0
+ 115 002c F0EE477A 		vmov.f32	s15, s14
+ 116 0030 60EE266A 		vmul.f32	s13, s0, s13
+ 117 0034 E0EE007A 		vfma.f32	s15, s0, s0
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s 			page 3
+
+
+ 118 0038 A0EE267A 		vfma.f32	s14, s0, s13
+ 119 003c 60EE277A 		vmul.f32	s15, s0, s15
+ 120 0040 87EE870A 		vdiv.f32	s0, s15, s14
+ 121 0044 D0ED027A 		vldr.32	s15, [r0, #8]
+ 122 0048 20EE270A 		vmul.f32	s0, s0, s15
+ 123 004c 7047     		bx	lr
+ 124              	.L11:
+ 125 004e B7EE000A 		vmov.f32	s0, #1.0e+0
+ 126 0052 D0ED027A 		vldr.32	s15, [r0, #8]
+ 127 0056 20EE270A 		vmul.f32	s0, s0, s15
+ 128 005a 7047     		bx	lr
+ 129              	.L10:
+ 130 005c BFEE000A 		vmov.f32	s0, #-1.0e+0
+ 131 0060 D0ED027A 		vldr.32	s15, [r0, #8]
+ 132 0064 20EE270A 		vmul.f32	s0, s0, s15
+ 133 0068 7047     		bx	lr
+ 135 006a 00BF     		.section	.text._ZN7daisysp9Overdrive8SetDriveEf,"ax",%progbits
+ 136              		.align	1
+ 137              		.p2align 2,,3
+ 138              		.global	_ZN7daisysp9Overdrive8SetDriveEf
+ 139              		.syntax unified
+ 140              		.thumb
+ 141              		.thumb_func
+ 143              	_ZN7daisysp9Overdrive8SetDriveEf:
+ 144              		@ args = 0, pretend = 0, frame = 0
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              		@ link register save eliminated.
+ 147 0000 DFED2D7A 		vldr.32	s15, .L16
+ 148 0004 B7EE005A 		vmov.f32	s10, #1.0e+0
+ 149              		.syntax unified
+ 150              	@ 36 "Source/Utility/dsp.h" 1
+ 151 0008 80FE270A 		vmaxnm.f32 s0, s0, s15
+ 152              	@ 0 "" 2
+ 153              	@ 47 "Source/Utility/dsp.h" 1
+ 154 000c 80FE450A 		vminnm.f32 s0, s0, s10
+ 155              	@ 0 "" 2
+ 156              		.thumb
+ 157              		.syntax unified
+ 158 0010 30EE000A 		vadd.f32	s0, s0, s0
+ 159 0014 9FED297A 		vldr.32	s14, .L16+4
+ 160 0018 B3EE084A 		vmov.f32	s8, #2.4e+1
+ 161 001c F6EE005A 		vmov.f32	s11, #5.0e-1
+ 162 0020 20EE006A 		vmul.f32	s12, s0, s0
+ 163 0024 80ED000A 		vstr.32	s0, [r0]
+ 164 0028 F0EE006A 		vmov.f32	s13, #2.0e+0
+ 165 002c F8EE084A 		vmov.f32	s9, #-3.0e+0
+ 166 0030 66EE067A 		vmul.f32	s15, s12, s12
+ 167 0034 76EEC06A 		vsub.f32	s13, s13, s0
+ 168 0038 67EE807A 		vmul.f32	s15, s15, s0
+ 169 003c 66EE806A 		vmul.f32	s13, s13, s0
+ 170 0040 67EE847A 		vmul.f32	s15, s15, s8
+ 171 0044 E0EE657A 		vfms.f32	s15, s0, s11
+ 172 0048 67EE867A 		vmul.f32	s15, s15, s12
+ 173 004c E0EE257A 		vfma.f32	s15, s0, s11
+ 174 0050 37EEC76A 		vsub.f32	s12, s15, s14
+ 175 0054 C0ED017A 		vstr.32	s15, [r0, #4]
+ 176 0058 F0EE477A 		vmov.f32	s15, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s 			page 4
+
+
+ 177 005c E6EE267A 		vfma.f32	s15, s12, s13
+ 178 0060 F4EEE47A 		vcmpe.f32	s15, s9
+ 179 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 180 0068 20D4     		bmi	.L14
+ 181 006a B0EE087A 		vmov.f32	s14, #3.0e+0
+ 182 006e F4EEC77A 		vcmpe.f32	s15, s14
+ 183 0072 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 184 0076 14DC     		bgt	.L15
+ 185 0078 B3EE0B7A 		vmov.f32	s14, #2.7e+1
+ 186 007c F2EE026A 		vmov.f32	s13, #9.0e+0
+ 187 0080 B0EE476A 		vmov.f32	s12, s14
+ 188 0084 67EEA66A 		vmul.f32	s13, s15, s13
+ 189 0088 A7EEA76A 		vfma.f32	s12, s15, s15
+ 190 008c A7EEA67A 		vfma.f32	s14, s15, s13
+ 191 0090 67EE867A 		vmul.f32	s15, s15, s12
+ 192 0094 C7EE876A 		vdiv.f32	s13, s15, s14
+ 193 0098 C5EE267A 		vdiv.f32	s15, s10, s13
+ 194 009c C0ED027A 		vstr.32	s15, [r0, #8]
+ 195 00a0 7047     		bx	lr
+ 196              	.L15:
+ 197 00a2 F0EE457A 		vmov.f32	s15, s10
+ 198 00a6 C0ED027A 		vstr.32	s15, [r0, #8]
+ 199 00aa 7047     		bx	lr
+ 200              	.L14:
+ 201 00ac FFEE007A 		vmov.f32	s15, #-1.0e+0
+ 202 00b0 C0ED027A 		vstr.32	s15, [r0, #8]
+ 203 00b4 7047     		bx	lr
+ 204              	.L17:
+ 205 00b6 00BF     		.align	2
+ 206              	.L16:
+ 207 00b8 00000000 		.word	0
+ 208 00bc C3F5A83E 		.word	1051260355
+ 210              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 overdrive.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:17     .text._ZN7daisysp9Overdrive4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:24     .text._ZN7daisysp9Overdrive4InitEv:0000000000000000 _ZN7daisysp9Overdrive4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:88     .text._ZN7daisysp9Overdrive4InitEv:00000000000000b8 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:92     .text._ZN7daisysp9Overdrive7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:99     .text._ZN7daisysp9Overdrive7ProcessEf:0000000000000000 _ZN7daisysp9Overdrive7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:136    .text._ZN7daisysp9Overdrive8SetDriveEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:143    .text._ZN7daisysp9Overdrive8SetDriveEf:0000000000000000 _ZN7daisysp9Overdrive8SetDriveEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccDWG1zl.s:207    .text._ZN7daisysp9Overdrive8SetDriveEf:00000000000000b8 $d
+
+NO UNDEFINED SYMBOLS

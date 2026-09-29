@@ -1,0 +1,118 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"limiter.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp7Limiter4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp7Limiter4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp7Limiter4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 4FF07C53 		mov	r3, #1056964608
+  29 0004 0360     		str	r3, [r0]	@ float
+  30 0006 7047     		bx	lr
+  32              		.section	.text._ZN7daisysp7Limiter12ProcessBlockEPfjf,"ax",%progbits
+  33              		.align	1
+  34              		.p2align 2,,3
+  35              		.global	_ZN7daisysp7Limiter12ProcessBlockEPfjf
+  36              		.syntax unified
+  37              		.thumb
+  38              		.thumb_func
+  40              	_ZN7daisysp7Limiter12ProcessBlockEPfjf:
+  41              		@ args = 0, pretend = 0, frame = 0
+  42              		@ frame_needed = 0, uses_anonymous_args = 0
+  43              		@ link register save eliminated.
+  44 0000 531E     		subs	r3, r2, #1
+  45 0002 002A     		cmp	r2, #0
+  46 0004 53D0     		beq	.L3
+  47 0006 B7EE005A 		vmov.f32	s10, #1.0e+0
+  48 000a 9FED294A 		vldr.32	s8, .L14
+  49 000e B3EE0B6A 		vmov.f32	s12, #2.7e+1
+  50 0012 DFED284A 		vldr.32	s9, .L14+4
+  51 0016 B2EE023A 		vmov.f32	s6, #9.0e+0
+  52 001a DFED273A 		vldr.32	s7, .L14+8
+  53              	.L9:
+  54 001e F1EC017A 		vldmia.32	r1!, {s15}
+  55 0022 D0ED006A 		vldr.32	s13, [r0]
+  56 0026 67EE807A 		vmul.f32	s15, s15, s0
+  57 002a B0EEE77A 		vabs.f32	s14, s15
+  58 002e 37EE667A 		vsub.f32	s14, s14, s13
+  59 0032 B5EEC07A 		vcmpe.f32	s14, #0
+  60 0036 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s 			page 2
+
+
+  61 003a 74FE245A 		vselgt.f32	s11, s8, s9
+  62 003e E5EE876A 		vfma.f32	s13, s11, s14
+  63 0042 F4EEC56A 		vcmpe.f32	s13, s10
+  64 0046 C0ED006A 		vstr.32	s13, [r0]
+  65 004a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  66 004e 19D9     		bls	.L6
+  67 0050 85EE267A 		vdiv.f32	s14, s10, s13
+  68 0054 013B     		subs	r3, r3, #1
+  69 0056 5A1C     		adds	r2, r3, #1
+  70 0058 F0EE466A 		vmov.f32	s13, s12
+  71 005c 67EE277A 		vmul.f32	s15, s14, s15
+  72 0060 B0EE467A 		vmov.f32	s14, s12
+  73 0064 67EEA37A 		vmul.f32	s15, s15, s7
+  74 0068 A7EEA77A 		vfma.f32	s14, s15, s15
+  75 006c 67EE835A 		vmul.f32	s11, s15, s6
+  76 0070 E7EEA56A 		vfma.f32	s13, s15, s11
+  77 0074 67EE877A 		vmul.f32	s15, s15, s14
+  78 0078 87EEA67A 		vdiv.f32	s14, s15, s13
+  79 007c 01ED017A 		vstr.32	s14, [r1, #-4]
+  80 0080 CDD1     		bne	.L9
+  81 0082 7047     		bx	lr
+  82              	.L6:
+  83 0084 67EEA37A 		vmul.f32	s15, s15, s7
+  84 0088 013B     		subs	r3, r3, #1
+  85 008a B0EE467A 		vmov.f32	s14, s12
+  86 008e F0EE466A 		vmov.f32	s13, s12
+  87 0092 5A1C     		adds	r2, r3, #1
+  88 0094 67EE835A 		vmul.f32	s11, s15, s6
+  89 0098 A7EEA77A 		vfma.f32	s14, s15, s15
+  90 009c E7EEA56A 		vfma.f32	s13, s15, s11
+  91 00a0 67EE877A 		vmul.f32	s15, s15, s14
+  92 00a4 87EEA67A 		vdiv.f32	s14, s15, s13
+  93 00a8 01ED017A 		vstr.32	s14, [r1, #-4]
+  94 00ac B7D1     		bne	.L9
+  95              	.L3:
+  96 00ae 7047     		bx	lr
+  97              	.L15:
+  98              		.align	2
+  99              	.L14:
+ 100 00b0 CDCC4C3D 		.word	1028443341
+ 101 00b4 ACC5A737 		.word	933741996
+ 102 00b8 3333333F 		.word	1060320051
+ 104              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 limiter.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s:17     .text._ZN7daisysp7Limiter4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s:24     .text._ZN7daisysp7Limiter4InitEv:0000000000000000 _ZN7daisysp7Limiter4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s:33     .text._ZN7daisysp7Limiter12ProcessBlockEPfjf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s:40     .text._ZN7daisysp7Limiter12ProcessBlockEPfjf:0000000000000000 _ZN7daisysp7Limiter12ProcessBlockEPfjf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc8gbAI3.s:100    .text._ZN7daisysp7Limiter12ProcessBlockEPfjf:00000000000000b0 $d
+
+NO UNDEFINED SYMBOLS

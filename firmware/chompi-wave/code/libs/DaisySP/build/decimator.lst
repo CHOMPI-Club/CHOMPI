@@ -1,0 +1,121 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"decimator.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp9Decimator4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp9Decimator4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp9Decimator4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0022     		movs	r2, #0
+  29 0002 4FF07E51 		mov	r1, #1065353216
+  30 0006 0023     		movs	r3, #0
+  31 0008 4160     		str	r1, [r0, #4]	@ float
+  32 000a 8260     		str	r2, [r0, #8]	@ float
+  33 000c 0261     		str	r2, [r0, #16]	@ float
+  34 000e 4261     		str	r2, [r0, #20]	@ float
+  35 0010 80F82030 		strb	r3, [r0, #32]
+  36 0014 4162     		str	r1, [r0, #36]	@ float
+  37 0016 C0E90633 		strd	r3, r3, [r0, #24]
+  38 001a 7047     		bx	lr
+  40              		.section	.text._ZN7daisysp9Decimator7ProcessEf,"ax",%progbits
+  41              		.align	1
+  42              		.p2align 2,,3
+  43              		.global	_ZN7daisysp9Decimator7ProcessEf
+  44              		.syntax unified
+  45              		.thumb
+  46              		.thumb_func
+  48              	_ZN7daisysp9Decimator7ProcessEf:
+  49              		@ args = 0, pretend = 0, frame = 0
+  50              		@ frame_needed = 0, uses_anonymous_args = 0
+  51              		@ link register save eliminated.
+  52 0000 D0ED017A 		vldr.32	s15, [r0, #4]
+  53 0004 9FED237A 		vldr.32	s14, .L9
+  54 0008 67EEA77A 		vmul.f32	s15, s15, s15
+  55 000c 8269     		ldr	r2, [r0, #24]
+  56 000e 0132     		adds	r2, r2, #1
+  57 0010 67EE877A 		vmul.f32	s15, s15, s14
+  58 0014 8261     		str	r2, [r0, #24]
+  59 0016 FCEEE77A 		vcvt.u32.f32	s15, s15
+  60 001a 17EE903A 		vmov	r3, s15	@ int
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s 			page 2
+
+
+  61 001e C0ED077A 		vstr.32	s15, [r0, #28]	@ int
+  62 0022 9342     		cmp	r3, r2
+  63 0024 1FD3     		bcc	.L4
+  64 0026 90F82030 		ldrb	r3, [r0, #32]	@ zero_extendqisi2
+  65 002a 90ED040A 		vldr.32	s0, [r0, #16]
+  66 002e 13B3     		cbz	r3, .L6
+  67              	.L8:
+  68 0030 DFED197A 		vldr.32	s15, .L9+4
+  69 0034 90ED097A 		vldr.32	s14, [r0, #36]
+  70 0038 20EE270A 		vmul.f32	s0, s0, s15
+  71 003c C368     		ldr	r3, [r0, #12]
+  72 003e 67EE277A 		vmul.f32	s15, s14, s15
+  73 0042 5A1C     		adds	r2, r3, #1
+  74 0044 20EE070A 		vmul.f32	s0, s0, s14
+  75 0048 BDEEC00A 		vcvt.s32.f32	s0, s0
+  76 004c 10EE103A 		vmov	r3, s0	@ int
+  77 0050 1341     		asrs	r3, r3, r2
+  78 0052 9340     		lsls	r3, r3, r2
+  79 0054 07EE103A 		vmov	s14, r3	@ int
+  80 0058 B8EEC77A 		vcvt.f32.s32	s14, s14
+  81 005c 87EE270A 		vdiv.f32	s0, s14, s15
+  82 0060 80ED050A 		vstr.32	s0, [r0, #20]
+  83 0064 7047     		bx	lr
+  84              	.L4:
+  85 0066 0023     		movs	r3, #0
+  86 0068 80ED040A 		vstr.32	s0, [r0, #16]
+  87 006c 8361     		str	r3, [r0, #24]
+  88 006e 90F82030 		ldrb	r3, [r0, #32]	@ zero_extendqisi2
+  89 0072 002B     		cmp	r3, #0
+  90 0074 DCD1     		bne	.L8
+  91              	.L6:
+  92 0076 BEEEC80A 		vcvt.s32.f32	s0, s0, #16
+  93 007a C268     		ldr	r2, [r0, #12]
+  94 007c 10EE103A 		vmov	r3, s0	@ int
+  95 0080 1341     		asrs	r3, r3, r2
+  96 0082 9340     		lsls	r3, r3, r2
+  97 0084 00EE103A 		vmov	s0, r3	@ int
+  98 0088 BAEEC80A 		vcvt.f32.s32	s0, s0, #16
+  99 008c 80ED050A 		vstr.32	s0, [r0, #20]
+ 100 0090 7047     		bx	lr
+ 101              	.L10:
+ 102 0092 00BF     		.align	2
+ 103              	.L9:
+ 104 0094 0000C042 		.word	1119879168
+ 105 0098 00008047 		.word	1199570944
+ 107              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 decimator.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s:17     .text._ZN7daisysp9Decimator4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s:24     .text._ZN7daisysp9Decimator4InitEv:0000000000000000 _ZN7daisysp9Decimator4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s:41     .text._ZN7daisysp9Decimator7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s:48     .text._ZN7daisysp9Decimator7ProcessEf:0000000000000000 _ZN7daisysp9Decimator7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccngsve7.s:104    .text._ZN7daisysp9Decimator7ProcessEf:0000000000000094 $d
+
+NO UNDEFINED SYMBOLS

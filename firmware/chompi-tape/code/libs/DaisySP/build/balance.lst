@@ -1,0 +1,153 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"balance.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp7Balance4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp7Balance4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp7Balance4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 DFED1B6A 		vldr.32	s13, .L9
+  28 0004 F2EE047A 		vmov.f32	s15, #1.0e+1
+  29 0008 80ED000A 		vstr.32	s0, [r0]
+  30 000c 86EE807A 		vdiv.f32	s14, s13, s0
+  31 0010 C0ED017A 		vstr.32	s15, [r0, #4]
+  32 0014 10B5     		push	{r4, lr}
+  33 0016 2DED028B 		vpush.64	{d8}
+  34 001a 0446     		mov	r4, r0
+  35 001c 27EE270A 		vmul.f32	s0, s14, s15
+  36 0020 FFF7FEFF 		bl	cosf
+  37 0024 F0EE007A 		vmov.f32	s15, #2.0e+0
+  38 0028 BFEE007A 		vmov.f32	s14, #-1.0e+0
+  39 002c 37EEC08A 		vsub.f32	s16, s15, s0
+  40 0030 A8EE087A 		vfma.f32	s14, s16, s16
+  41 0034 B5EE407A 		vcmp.f32	s14, #0
+  42 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  43 003c 12D4     		bmi	.L6
+  44 003e B1EEC70A 		vsqrt.f32	s0, s14
+  45              	.L4:
+  46 0042 0023     		movs	r3, #0
+  47 0044 A361     		str	r3, [r4, #24]	@ float
+  48 0046 6361     		str	r3, [r4, #20]	@ float
+  49 0048 38EE408A 		vsub.f32	s16, s16, s0
+  50 004c 2361     		str	r3, [r4, #16]	@ float
+  51 004e F7EE007A 		vmov.f32	s15, #1.0e+0
+  52 0052 84ED028A 		vstr.32	s16, [r4, #8]
+  53 0056 77EEC87A 		vsub.f32	s15, s15, s16
+  54 005a BDEC028B 		vldm	sp!, {d8}
+  55 005e C4ED037A 		vstr.32	s15, [r4, #12]
+  56 0062 10BD     		pop	{r4, pc}
+  57              	.L6:
+  58 0064 B0EE470A 		vmov.f32	s0, s14
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s 			page 2
+
+
+  59 0068 FFF7FEFF 		bl	sqrtf
+  60 006c E9E7     		b	.L4
+  61              	.L10:
+  62 006e 00BF     		.align	2
+  63              	.L9:
+  64 0070 DB0FC940 		.word	1086918619
+  66              		.section	.text._ZN7daisysp7Balance7ProcessEff,"ax",%progbits
+  67              		.align	1
+  68              		.p2align 2,,3
+  69              		.global	_ZN7daisysp7Balance7ProcessEff
+  70              		.syntax unified
+  71              		.thumb
+  72              		.thumb_func
+  74              	_ZN7daisysp7Balance7ProcessEff:
+  75              		@ args = 0, pretend = 0, frame = 8
+  76              		@ frame_needed = 0, uses_anonymous_args = 0
+  77 0000 00B5     		push	{lr}
+  78 0002 2DED028B 		vpush.64	{d8}
+  79 0006 B0EE408A 		vmov.f32	s16, s0
+  80 000a D0ED036A 		vldr.32	s13, [r0, #12]
+  81 000e D0ED027A 		vldr.32	s15, [r0, #8]
+  82 0012 83B0     		sub	sp, sp, #12
+  83 0014 90ED047A 		vldr.32	s14, [r0, #16]
+  84 0018 26EE886A 		vmul.f32	s12, s13, s16
+  85 001c 90ED050A 		vldr.32	s0, [r0, #20]
+  86 0020 27EE877A 		vmul.f32	s14, s15, s14
+  87 0024 66EEA06A 		vmul.f32	s13, s13, s1
+  88 0028 67EE807A 		vmul.f32	s15, s15, s0
+  89 002c A6EE087A 		vfma.f32	s14, s12, s16
+  90 0030 E6EEA07A 		vfma.f32	s15, s13, s1
+  91 0034 B5EE407A 		vcmp.f32	s14, #0
+  92 0038 80ED047A 		vstr.32	s14, [r0, #16]
+  93 003c C0ED057A 		vstr.32	s15, [r0, #20]
+  94 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  95 0044 09D0     		beq	.L12
+  96 0046 87EE870A 		vdiv.f32	s0, s15, s14
+  97 004a B5EE400A 		vcmp.f32	s0, #0
+  98 004e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  99 0052 1DD4     		bmi	.L22
+ 100 0054 B1EEC07A 		vsqrt.f32	s14, s0
+ 101 0058 06E0     		b	.L15
+ 102              	.L12:
+ 103 005a F5EE407A 		vcmp.f32	s15, #0
+ 104 005e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 105 0062 1CD4     		bmi	.L23
+ 106 0064 B1EEE77A 		vsqrt.f32	s14, s15
+ 107              	.L15:
+ 108 0068 90ED060A 		vldr.32	s0, [r0, #24]
+ 109 006c 80ED067A 		vstr.32	s14, [r0, #24]
+ 110 0070 77EE407A 		vsub.f32	s15, s14, s0
+ 111 0074 F5EE407A 		vcmp.f32	s15, #0
+ 112 0078 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 113 007c 14BF     		ite	ne
+ 114 007e 20EE080A 		vmulne.f32	s0, s0, s16
+ 115 0082 27EE080A 		vmuleq.f32	s0, s14, s16
+ 116 0086 03B0     		add	sp, sp, #12
+ 117              		@ sp needed
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s 			page 3
+
+
+ 118 0088 BDEC028B 		vldm	sp!, {d8}
+ 119 008c 5DF804FB 		ldr	pc, [sp], #4
+ 120              	.L22:
+ 121 0090 0190     		str	r0, [sp, #4]
+ 122 0092 FFF7FEFF 		bl	sqrtf
+ 123 0096 0198     		ldr	r0, [sp, #4]
+ 124 0098 B0EE407A 		vmov.f32	s14, s0
+ 125 009c E4E7     		b	.L15
+ 126              	.L23:
+ 127 009e B0EE670A 		vmov.f32	s0, s15
+ 128 00a2 0190     		str	r0, [sp, #4]
+ 129 00a4 FFF7FEFF 		bl	sqrtf
+ 130 00a8 0198     		ldr	r0, [sp, #4]
+ 131 00aa B0EE407A 		vmov.f32	s14, s0
+ 132 00ae DBE7     		b	.L15
+ 134              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 balance.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s:17     .text._ZN7daisysp7Balance4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s:24     .text._ZN7daisysp7Balance4InitEf:0000000000000000 _ZN7daisysp7Balance4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s:64     .text._ZN7daisysp7Balance4InitEf:0000000000000070 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s:67     .text._ZN7daisysp7Balance7ProcessEff:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//cc3Fsjcy.s:74     .text._ZN7daisysp7Balance7ProcessEff:0000000000000000 _ZN7daisysp7Balance7ProcessEff
+
+UNDEFINED SYMBOLS
+cosf
+sqrtf

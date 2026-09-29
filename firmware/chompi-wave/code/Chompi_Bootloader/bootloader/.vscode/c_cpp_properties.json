@@ -1,0 +1,46 @@
+{
+  "configurations": [
+    {
+      "cStandard": "c11",
+      "compilerPath": "arm-none-eabi-g++.exe",
+      "cppStandard": "c++17",
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/../libDaisy/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/ST/STM32_USB_Device_Library/Core/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/Third_Party/FatFS/src/",
+        "${workspaceFolder}/../cube_dfu/USB_DEVICE/**",
+        "${workspaceFolder}/../cube_dfu/FATFS/**"
+      ],
+      "name": "Win32",
+      "windowsSdkVersion": "10.0.17763.0"
+    },
+    {
+      "cStandard": "c11",
+      "compilerPath": "/usr/local/bin/arm-none-eabi-g++",
+      "cppStandard": "c++17",
+      "defines": [
+        "_DEBUG",
+        "UNICODE",
+        "_UNICODE"
+      ],
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${workspaceFolder}/../libDaisy/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/ST/STM32_USB_Device_Library/Class/DFU/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/ST/STM32_USB_Device_Library/Core/**",
+        "${workspaceFolder}/../cube_dfu/Middlewares/Third_Party/FatFS/src/",
+        "${workspaceFolder}/../cube_dfu/USB_DEVICE/**",
+        "${workspaceFolder}/../cube_dfu/FATFS/**"
+      ],
+      "name": "macOS"
+    }
+  ],
+  "version": 4
+}

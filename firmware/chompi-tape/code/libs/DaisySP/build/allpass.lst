@@ -1,0 +1,164 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"allpass.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp7Allpass4InitEfPfj,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp7Allpass4InitEfPfj
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp7Allpass4InitEfPfj:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 07EE902A 		vmov	s15, r2	@ int
+  29 0004 80ED000A 		vstr.32	s0, [r0]
+  30 0008 0023     		movs	r3, #0
+  31 000a DFF84CC0 		ldr	ip, .L3+8
+  32 000e F8EE677A 		vcvt.f32.u32	s15, s15
+  33 0012 0022     		movs	r2, #0
+  34 0014 C0F804C0 		str	ip, [r0, #4]	@ float
+  35 0018 8161     		str	r1, [r0, #24]
+  36 001a 87EE807A 		vdiv.f32	s14, s15, s0
+  37 001e C360     		str	r3, [r0, #12]	@ float
+  38 0020 0361     		str	r3, [r0, #16]	@ float
+  39 0022 C261     		str	r2, [r0, #28]
+  40 0024 9FED0A6B 		vldr.64	d6, .L3
+  41 0028 B7EEC77A 		vcvt.f64.f32	d7, s14
+  42 002c 37EE467B 		vsub.f64	d7, d7, d6
+  43 0030 B7EEC77B 		vcvt.f32.f64	s14, d7
+  44 0034 27EE000A 		vmul.f32	s0, s14, s0
+  45 0038 80ED057A 		vstr.32	s14, [r0, #20]
+  46 003c 80ED027A 		vstr.32	s14, [r0, #8]
+  47 0040 BDEEC00A 		vcvt.s32.f32	s0, s0
+  48 0044 80ED080A 		vstr.32	s0, [r0, #32]	@ int
+  49 0048 7047     		bx	lr
+  50              	.L4:
+  51 004a 00BFAFF3 		.align	3
+  51      0080
+  52              	.L3:
+  53 0050 7B14AE47 		.word	1202590843
+  54 0054 E17A843F 		.word	1065646817
+  55 0058 00006040 		.word	1080033280
+  57              		.section	.text._ZN7daisysp7Allpass7ProcessEf,"ax",%progbits
+  58              		.align	1
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s 			page 2
+
+
+  59              		.p2align 2,,3
+  60              		.global	_ZN7daisysp7Allpass7ProcessEf
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  65              	_ZN7daisysp7Allpass7ProcessEf:
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68 0000 D0ED017A 		vldr.32	s15, [r0, #4]
+  69 0004 90ED037A 		vldr.32	s14, [r0, #12]
+  70 0008 B4EE677A 		vcmp.f32	s14, s15
+  71 000c 10B5     		push	{r4, lr}
+  72 000e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  73 0012 0446     		mov	r4, r0
+  74 0014 2DED028B 		vpush.64	{d8}
+  75 0018 B0EE408A 		vmov.f32	s16, s0
+  76 001c 1BD1     		bne	.L6
+  77 001e 90ED047A 		vldr.32	s14, [r0, #16]
+  78              	.L7:
+  79 0022 F0EE487A 		vmov.f32	s15, s16
+  80 0026 216A     		ldr	r1, [r4, #32]
+  81 0028 D4E90623 		ldrd	r2, r3, [r4, #24]
+  82 002c BDEC028B 		vldm	sp!, {d8}
+  83 0030 02EB8302 		add	r2, r2, r3, lsl #2
+  84 0034 0133     		adds	r3, r3, #1
+  85 0036 92ED000A 		vldr.32	s0, [r2]
+  86 003a E0EE077A 		vfma.f32	s15, s0, s14
+  87 003e 93FBF1F0 		sdiv	r0, r3, r1
+  88 0042 C2ED007A 		vstr.32	s15, [r2]
+  89 0046 01FB1033 		mls	r3, r1, r0, r3
+  90 004a 94ED047A 		vldr.32	s14, [r4, #16]
+  91 004e E361     		str	r3, [r4, #28]
+  92 0050 A7EE670A 		vfms.f32	s0, s14, s15
+  93 0054 10BD     		pop	{r4, pc}
+  94              	.L6:
+  95 0056 90ED027A 		vldr.32	s14, [r0, #8]
+  96 005a B7EEE76A 		vcvt.f64.f32	d6, s15
+  97 005e C0ED037A 		vstr.32	s15, [r0, #12]
+  98 0062 B7EEC77A 		vcvt.f64.f32	d7, s14
+  99 0066 9FED085B 		vldr.64	d5, .L9
+ 100 006a 27EE057B 		vmul.f64	d7, d7, d5
+ 101 006e 87EE060B 		vdiv.f64	d0, d7, d6
+ 102 0072 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 103 0076 FFF7FEFF 		bl	expf
+ 104 007a B0EE407A 		vmov.f32	s14, s0
+ 105 007e 84ED040A 		vstr.32	s0, [r4, #16]
+ 106 0082 CEE7     		b	.L7
+ 107              	.L10:
+ 108 0084 AFF30080 		.align	3
+ 109              	.L9:
+ 110 0088 363CBD52 		.word	1388133430
+ 111 008c 96A11BC0 		.word	-1071930986
+ 113              		.section	.text._ZN7daisysp7Allpass7SetFreqEf,"ax",%progbits
+ 114              		.align	1
+ 115              		.p2align 2,,3
+ 116              		.global	_ZN7daisysp7Allpass7SetFreqEf
+ 117              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s 			page 3
+
+
+ 118              		.thumb
+ 119              		.thumb_func
+ 121              	_ZN7daisysp7Allpass7SetFreqEf:
+ 122              		@ args = 0, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		@ link register save eliminated.
+ 125 0000 DFED0B6A 		vldr.32	s13, .L12
+ 126 0004 90ED056A 		vldr.32	s12, [r0, #20]
+ 127 0008 D0ED007A 		vldr.32	s15, [r0]
+ 128 000c 80FE460A 		vminnm.f32	s0, s0, s12
+ 129 0010 80FE260A 		vmaxnm.f32	s0, s0, s13
+ 130 0014 60EE277A 		vmul.f32	s15, s0, s15
+ 131 0018 9FED067A 		vldr.32	s14, .L12+4
+ 132 001c 80ED020A 		vstr.32	s0, [r0, #8]
+ 133 0020 C7FE877A 		vmaxnm.f32	s15, s15, s14
+ 134 0024 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 135 0028 C0ED087A 		vstr.32	s15, [r0, #32]	@ int
+ 136 002c 7047     		bx	lr
+ 137              	.L13:
+ 138 002e 00BF     		.align	2
+ 139              	.L12:
+ 140 0030 17B7D138 		.word	953267991
+ 141 0034 00000000 		.word	0
+ 143              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 allpass.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:17     .text._ZN7daisysp7Allpass4InitEfPfj:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:24     .text._ZN7daisysp7Allpass4InitEfPfj:0000000000000000 _ZN7daisysp7Allpass4InitEfPfj
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:53     .text._ZN7daisysp7Allpass4InitEfPfj:0000000000000050 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:58     .text._ZN7daisysp7Allpass7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:65     .text._ZN7daisysp7Allpass7ProcessEf:0000000000000000 _ZN7daisysp7Allpass7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:110    .text._ZN7daisysp7Allpass7ProcessEf:0000000000000088 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:114    .text._ZN7daisysp7Allpass7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:121    .text._ZN7daisysp7Allpass7SetFreqEf:0000000000000000 _ZN7daisysp7Allpass7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccMkvVU7.s:140    .text._ZN7daisysp7Allpass7SetFreqEf:0000000000000030 $d
+
+UNDEFINED SYMBOLS
+expf

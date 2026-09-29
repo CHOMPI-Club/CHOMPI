@@ -1,0 +1,125 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"tone.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp4Tone4InitEf,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp4Tone4InitEf
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp4Tone4InitEf:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 4FF07C53 		mov	r3, #1056964608
+  29 0004 0021     		movs	r1, #0
+  30 0006 044A     		ldr	r2, .L3
+  31 0008 4160     		str	r1, [r0, #4]	@ float
+  32 000a C260     		str	r2, [r0, #12]	@ float
+  33 000c 0361     		str	r3, [r0, #16]	@ float
+  34 000e 4361     		str	r3, [r0, #20]	@ float
+  35 0010 80ED060A 		vstr.32	s0, [r0, #24]
+  36 0014 7047     		bx	lr
+  37              	.L4:
+  38 0016 00BF     		.align	2
+  39              	.L3:
+  40 0018 0000C842 		.word	1120403456
+  42              		.section	.text._ZN7daisysp4Tone7ProcessEf,"ax",%progbits
+  43              		.align	1
+  44              		.p2align 2,,3
+  45              		.global	_ZN7daisysp4Tone7ProcessEf
+  46              		.syntax unified
+  47              		.thumb
+  48              		.thumb_func
+  50              	_ZN7daisysp4Tone7ProcessEf:
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  53              		@ link register save eliminated.
+  54 0000 D0ED016A 		vldr.32	s13, [r0, #4]
+  55 0004 D0ED057A 		vldr.32	s15, [r0, #20]
+  56 0008 90ED047A 		vldr.32	s14, [r0, #16]
+  57 000c 67EEA67A 		vmul.f32	s15, s15, s13
+  58 0010 E7EE007A 		vfma.f32	s15, s14, s0
+  59 0014 B0EE670A 		vmov.f32	s0, s15
+  60 0018 C0ED017A 		vstr.32	s15, [r0, #4]
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s 			page 2
+
+
+  61 001c 7047     		bx	lr
+  63 001e 00BF     		.section	.text._ZN7daisysp4Tone21CalculateCoefficientsEv,"ax",%progbits
+  64              		.align	1
+  65              		.p2align 2,,3
+  66              		.global	_ZN7daisysp4Tone21CalculateCoefficientsEv
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  71              	_ZN7daisysp4Tone21CalculateCoefficientsEv:
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74 0000 9FED187A 		vldr.32	s14, .L13
+  75 0004 D0ED037A 		vldr.32	s15, [r0, #12]
+  76 0008 90ED060A 		vldr.32	s0, [r0, #24]
+  77 000c 67EE877A 		vmul.f32	s15, s15, s14
+  78 0010 10B5     		push	{r4, lr}
+  79 0012 87EE800A 		vdiv.f32	s0, s15, s0
+  80 0016 0446     		mov	r4, r0
+  81 0018 2DED028B 		vpush.64	{d8}
+  82 001c FFF7FEFF 		bl	cosf
+  83 0020 F0EE007A 		vmov.f32	s15, #2.0e+0
+  84 0024 BFEE007A 		vmov.f32	s14, #-1.0e+0
+  85 0028 37EEC08A 		vsub.f32	s16, s15, s0
+  86 002c A8EE087A 		vfma.f32	s14, s16, s16
+  87 0030 B5EE407A 		vcmp.f32	s14, #0
+  88 0034 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  89 0038 0ED4     		bmi	.L11
+  90 003a B1EEC70A 		vsqrt.f32	s0, s14
+  91              	.L9:
+  92 003e 38EE408A 		vsub.f32	s16, s16, s0
+  93 0042 F7EE007A 		vmov.f32	s15, #1.0e+0
+  94 0046 84ED058A 		vstr.32	s16, [r4, #20]
+  95 004a 77EEC87A 		vsub.f32	s15, s15, s16
+  96 004e BDEC028B 		vldm	sp!, {d8}
+  97 0052 C4ED047A 		vstr.32	s15, [r4, #16]
+  98 0056 10BD     		pop	{r4, pc}
+  99              	.L11:
+ 100 0058 B0EE470A 		vmov.f32	s0, s14
+ 101 005c FFF7FEFF 		bl	sqrtf
+ 102 0060 EDE7     		b	.L9
+ 103              	.L14:
+ 104 0062 00BF     		.align	2
+ 105              	.L13:
+ 106 0064 DB0FC940 		.word	1086918619
+ 108              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 tone.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:17     .text._ZN7daisysp4Tone4InitEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:24     .text._ZN7daisysp4Tone4InitEf:0000000000000000 _ZN7daisysp4Tone4InitEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:40     .text._ZN7daisysp4Tone4InitEf:0000000000000018 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:43     .text._ZN7daisysp4Tone7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:50     .text._ZN7daisysp4Tone7ProcessEf:0000000000000000 _ZN7daisysp4Tone7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:64     .text._ZN7daisysp4Tone21CalculateCoefficientsEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:71     .text._ZN7daisysp4Tone21CalculateCoefficientsEv:0000000000000000 _ZN7daisysp4Tone21CalculateCoefficientsEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccuAQUvl.s:106    .text._ZN7daisysp4Tone21CalculateCoefficientsEv:0000000000000064 $d
+
+UNDEFINED SYMBOLS
+cosf
+sqrtf

@@ -1,0 +1,48 @@
+{
+	"chompi": [
+		{
+			"name": "Record Latch",
+			"value": false
+		},
+		{
+			"name": "Midi In Channel",
+			"value": 1
+		},
+		{
+			"name": "Midi Out Channel Chromatic",
+			"value": 1
+		},
+		{
+			"name": "Midi Out Channel Slice",
+			"value": 2
+		},
+		{
+			"name": "MIDI Clock Out",
+			"value": true
+		},
+		{
+			"name": "Monitor Position",
+			"value": 1
+		},
+		{
+			"name": "Pitch Quantize In Shift Menu",
+			"value": true
+		},
+		{
+			"name": "MIDI CC In",
+			"value": true
+		},
+		{
+			"name": "MIDI CC Out",
+			"value": true
+		},
+		{
+			"name": "Midi Start-Stop Message Behavior",
+			"value": 1
+		},
+		{
+			"name": "Delay Buffer Unfreeze Mute",
+			"value": false
+		}
+	]
+}

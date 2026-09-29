@@ -1,0 +1,24 @@
+{
+	"chompi": [
+		{
+			"name": "Midi In Channel",
+			"value": 1
+		},
+		{
+			"name": "Midi Out Channel",
+			"value": 1
+		},
+		{
+			"name": "MIDI Clock Out",
+			"value": true
+		},
+		{
+			"name": "MIDI CC In",
+			"value": true
+		},
+		{
+			"name": "MIDI CC Out",
+			"value": true
+		}
+	]
+}

@@ -1,0 +1,146 @@
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"sampleratereducer.cpp"
+  15              		.text
+  16              		.section	.text._ZN7daisysp17SampleRateReducer4InitEv,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_ZN7daisysp17SampleRateReducer4InitEv
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  24              	_ZN7daisysp17SampleRateReducer4InitEv:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 034A     		ldr	r2, .L3
+  30 0004 4360     		str	r3, [r0, #4]	@ float
+  31 0006 0260     		str	r2, [r0]	@ float
+  32 0008 8360     		str	r3, [r0, #8]	@ float
+  33 000a 0361     		str	r3, [r0, #16]	@ float
+  34 000c C360     		str	r3, [r0, #12]	@ float
+  35 000e 7047     		bx	lr
+  36              	.L4:
+  37              		.align	2
+  38              	.L3:
+  39 0010 CDCC4C3E 		.word	1045220557
+  41              		.section	.text._ZN7daisysp17SampleRateReducer7ProcessEf,"ax",%progbits
+  42              		.align	1
+  43              		.p2align 2,,3
+  44              		.global	_ZN7daisysp17SampleRateReducer7ProcessEf
+  45              		.syntax unified
+  46              		.thumb
+  47              		.thumb_func
+  49              	_ZN7daisysp17SampleRateReducer7ProcessEf:
+  50              		@ args = 0, pretend = 0, frame = 0
+  51              		@ frame_needed = 0, uses_anonymous_args = 0
+  52              		@ link register save eliminated.
+  53 0000 90ED017A 		vldr.32	s14, [r0, #4]
+  54 0004 B7EE006A 		vmov.f32	s12, #1.0e+0
+  55 0008 90ED004A 		vldr.32	s8, [r0]
+  56 000c DFED207A 		vldr.32	s15, .L9
+  57 0010 34EE077A 		vadd.f32	s14, s8, s14
+  58 0014 90ED045A 		vldr.32	s10, [r0, #16]
+  59 0018 C0ED047A 		vstr.32	s15, [r0, #16]
+  60 001c B4EEC67A 		vcmpe.f32	s14, s12
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s 			page 2
+
+
+  61 0020 80ED017A 		vstr.32	s14, [r0, #4]
+  62 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  63 0028 2EDB     		blt	.L8
+  64 002a 77EE466A 		vsub.f32	s13, s14, s12
+  65 002e D0ED037A 		vldr.32	s15, [r0, #12]
+  66 0032 F6EE005A 		vmov.f32	s11, #5.0e-1
+  67 0036 D0ED024A 		vldr.32	s9, [r0, #8]
+  68 003a 30EE673A 		vsub.f32	s6, s0, s15
+  69 003e C6EE843A 		vdiv.f32	s7, s13, s8
+  70 0042 C0ED016A 		vstr.32	s13, [r0, #4]
+  71 0046 BEEE007A 		vmov.f32	s14, #-5.0e-1
+  72 004a 36EE636A 		vsub.f32	s12, s12, s7
+  73 004e 63EEA55A 		vmul.f32	s11, s7, s11
+  74 0052 E3EE067A 		vfma.f32	s15, s6, s12
+  75 0056 65EEA35A 		vmul.f32	s11, s11, s7
+  76 005a F0EE676A 		vmov.f32	s13, s15
+  77 005e 66EE077A 		vmul.f32	s15, s12, s14
+  78 0062 36EEE47A 		vsub.f32	s14, s13, s9
+  79 0066 C0ED026A 		vstr.32	s13, [r0, #8]
+  80 006a 67EE867A 		vmul.f32	s15, s15, s12
+  81 006e A7EE255A 		vfma.f32	s10, s14, s11
+  82 0072 67EE877A 		vmul.f32	s15, s15, s14
+  83              	.L7:
+  84 0076 77EEA67A 		vadd.f32	s15, s15, s13
+  85 007a 80ED030A 		vstr.32	s0, [r0, #12]
+  86 007e B0EE450A 		vmov.f32	s0, s10
+  87 0082 C0ED047A 		vstr.32	s15, [r0, #16]
+  88 0086 7047     		bx	lr
+  89              	.L8:
+  90 0088 D0ED026A 		vldr.32	s13, [r0, #8]
+  91 008c F3E7     		b	.L7
+  92              	.L10:
+  93 008e 00BF     		.align	2
+  94              	.L9:
+  95 0090 00000000 		.word	0
+  97              		.section	.text._ZN7daisysp17SampleRateReducer7SetFreqEf,"ax",%progbits
+  98              		.align	1
+  99              		.p2align 2,,3
+ 100              		.global	_ZN7daisysp17SampleRateReducer7SetFreqEf
+ 101              		.syntax unified
+ 102              		.thumb
+ 103              		.thumb_func
+ 105              	_ZN7daisysp17SampleRateReducer7SetFreqEf:
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              		@ link register save eliminated.
+ 109 0000 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 110 0004 9FED047A 		vldr.32	s14, .L12
+ 111              		.syntax unified
+ 112              	@ 36 "Source/Utility/dsp.h" 1
+ 113 0008 80FE070A 		vmaxnm.f32 s0, s0, s14
+ 114              	@ 0 "" 2
+ 115              	@ 47 "Source/Utility/dsp.h" 1
+ 116 000c 80FE670A 		vminnm.f32 s0, s0, s15
+ 117              	@ 0 "" 2
+ 118              		.thumb
+ 119              		.syntax unified
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s 			page 3
+
+
+ 120 0010 80ED000A 		vstr.32	s0, [r0]
+ 121 0014 7047     		bx	lr
+ 122              	.L13:
+ 123 0016 00BF     		.align	2
+ 124              	.L12:
+ 125 0018 00000000 		.word	0
+ 127              		.ident	"GCC: (GNU Arm Embedded Toolchain 10.3-2021.10) 10.3.1 20210824 (release)"
+ARM GAS  /var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 sampleratereducer.cpp
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:17     .text._ZN7daisysp17SampleRateReducer4InitEv:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:24     .text._ZN7daisysp17SampleRateReducer4InitEv:0000000000000000 _ZN7daisysp17SampleRateReducer4InitEv
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:39     .text._ZN7daisysp17SampleRateReducer4InitEv:0000000000000010 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:42     .text._ZN7daisysp17SampleRateReducer7ProcessEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:49     .text._ZN7daisysp17SampleRateReducer7ProcessEf:0000000000000000 _ZN7daisysp17SampleRateReducer7ProcessEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:95     .text._ZN7daisysp17SampleRateReducer7ProcessEf:0000000000000090 $d
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:98     .text._ZN7daisysp17SampleRateReducer7SetFreqEf:0000000000000000 $t
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:105    .text._ZN7daisysp17SampleRateReducer7SetFreqEf:0000000000000000 _ZN7daisysp17SampleRateReducer7SetFreqEf
+/var/folders/3l/4j5x1lss10qcxwl8njg_4ksh0000gn/T//ccvltACe.s:125    .text._ZN7daisysp17SampleRateReducer7SetFreqEf:0000000000000018 $d
+
+NO UNDEFINED SYMBOLS
